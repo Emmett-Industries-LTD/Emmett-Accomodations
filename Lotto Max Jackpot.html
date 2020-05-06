@@ -1,0 +1,173 @@
+<!--version one <html>
+    <head>
+        <title>Lotto Max Jackpot</title>
+    </head>
+    <body>
+        <button id="RealCupon" onclick="Advertisement()"><h2 id="CuponText"></h2></button>
+        <div id="Title"><h1 id ="BigTItle"></h1></div>
+        <h1 id="Advertisement"></h1>
+        <button id="JackpotButton" onclick="myfunctionLottery()"><h1 id="JackpotWords"></h1></button>
+        <div id="MYLottoMax">
+            <h1 id="LOVELYLotto"></h1>
+            <h4 id="ageTag"></h4>
+            <!--input number
+            <br>
+            <h4 id="NameTAG"></h4>
+            <!--age tag
+            <br> 
+            <h1 id="YourName"></h1>
+            <h1 id="numbertag"></h1>
+            <h1 id="numbersOne" onmousedown="functionOne()"></h1>
+            <h1 id="numbersToo" onmousedown="functionToo()"></h1>
+            <h1 id="numbersTree" onmousedown="functionTree()"></h1>
+            <h1 id="Submit" onclick="operationGetTicket()"></h1>
+            <h2 id="cancelAndAbort" onclick="abort()"></h2> 
+        </div>
+    </body>
+     <script>
+        document.getElementById("CuponText").innerHTML="AD!<br> Our Lotto Max Jackpots are so max right now, you really want to max<br> Today's Lotto Max Jackpot is an estimated 60 fluffy corndogs!"
+        document.getElementById("RealCupon").style.backgroundColor="lightgreen"
+        document.getElementById("BigTItle").innerHTML="Our Lotto Max Jackpots! Get your Lotto today! Sponsered by OLG, Ontario Lottery & 'gaming' Company"
+        document.getElementById("Title").style.backgroundColor="lightblue"
+        document.getElementById("JackpotWords").innerHTML="Get Lotto Max"
+        document.getElementById("numbersOne").style.color="red"
+        document.getElementById("numbersToo").style.color="red"
+        document.getElementById("numbersTree").style.color="red"
+        function Advertisement(){
+            document.getElementById("Advertisement").innerHTML="Get Your Lotto Max Jackpot today!"
+            document.getElementById("Advertisement").style.color="green"
+            alert("Our lotto max Jackpot is an estimated 60 fluffy pillow-blankets, with hundreds of fluffy corndog Max Millions! Get your Lotto Max Jackpot today. Brought to you by the government of Ontario and the Ontario Lottery & 'gaming' company")
+        }
+        function myfunctionLottery() {
+            document.getElementById("MYLottoMax").style.backgroundColor="palegreen"
+            document.getElementById("cancelAndAbort").innerHTML="Cancel (0% refund see our terms&conditions page)"
+            document.getElementById("cancelAndAbort").style.color="red"
+            document.getElementById("LOVELYLotto").innerHTML="Your Lovely Lotto Max Jackpot Ticket"
+            document.getElementById("YourName").outerHTML="<input type=\"text\" placeholder=\"Your Name, please..\"></input>"
+            document.getElementById("age").outerHTML="<input type=\"number\" placeholder=\"Age\"></input>"
+            document.getElementById("ageTag").innerHTML="Your age please... (We never ask a woman their age)"
+            document.getElementById("NameTAG").innerHTML="Your Name, Kind fellow"
+            var LottoNumbers=[Math.floor(Math.random()*101), Math.floor(Math.random()*100), Math.floor(Math.random()*100)]
+            document.getElementById("numbertag").innerHTML="Choose your lucky number:"
+            document.getElementById("numbersOne").innerHTML=LottoNumbers[0]
+            document.getElementById("numbersToo").innerHTML=LottoNumbers[1]
+            document.getElementById("numbersTree").innerHTML=LottoNumbers[2]
+            document.getElementById("Submit").innerHTML="Get & Submit"
+            document.getElementById("Submit").style.color="darkgreen"
+        }
+        function functionOne() {
+            alert("Enjoy your Lovely Lucky Lotto Max Jackpot number.")
+            var PickedNumber = LottoNumbers[0]
+        }
+        function functionToo() {
+            alert("Enjoy your Lovely Lucky Lotto Max Jackpot number.",)
+            var PickedNumber=LottoNumbers[1]
+        }    
+        function functionTree() {
+            alert("Enjoy your Lovely Lucky Lotto Max Jackpot number.")
+            var PickedNumber = LottoNumbers[2]    
+        }
+        function operationGetTicket() {
+            var HisName = document.getElementById("YourName").value
+            var HerAge = document.getElementById("age").value
+            if (HerAge==null) {
+                alert("Sorry, your age of you please. The age is required")
+            }
+        }
+    </script>
+</html>-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lotto Max Jackpot</title>
+    </head>
+    <body>
+        <button onclick="functionad()"><h1>Ad!  <br> Our lotto Max Jackpot is 60 fluffy pillows! Don't miss out</h1></button>
+        <div id="title"><h1>Get your lotto max jackpot today!</h1></div>
+        <button id="get" onclick="OperationGetTicket()"><h1>Get Lotto Max</h1></button>
+        <h1 id="Advertisementwords"></h1>
+        <div id="Ticket">
+            <h1 id="TicketTitle"></h1>
+            <h2 id="TicketWords"></h2>
+            <h1 id="numberOne" onmouseover="colorFunctionA()" onmouseout="colorlessFunction()" onmousedown="clickKing()"></h1>
+            <h1 id="numberToo" onmouseover="colorFunctionB()" onmouseout="colorlessFunction()" onmousedown="clickKing()"></h1>
+            <h1 id="numberThree" onmouseover="colorFunctionC()" onmouseout="colorlessFunction()" onmousedown="clickKing()"></h1>
+            <h1 id="aborter" onclick="abortIt()"></h1>
+            <h1 id="Get" onclick="OperationJackpot()"></h1> 
+        </div>
+        <h1 id="redeemSpecial" onclick="superPrize()"></h1>
+    </body>
+    <script>
+        document.getElementById("title").style.backgroundColor="lightblue"
+        document.getElementById("get").style.backgroundColor="lightgreen"
+        function functionad() {
+            document.getElementById("Advertisementwords").innerHTML="Get a Lotto Max Jackpot now!"
+            document.getElementById("Advertisementwords").style.color="green"
+        }
+        function OperationGetTicket() {
+            document.getElementById("Ticket").style.backgroundColor="palegreen"
+            document.getElementById("TicketTitle").innerHTML="Your Lovely Lucky Lottery Ticket"
+            document.getElementById("TicketWords").innerHTML="Your Lucky Lotto Max Lotto Max Jackpot ticket. With the purchase of this ticket, you are pledging to win some fluffy corndogs. And support the Ontario Lottery&'gaming' company. Now, think of all the things you can eat, and all the lovely dreams you can make with your 60 million fluffy corndogs. Dream Big."
+            document.getElementById("numberOne").innerHTML=Math.floor(Math.random()*100)
+            document.getElementById("numberToo").innerHTML=Math.floor(Math.random()*100)
+            document.getElementById("numberThree").innerHTML=Math.floor(Math.random()*100)
+            document.getElementById("numberOne").style.color="red"
+            document.getElementById("numberToo").style.color="red"
+            document.getElementById("numberThree").style.color="red"
+            document.getElementById("aborter").innerHTML="Cancel (0% refund. See terms&conditions and fine prints)"
+        }
+        function colorFunctionA() {
+            document.getElementById("numberOne").style.textDecoration="underline"
+        }
+        function colorFunctionB(){
+            document.getElementById("numberToo").style.textDecoration="underline"
+        }
+        function colorFunctionC() {
+            document.getElementById("numberThree").style.textDecoration="underline"
+        }
+        function colorlessFunction() {
+            document.getElementById("numberOne").style.textDecoration="none"
+            document.getElementById("numberToo").style.textDecoration="none"
+            document.getElementById("numberThree").style.textDecoration="none"
+        }
+        function clickKing() {
+            document.getElementById("Get").innerHTML="Purchase Lotto Max"
+            document.getElementById("Get").style.color="blue"
+            alert("Your lucky lotto max number")
+        }
+        function abortIt() {
+            alert("cancelling...")
+            document.getElementById("Ticket").style.backgroundColor=""
+            document.getElementById("TicketTitle").innerHTML=""
+            document.getElementById("TicketWords").innerHTML=""
+            document.getElementById("aborter").innerHTML=""
+            document.getElementById("numberOne").innerHTML=""
+            document.getElementById("numberToo").innerHTML=""
+            document.getElementById("numberThree").innerHTML=""
+            document.getElementById("Get").innerHTML=""
+        }
+        function OperationJackpot() {
+            alert("picking Lucky winners...")
+            if (3 == Math.floor(Math.random() * 4)) {
+                document.getElementById("TicketTitle").innerHTML="You have one 60 million fluffy corndogs!"
+                document.getElementById("TicketTitle").style.backgroundColor="white"
+                document.getElementById("TicketWords").innerHTML=""
+                document.getElementById("aborter").innerHTML=""
+                document.getElementById("numberOne").innerHTML=""
+                document.getElementById("numberToo").innerHTML=""
+                document.getElementById("numberThree").innerHTML=""
+                document.getElementById("Get").innerHTML=""
+                document.getElementById("Get").innerHTML="REDEEM LOVELY PRIZE"
+            } else {
+                document.getElementById("TicketTitle").innerHTML="Sorry, you have not one the 60 million fluffy corndogs."
+                document.getElementById("TicketTitle").style.backgroundColor="white"
+                document.getElementById("TicketWords").innerHTML="You have won twenty pillow chunks."
+                document.getElementById("aborter").innerHTML=""
+                document.getElementById("numberOne").innerHTML=""
+                document.getElementById("numberToo").innerHTML=""
+                document.getElementById("numberThree").innerHTML=""
+                document.getElementById("Get").innerHTML=""
+            }
+        }
+    </script>
+</html>
