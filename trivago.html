@@ -1,0 +1,170 @@
+<!--©Emmett Accomodations,Ltd 2020, a trademark brand of Emmett Industries, Ltd. All rights reserved.(®,©,™)-->
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>TriVago</title>
+    </head>
+    <body onload="showRegularAccomodations()">
+        <button id="HotelAd" onclick="AdTrivago()"><h1 id="adWords">!AD! <br> Find your ideal hotel with TriVago. We search hundreds of sites to meet your needs. <br> Hotel? TriVaGo.</h1></button>
+        <div id="title">
+            <h1 id="Title">Hotel? TriVaGo. Our lovely Trivago website.</h1>
+            <br>
+        </div>
+        <h1 id="RealAdvertisement"></h1>
+        <div id="Options">
+            <h2 id="compareTag">Find your Ideal Trivago and search Exclusive Lovely hotels worldwide!</h2>
+            <button id="PlusLazy" onclick="lazyOption()">+Lazy, Lumpy Lovely</button>
+            <button id="PlusFountains" onclick="FountainOption()">+Glimmering Fountains</button>
+            <button id="PlusEggs" onclick="EggsOption()">+Complimentary Eggs</button>
+            <button id="PlusCasino">+Charming Casinos</button>
+        </div>
+        <div style="background-color: coral;"><h1 id="Choosen"></h1><h1 onclick="functionOne()" id="oneOne"></h1><h1 onclick="functionToo()" id="TooToo"></h1><h1 onclick="functionTree()" id="TreeTree"></h1><h1 onclick="functionFor()" id="forFor"></h1></div>
+        <h1 id="Bellagio" onclick="Bellagio()"></h1>
+        <h1 id="Ceasars" onclick="Ceasars()"></h1>
+        <h1 id="Italy" onclick="Italy()"></h1>
+        <h1 id="Marriot" onclick="Marriot()"></h1>
+        <h1 id="NewYork" onclick="NewYork()"></h1>
+        <button onclick="window.print()"><h1 id="printEr">Save...</h1></button>
+    </body>
+    <script>
+        document.getElementById("title").style.backgroundColor="orange"
+        var AdValue, EggsOptionValue, chosenOne;
+        AdValue="off";
+        EggsOptionValue="off";
+        chosenOne="";
+        function showRegularAccomodations() {
+            var AccomodationSelections = {
+                Bellagio: Math.ceil(Math.random()*900+100),
+                Ceasars: Math.ceil(Math.random()*900+100),
+                Italy: Math.ceil(Math.random()*900+100),
+                Marriot: Math.ceil(Math.random()*900+100),
+                NewYork: Math.ceil(Math.random()*900+100)
+            }
+            document.getElementById("Bellagio").innerHTML=["Bellagio Hotel, Las Vegas", " "+"$"+AccomodationSelections.Bellagio]
+            document.getElementById("Italy").innerHTML=["Paradise In Italy", " "+"$"+AccomodationSelections.Italy]
+            document.getElementById("NewYork").innerHTML=["Faramount, New York", " "+"$"+AccomodationSelections.NewYork]
+            document.getElementById("Marriot").innerHTML=["Marriot All-suites Hotel", " "+"$"+AccomodationSelections.Marriot]
+            document.getElementById("Ceasars").innerHTML=["Ceasars Hotel, Las Vegas", " "+"$"+AccomodationSelections.Ceasars]
+            /*if (Math.min(AccomodationSelections.Italy, AccomodationSelections.Marriot, AccomodationSelections.NewYork, AccomodationSelections.Ceasars, AccomodationSelections.Bellagio)==AccomodationSelections.Bellagio||Math.max(AccomodationSelections.Italy, AccomodationSelections.Marriot, AccomodationSelections.NewYork, AccomodationSelections.Ceasars, AccomodationSelections.Bellagio)==AccomodationSelections.Bellagio){
+                document.getElementById("Bellagio").innerHTML=""
+            }*/
+        }
+        function Bellagio() {
+            chosenOne=AccomodationSelections.Bellagio
+            One()
+        }
+        function Ceasars() {
+            chosenOne=AccomodationSelections.Ceasars
+            One()
+        }
+        function Marriot() {
+            chosenOne=AccomodationSelections.Marriot
+            One()
+        }
+        function NewYork() {
+            chosenOne=AccomodationSelections.NewYork
+            One()
+        }
+        function Italy() {
+            chosenOne=AccomodationSelections.Italy
+            One()
+        }
+        function One() {
+            document.getElementById("Bellagio").innerHTML=""
+            document.getElementById("Italy").innerHTML=""
+            document.getElementById("NewYork").innerHTML=""
+            document.getElementById("Marriot").innerHTML=""
+            document.getElementById("Ceasars").innerHTML=""
+            var Random=Math.floor(Math.random()*50+10)
+            document.getElementById("Choosen").innerHTML=["Booking options for your stay<br>  How many complementary giant pretzels would you like for your stay at the buffet. Pretzels now are $"+Random, " each"]    
+            document.getElementById("oneOne").innerHTML="1 "
+            document.getElementById("TooToo").innerHTML="2 "
+            document.getElementById("TreeTree").innerHTML="3 "
+            document.getElementById("forFor").innerHTML="4 "
+        }
+        function functionOne() {
+            Hotelfunction()
+        }
+        function functionToo() {
+            var price=Random*2
+            Hotelfunction()
+        }
+        function functionTree(){
+            var price=Random*3
+            Hotelfunction()
+        }
+        function functionFor() {
+            var price=Random*4
+            Hotelfunction()
+        }
+        function Hotelfunction(){
+            alert(["You have paid $"+price+" on giant premium pretzels, but it was worth it."])
+            price=chosenOne+price
+            document.getElementById("Choosen").innerHTML=["Thank you for booking with TriVago. The initial cost was:" + price]
+            document.getElementById("printEr").innerHTML="Save purchase.."
+        }
+        /*function showRegularAccomodations() {
+            //sets the accomodations for the session
+            var Accomodations = [Math.ceil(Math.random()*900+100), Math.ceil(Math.random()*896+100), Math.ceil(Math.random()*900+100), Math.ceil(Math.random()*896+100), Math.ceil(Math.random()*900+100), Math.ceil(Math.random()*896+100), Math.ceil(Math.random()*900+100), Math.ceil(Math.random()*896+100)] //8 different prices
+            var AccomodatePrices={
+                LasVegasBellagio: Accomodations[0],
+                LasVegasCeasars: Accomodations[1],
+                NewYorkMarriot: Accomodations[2],
+                Italy: Accomodations[3],
+                TorontoFaramount: Accomodations[4],
+                LosAngeles: Accomodations[5],
+                London: Accomodations[6],
+                Cruise: Accomodations[7],
+            }
+            if (AccomodatePrices.LasVegasBellagio<="800") {
+                document.getElementById("AccomodationBellagio").style.backgroundColor="lightblue"
+                document.getElementById("BellagioPriceTag").innerHTML=["$"+ AccomodatePrices.LasVegasBellagio]
+                document.getElementById("BellagioTag").innerHTML="Bellagio Hotel&Casino Las Vegas"
+            }
+            if (AccomodatePrices.LasVegasCeasars<="800") {
+                document.getElementById("AccomodationCeasars").style.backgroundColor="lightblue"
+                document.getElementById("CeasarsTag").innerHTML="Ceasars Hotel&Casino Las Vegas"
+                document.getElementById("CeasarsPriceTag").innerHTML=["$"+ AccomodatePrices.LasVegasCeasars]
+            }
+            if (AccomodatePrices.NewYorkMarriot<="700") {
+                document.getElementById("AccomodationMarriot").style.backgroundColor="lightblue"
+                document.getElementById("MarriotTag").innerHTML="Marriot Hotel&Suites New York"
+                document.getElementById("MarriotPriceTag").innerHTML=["$"+ AccomodatePrices.NewYorkMarriot]
+            }
+            if (AccomodatePrices.Italy<="800") {
+                document.getElementById("AccomodationItaly").style.backgroundColor="lightblue"
+                document.getElementById("ItalyTag").innerHTML="Royal Princess, Roundtrip cruise Italy"
+                document.getElementById("ItalyPriceTag").innerHTML=["$"+ AccomodatePrices.Italy]
+            }
+            if (AccomodatePrices.TorontoFaramount<="600") {
+                document.getElementById("AccomodationCeasars").style.backgroundColor="lightblue"
+                document.getElementById("CeasarsTag").innerHTML="Presedent's Club Platinum Penthouse, Royal Faramount Hotel, Toronto"
+                document.getElementById("CeasarsPriceTag").innerHTML=["$"+ AccomodatePrices.TorontoFaramount]
+            }
+            if (AccomodatePrices.LosAngeles<="700") {
+                document.getElementById("AccomodationLosAngeles").style.backgroundColor="lightblue"
+                document.getElementById("LosAngelesTag").innerHTML="The Los Angeles hotel"
+                document.getElementById("LosAngelesPriceTag").innerHTML=["$"+ AccomodatePrices.LosAngeles]
+            }
+            if (AccomodatePrices.London<=800) {
+                document.getElementById("AccomodationLondon").style.backgroundColor="lightblue"
+                document.getElementById("LondonTag").innerHTML="Four Seasons all-suites hotel, London"
+                document.getElementById("LondonPriceTag").innerHTML=["$"+ AccomodatePrices.London]
+            }
+            if (AccomodatePrices.Cruise<=800) {
+                document.getElementById("AccomodationCruise").style.backgroundColor="lightblue"
+                document.getElementById("CruiseTag").innerHTML="Cruise"
+                document.getElementById("CruisePriceTag").innerHTML=["$"+ AccomodatePrices.London]
+            }
+        }*/
+        function AdTrivago() {
+            if (AdValue=="off") {
+                document.getElementById("RealAdvertisement").innerHTML="Get your 'ideal' hotel today!"
+                AdValue="on"
+            } else {
+                document.getElementById("RealAdvertisement").innerHTML=""
+                AdValue="off"
+            }
+        }
+    </script>
+</html>

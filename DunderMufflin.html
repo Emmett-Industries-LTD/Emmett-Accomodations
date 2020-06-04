@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dunder Mufflin Paper</title>
+        <meta name="author" content="Emmett">
+    </head>
+    <body>
+        <h1 id="Welcome">Welcome to Dunder Mufflin! Make your paper here!</h1>
+        <textarea id="Paper" name="message" style="width:400px;height:600px;font-family:'Times New Roman', Times, serif;font-size: 50;"></textarea>
+        <h6>Dunder Mufflin Paper, Co.</h6>
+        <h1 id="PaperSize">Paper size</h1>
+        <button onclick="High()" id="ButtonOne">Bigger</button>
+        <button onclick="Low()" id="ButtonTwo">Smaller</button>
+        <br>
+        <button onclick="functionPaper()" id="GetIt"><h1 id="Confirm">Get Paper</h1></button>
+        <h1 onclick="Abort()" id="Cancel"></h1>
+        <script>
+            var w=400
+            var h=600
+            var Print=0
+            function High() {
+                w+=10
+                document.getElementById("Paper").style.width=[w+"px"]
+                h+=15
+                document.getElementById("Paper").style.height=[h+"px"]
+            }
+            function Low() {
+                w-=10
+                document.getElementById("Paper").style.width=[w+"px"]
+                h-=15
+                document.getElementById("Paper").style.height=[h+"px"]
+            }
+            function functionPaper() {
+                if(Print==1){
+                    alert("Our Specialists are printing your paper. Please wait a second.")
+                    document.getElementById("PaperSize").innerHTML=""
+                    document.getElementById("Welcome").innerHTML=""
+                    document.getElementById("ButtonOne").outerHTML="<h1></h1>"
+                    document.getElementById("ButtonTwo").outerHTML="<h1></h1>"
+                    document.getElementById("GetIt").outerHTML="<h1></h1>"
+                    document.getElementById("Cancel").innerHTML=""
+                    document.getElementById("Paper").style.border="0px"
+                    window.print()
+                    document.write("Your transaction was succesful. Press Command+R to continue")
+                }
+                if(Print==0){
+                    Print=1
+                    alert("Micheal Scott, regional manager would like to mention something")
+                    alert("You have to confirm to print your paper. When you print, your stuff reloads. It is a little policy we have here ar Dunder Mufflin. ")
+                    document.getElementById("Confirm").innerHTML="Confirm"
+                    document.getElementById("Cancel").innerHTML="Cancel"
+                    document.getElementById("Welcome").innerHTML=
+                    ["Cost: $"+h*w/100000+"<br>Size of paper: "+h*w+"<br>Weight: "+h*w/100000+
+                    "lb<br> Thank you for purchasing Dunder Mufflin!"]
+                }
+                
+            }
+            function Abort() {
+                Print=0
+                document.getElementById("Confirm").innerHTML="Get Paper"
+                document.getElementById("Cancel").innerHTML=""
+                document.getElementById("Welcome").innerHTML="Welcome to Dunder Mufflin! Make your paper here!"
+            }
+        </script>
+    </body>
+</html>
