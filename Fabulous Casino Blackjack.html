@@ -21,7 +21,7 @@
             <span id=8 style="background-color: white;font-family: serif; font-size: 100px;"></span>
         </div>
         <div class="TableTwo" style="background-color: green;border-radius: 10ch;padding: 50px;">
-            <h1><i>Dealer</i></h1><h1 id="Win"></h1>
+            <!--<h1><i>Dealer</i></h1><h1 id="Win"></h1>
             <span id=11 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=12 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=13 style="background-color: white;font-family: serif; font-size: 100px;"></span>
@@ -30,6 +30,7 @@
             <span id=16 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=17 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=18 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            -->
         </div>
         <div class="TableTwo" style="background-color: brown;border-radius: 10ch;padding: 50px;"><h1 id="commentary"></h1></div>
     </body>
@@ -38,7 +39,7 @@
         var Cards=0
         var DealerCards=0
         var StandValue=0
-        const say="commentary"
+        var say="commentary"
         var Unshuffled=[
             "A","A","A","A",
             2,2,2,2,
@@ -54,20 +55,18 @@
             "Q","Q","Q","Q",
             "K","K","K","K"
         ]
-        var deck=Unshuffled.sort(function(a, b){return 0.5 - Math.random();})
+        var deck=Unshuffled.sort(function(a, b){return 0.5 - Math.random()})
         function Deal(){
-            if(StandValue==0){
-                document.getElementById(card).innerHTML=[deck.length-1];
-                var values=Value(deck[deck.length-1]);
-                Cards+=values;
-                deck.pop();
-                card+=1;
-                if(card>1){
-                    document.getElementById(say).innerHTML="player hits"
-                    document.getElementById("StandButton").innerHTML="hit"   
-                } else {
-                    document.getElementById(say).innerHTML="cards dealed to dealer and player"
-                }
+            document.getElementById(card).innerHTML=(deck[deck.length-1]);
+            var values=Value(deck[deck.length]);
+            Cards+=values;
+            deck.pop();
+            card+=1;
+            if(card>1){
+                document.getElementById(say).innerHTML="player hits"
+                document.getElementById("StandButton").innerHTML="hit"   
+            } else {
+                document.getElementById(say).innerHTML="cards dealed to dealer and player"
             }  
         }
         function Stand() {
