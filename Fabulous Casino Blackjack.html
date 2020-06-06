@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fabulous Casino</title>
+    </head>
+    <body>
+        <h1>Welcome to BlackJack at the Fabulous Casino! With Emmett Accomodations, home to the most lovely jovely</h1>
+        <button onclick="Deal()"><h1 style="font-family: serif;" id="StandButton">deal cards</h1></button>
+        <button onclick="Stand()"><h1>Stand</h1></button>
+        <div class="TableOne" style="background-color: green;border-radius: 10ch;padding: 50px;">
+            <h1>You</h1>
+            <span id=1 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=2 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=3 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=4 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=5 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=6 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=7 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=8 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+        </div>
+        <div class="TableTwo" style="background-color: green;border-radius: 10ch;padding: 50px;">
+            <h1><i>Dealer</i></h1><h1 id="Win"></h1>
+            <span id=11 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=12 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=13 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=14 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=15 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=16 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=17 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span id=18 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+        </div>
+        <div class="TableTwo" style="background-color: brown;border-radius: 10ch;padding: 50px;"><h1 id="commentary"></h1></div>
+    </body>
+    <script>
+        var card=1
+        var Cards=0
+        var DealerCards=0
+        var StandValue=0
+        const say="commentary"
+        var Unshuffled=[
+            "A","A","A","A",
+            2,2,2,2,
+            3,3,3,3,
+            4,4,4,4,
+            5,5,5,5,
+            6,6,6,6,
+            7,7,7,7,
+            8,8,8,8,
+            9,9,9,9,
+            10,10,10,10,
+            "J","J","J","J",
+            "Q","Q","Q","Q",
+            "K","K","K","K"
+        ]
+        var deck=Unshuffled.sort(function(a, b){return 0.5 - Math.random()})
+        function Deal(){
+            
+            document.getElementById(card).innerHTML=Check(deck[deck.length-1]);
+            var values=Value(deck[deck.length-1]);
+            Cards+=values;
+            deck.pop();
+            card+=1
+            if(card>1){
+                document.getElementById(say).innerHTML="player hits"
+                document.getElementById("StandButton").innerHTML="hit"   
+            } else {
+                document.getElementById(say).innerHTML="cards dealed to dealer and player"
+            }
+        }
+        function Stand() {
+            if(card<=2) {
+                document.getElementById(say).innerHTML="cannot stand with one card"
+            } else {
+                StandValue=Cards
+                document.getElementById(say)
+            }
+        }
+        function Value(a){
+            if (StandValue==0) {
+                if(a=="J"||a=="Q"||a=="K"){
+                    return 10;
+                } else if(a=="A"){
+                    return 11;
+                } else {
+                    return a;
+                }
+            }
+        }
+        function Check(a) {
+            if (StandValue==0){
+                return a; 
+            } else {
+                return "";
+            }
+        }
+    </script>
+</html>
