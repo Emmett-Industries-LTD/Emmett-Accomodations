@@ -54,45 +54,37 @@
             "Q","Q","Q","Q",
             "K","K","K","K"
         ]
-        var deck=Unshuffled.sort(function(a, b){return 0.5 - Math.random()})
+        var deck=Unshuffled.sort(function(a, b){return 0.5 - Math.random();})
         function Deal(){
-            
-            document.getElementById(card).innerHTML=Check(deck[deck.length-1]);
-            var values=Value(deck[deck.length-1]);
-            Cards+=values;
-            deck.pop();
-            card+=1
-            if(card>1){
-                document.getElementById(say).innerHTML="player hits"
-                document.getElementById("StandButton").innerHTML="hit"   
-            } else {
-                document.getElementById(say).innerHTML="cards dealed to dealer and player"
-            }
+            if(StandValue==0){
+                document.getElementById(card).innerHTML=[deck.length-1];
+                var values=Value(deck[deck.length-1]);
+                Cards+=values;
+                deck.pop();
+                card+=1;
+                if(card>1){
+                    document.getElementById(say).innerHTML="player hits"
+                    document.getElementById("StandButton").innerHTML="hit"   
+                } else {
+                    document.getElementById(say).innerHTML="cards dealed to dealer and player"
+                }
+            }  
         }
         function Stand() {
             if(card<=2) {
                 document.getElementById(say).innerHTML="cannot stand with one card"
             } else {
                 StandValue=Cards
-                document.getElementById(say)
+                document.getElementById(say).innerHTML=["player stays at"+StandValue]
             }
         }
         function Value(a){
-            if (StandValue==0) {
-                if(a=="J"||a=="Q"||a=="K"){
-                    return 10;
-                } else if(a=="A"){
-                    return 11;
-                } else {
-                    return a;
-                }
-            }
-        }
-        function Check(a) {
-            if (StandValue==0){
-                return a; 
+            if(a=="J"||a=="Q"||a=="K"){
+                return 10;
+            } else if(a=="A"){
+                return 11;
             } else {
-                return "";
+                return a;
             }
         }
     </script>
