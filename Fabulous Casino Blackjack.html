@@ -11,16 +11,17 @@
             <button onclick="Deal()"><h1 style="font-family: serif;" id="StandButton">deal cards</h1></button>
             <button onclick="Stand()"><h1>Stand</h1></button>
         </div>
-        <div class="TableOne" style="background-color: green;border-radius: 10ch;padding: 50px;">
+        <div class="TableOne" style="background-color: green;border-radius: 10ch;padding: 100px;">
             <h1>You</h1>
-            <span id=1 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=2 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=3 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=4 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=5 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=6 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=7 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=8 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <br style="font-size: 25;">
+            <span id=1 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=2 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=3 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=4 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=5 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=6 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=7 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=8 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
         </div>
         <div class="TableTwo" style="background-color: green;border-radius: 10ch;padding: 50px;">
             <h1><i>Dealer</i></h1><h1 id="Win"></h1>
@@ -40,43 +41,47 @@
         var Cards=0
         var DealerCards=0
         var StandValue=0
-        var say="commentary"
+        const say="commentary"
         var Unshuffled=[
             "A","A","A","A",
             2,2,2,2,
             3,3,3,3,
             4,4,4,4,
+            "J","J","J","J",
             5,5,5,5,
+            "Q","Q","Q","Q",
             6,6,6,6,
             7,7,7,7,
             8,8,8,8,
             9,9,9,9,
             10,10,10,10,
-            "J","J","J","J",
-            "Q","Q","Q","Q",
             "K","K","K","K"
         ]
         var deck=Unshuffled.sort(function(a, b){return 0.5 - Math.random()})
+        deck=deck.sort(function(a, b){return 0.5 - Math.random()})
         function Deal(){
-            document.getElementById(card).innerHTML=(deck[deck.length-1]);
-            var values=Value(deck[deck.length-1]);
+            document.getElementById(Check(card)).innerHTML=deck[deck.length-1];
+            document.getElementById(Check(card)).style.padding=[25+"px"];
+            var values=Check(Value(deck[deck.length-1]));
             Cards+=values;
-            deck.pop();
-            card+=1;
-            if(card>1){
-                document.getElementById(say).innerHTML="player hits"
-                document.getElementById("StandButton").innerHTML="hit"   
+            if(StandValue==0){
+                deck.pop();
+            }
+            card+=Check(1);
+            if(card==1){
+                document.getElementById(say).innerHTML="cards dealed to dealer and player"                   
             } else {
-                document.getElementById(say).innerHTML="cards dealed to dealer and player"
+                document.getElementById(say).innerHTML=Check("player hits")
+                document.getElementById("StandButton").innerHTML="hit"
             }  
         }
         function Stand() {
-            if(Cards<16) { //fix
+            if(Cards<16) { 
                 document.getElementById(say).innerHTML=
-                "Player is caught trying to cheat. Follow the rules of the Fabulous Casino and play like proper gentlemen, of you please. You are not to stand with less than 17."
+                "You are not to stand with less than 17. Player is caught trying to cheat. Follow the rules of the Fabulous Casino and play like proper gentlemen, of you please. "
             } else {
                 StandValue=Cards
-                document.getElementById(say).innerHTML=["player stays at"+StandValue]
+                document.getElementById(say).innerHTML=["player stays at "+StandValue]
             }
         }
         function Value(a){
@@ -86,6 +91,17 @@
                 return 11;
             } else {
                 return a;
+            }
+        }
+        function Check(b){
+            if(Cards<21){
+                if (StandValue==0){
+                    return b;
+                } else {
+                    return "";
+                }
+            }else{
+                return "";
             }
         }
     </script>
