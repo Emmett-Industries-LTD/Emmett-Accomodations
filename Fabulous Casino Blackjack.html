@@ -41,11 +41,7 @@
     </body>
     <script>
         var card, Cards, dealerCards, StandValue, AceValue;
-        card=1;
-        Cards=0;
-        dealerCards=0;
-        StandValue=0;
-        AceValue=0;
+        card=1;Cards=0;dealerCards=0;StandValue=0;AceValue=0;
         const say="commentary";
         var Unshuffled=[
             "A","A","A","A",
@@ -75,22 +71,25 @@
                 "Would you like your ace as <i onclick='AceOne()' style='text-decoration: underline;'>one</i>, or <i onclick='AceEleven()' style='text-decoration: underline;'>Eleven</i>?";
                 StandValue=100;
             }
-            if(card==1){
-                document.getElementById(say).innerHTML="cards dealed to dealer and player"                   
-            } else {
-                document.getElementById(say).innerHTML=Check("player hits")
-                document.getElementById("StandButton").innerHTML="hit"
-            }  
-            if(Cards==21){
-                document.getElementById(say).innerHTML="Player wins."
-            }
-            if(Cards>21){
-                document.getElementById(say).innerHTML="Player busts"
-            }
             if(StandValue==0){
                 deck.pop();
             }
+            CommentCheck()
         }
+        function CommentCheck() {
+            if(card==1){
+                document.getElementById(say).innerHTML="cards dealed to dealer and player";                   
+            } else {
+                document.getElementById(say).innerHTML=Check("player hits");
+                document.getElementById("StandButton").innerHTML="hit";
+            }
+            if(Cards==21){
+                document.getElementById(say).innerHTML="Player wins.";
+            }else if(Cards>21){
+                document.getElementById(say).innerHTML="Player busts";
+            }
+            
+        } 
         function AceOne(){
             Cards+=1
             ValueAce()
@@ -103,6 +102,8 @@
             document.getElementById("AceQuestion").innerHTML=""
             document.getElementById(say).innerHTML="Value of the Ace choosen by player"
             StandValue=0
+            deck.pop()
+            CommentCheck()
         }
         function Stand() {
             if(StandValue==100){
@@ -128,10 +129,10 @@
                 return a;
             }
         }
-        function Check(b){
+        function Check(a){
             if(Cards<21){
                 if (StandValue==0){
-                    return b;
+                    return a;
                 } else {
                     return "";
                 }
