@@ -4,30 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Fabulous Casino</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <style>
+            @keyframes deal {
+                
+            }
         </style>
     </head>
     <body>
-        <h1>Welcome to BlackJack at the Fabulous Casino! With Emmett Accomodations, home to the most lovely jovely</h1>
         <div class="Controls" style="background-color: brown;border-radius: 10ch;padding: 50px;">
-            <button onclick="Deal()"><h1 style="font-family: serif;" id="StandButton">deal cards</h1></button>
-            <button onclick="Stand()"><h1>Stand</h1></button>
+            <h1>Welcome to BlackJack at the Fabulous Casino! With Emmett Accomodations, home to the most lovely jovely</h1>
         </div>
-        <div class="TableOne" style="background-color: green;border-radius: 10ch;padding: 100px;">
-            <h1>You</h1>
-            <br>
-            <span id=1 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px; "></span>
-            <span id=2 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=3 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=4 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=5 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=6 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=7 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=8 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <h1 id="AceQuestion"></h1>
-        </div>
-        <div class="TableTwo" style="background-color: green;border-radius: 10ch;padding: 100px;">
+        <div class="TableTwo" style="background-color: green;padding: 100px;;border-radius: 10ch;">
             <h1><i>Dealer</i></h1><h1 id="Win"></h1>
+            <br><br>
+            <span id="CardsLeft" style="padding-left: 52px;padding-top: 106px;background-color: whitesmoke; padding-bottom: 51px;"></span>
+            <span id="CardPile" style="background-color: rgb(241, 84, 64);font-size: 100px; padding: 30px;"><img src="spades.png" style="width:50px;height:80px;"></span>
             <span id=11 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=12 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=13 style="background-color: white;font-family: serif; font-size: 100px;"></span>
@@ -36,12 +28,28 @@
             <span id=16 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=17 style="background-color: white;font-family: serif; font-size: 100px;"></span>
             <span id=18 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+        </div>        
+        <div class="TableOne" style="background-color: green;border-radius: 10ch;padding: 100px;"> 
+            <h1><i>You</i></h1>
+            <span id=1 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=2 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=3 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=4 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=5 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=6 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=7 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <span id=8 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
+            <h1 id="AceQuestion"></h1> 
         </div>
-        <div class="TableTwo" style="background-color: brown;border-radius: 10ch;padding: 50px;"><h1 id="commentary"></h1></div>
+        <div style="background-color: brown;padding: 50px; border-radius: 10ch;"><h1 id="commentary"></h1>
+            <button onclick="Deal()"><h1 style="font-family: serif;" id="StandButton">deal cards</h1></button>
+            <button onclick="Stand()"><h1>Stand</h1></button>
+        </div>
+        <button onclick="location.reload()" style="font-size:10px">reload page</button>
     </body>
     <script>
-        var card, Cards, dealerCards, StandValue, AceValue;
-        card=1;Cards=0;dealerCards=0;StandValue=0;AceValue=0;
+        var card, Cards, dealerCards, StandValue, AceValue, Round;
+        card=1;Cards=0;dealerCards=0;StandValue=0;AceValue=0;Round=1;
         const say="commentary";
         var Unshuffled=[
             "A","A","A","A",
@@ -77,18 +85,21 @@
             CommentCheck()
         }
         function CommentCheck() {
-            if(card==1){
-                document.getElementById(say).innerHTML="cards dealed to dealer and player";                   
+            if(card==2){
+                document.getElementById(say).innerHTML="cards dealed to dealer and player";
+                document.getElementById("StandButton").innerHTML="hit";                   
             } else {
                 document.getElementById(say).innerHTML=Check("player hits");
-                document.getElementById("StandButton").innerHTML="hit";
             }
             if(Cards==21){
-                document.getElementById(say).innerHTML="Player wins.";
+                Win()
             }else if(Cards>21){
                 document.getElementById(say).innerHTML="Player busts";
             }
-            
+            document.getElementById("CardsLeft").style.paddingLeft=deck.length-1+"px"
+        }
+        function Win() {
+            document.getElementById(say).innerHTML="Player wins.";
         } 
         function AceOne(){
             Cards+=1
@@ -106,12 +117,13 @@
             CommentCheck()
         }
         function Stand() {
+            document.getElementById("CardsPile")
             if(StandValue==100){
                 document.getElementById(say).innerHTML="Please confirm your ace value"
             } else {
-                if(Cards<17) { 
+                if(Cards<14) { 
                     document.getElementById(say).innerHTML=
-                    "You are not to stand with less than 17. Player is caught trying to cheat. Follow the rules of the Fabulous Casino and play like proper gentlemen, of you please. "
+                    "You are not to stand with less than 14. Player is caught trying to cheat. Follow the rules of the Fabulous Casino and play like proper gentlemen, of you please. "
                 } else if(Cards>21){
                     document.getElementById(say).innerHTML="Cannot stand"
                 } else {
