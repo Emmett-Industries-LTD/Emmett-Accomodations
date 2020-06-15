@@ -6,8 +6,54 @@
         <title>Fabulous Casino</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <style>
-            @keyframes deal {
-                
+            .pile {
+                background-color: white;
+                font-family: serif;
+                font-size: 100px;
+            }
+            .border {
+                background-color: white;
+                font-family: serif;
+                font-size: 100px;
+                border-radius: 4px;
+            }
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+
+                /* Modal Content */
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+
+                /* The Close Button */
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -15,142 +61,158 @@
         <div class="Controls" style="background-color: brown;border-radius: 10ch;padding: 50px;">
             <h1>Welcome to BlackJack at the Fabulous Casino! With Emmett Accomodations, home to the most lovely jovely</h1>
         </div>
+        <div id="rules">
+            <div id="myModal" class="modal"> 
+            <div class="modal-content">
+                <h1 id="AceQuestion">Would you like your ace as:</h1>
+                <input type="radio" name="response" id="a" onchange="ValueAce()">One or<br>
+                <input type="radio" name="response" id="b" onchange="ValueAce()">Eleven?
+            </div>
+        </div>
+        </div>
         <div class="TableTwo" style="background-color: green;padding: 100px;;border-radius: 10ch;">
             <h1><i>Dealer</i></h1><h1 id="Win"></h1>
             <br><br>
             <span id="CardsLeft" style="padding-left: 52px;padding-top: 106px;background-color: whitesmoke; padding-bottom: 51px;"></span>
             <span id="CardPile" style="background-color: rgb(241, 84, 64);font-size: 100px; padding: 30px;"><img src="spades.png" style="width:50px;height:80px;"></span>
-            <span id=11 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=12 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=13 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=14 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=15 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=16 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=17 style="background-color: white;font-family: serif; font-size: 100px;"></span>
-            <span id=18 style="background-color: white;font-family: serif; font-size: 100px;"></span>
+            <span class="pile" id="11"></span>
+            <span class="pile" id="12"></span>
+            <span class="pile" id="13"></span>
+            <span class="pile" id="14"></span>
+            <span class="pile" id="15"></span>
+            <span class="pile" id="16"></span>
+            <span class="pile" id="17"></span>
+            <span class="pile" id="18"></span>
         </div>        
         <div class="TableOne" style="background-color: green;border-radius: 10ch;padding: 100px;"> 
             <h1><i>You</i></h1>
-            <span id=1 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=2 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=3 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=4 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=5 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=6 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=7 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <span id=8 style="background-color: white;font-family: serif; font-size: 100px;border-radius: 4px;"></span>
-            <h1 id="AceQuestion"></h1> 
+            <span class="border" id="1"></span>
+            <span class="border" id="2"></span>
+            <span class="border" id="3"></span>
+            <span class="border" id="4"></span>
+            <span class="border" id="5"></span>
+            <span class="border" id="6"></span>
+            <span class="border" id="7"></span>
+            <span class="border" id="8"></span>    
         </div>
-        <div style="background-color: brown;padding: 50px; border-radius: 10ch;"><h1 id="commentary"></h1>
+        <div style="background-color: brown;padding: 50px; border-radius: 10ch;">
             <button onclick="Deal()"><h1 style="font-family: serif;" id="StandButton">deal cards</h1></button>
             <button onclick="Stand()"><h1>Stand</h1></button>
+            <h1 id="commentary"></h1>
         </div>
         <button onclick="location.reload()" style="font-size:10px">reload page</button>
     </body>
     <script>
-        var card, Cards, dealerCards, StandValue, AceValue, Round;
-        card=1;Cards=0;dealerCards=0;StandValue=0;AceValue=0;Round=1;
-        const say="commentary";
-        var Unshuffled=[
-            "A","A","A","A",
+        
+        var card = 1; score = 0; dealerCards = 0; StandValue = 0; Round = 1; //declares all variables
+        const say = document.getElementById("commentary");
+        const modal = document.getElementById("myModal"); // variable to represent the modal window
+        var unshuffled = [
             2,2,2,2,
             3,3,3,3,
             4,4,4,4,
-            "J","J","J","J",
             5,5,5,5,
-            "Q","Q","Q","Q",
             6,6,6,6,
             7,7,7,7,
             8,8,8,8,
             9,9,9,9,
             10,10,10,10,
-            "K","K","K","K"
-        ];
-        var deck=Unshuffled.sort(function(a, b){return 0.5 - Math.random()});
-        deck=deck.sort(function(a, b){return 0.5 - Math.random()});
-        deck=deck.sort(function(a, b){return 0.5 - Math.random()});
-        function Deal(){
-            document.getElementById(Check(card)).innerHTML=deck[deck.length-1];
-            document.getElementById(Check(card)).style.padding=[25+"px"];
-            Cards+=Check(Value(deck[deck.length-1]));
-            card+=Check(1);
-            if(deck[deck.length-1]=="A"){
-                document.getElementById("AceQuestion").innerHTML=
-                "Would you like your ace as <i onclick='AceOne()' style='text-decoration: underline;'>one</i>, or <i onclick='AceEleven()' style='text-decoration: underline;'>Eleven</i>?";
-                StandValue=100;
+            "J","J","J","J",
+            "Q","Q","Q","Q",
+            "K","K","K","K",
+            "A","A","A","A"
+        ]; // sorted list of all cards
+        var deck = unshuffled.sort(function(a, b){return 0.5 - Math.random()}); // creates a list of shuffled cards
+        console.log(deck);
+        
+        function Deal() {
+            var chosen = deck[deck.length-1]; // takes the last card from the deck
+            document.getElementById(String(Check(card))).innerHTML = chosen; // adds new card to the span with the ID from Check function
+            document.getElementById(String(Check(card))).style.padding=[25+"px"]; // adds padding
+            score += Check(Value(chosen)); // adds to total value of cards
+            card += Check(1);
+            if (chosen == "A") {
+                modal.style.display = "block";
+                StandValue = 100;
             }
-            if(StandValue==0){
+            if (StandValue == 0) {
                 deck.pop();
             }
-            CommentCheck()
+            CommentCheck();
+            // Dealer();
         }
+        
+        /*
+        function Dealer() {
+            document.getElementById(String(Check(card+10))).innerHTML=
+        }
+        */
+
         function CommentCheck() {
-            if(card==2){
-                document.getElementById(say).innerHTML="cards dealed to dealer and player";
+            if (card==2) {
+                say.innerHTML="cards dealed to dealer and player";
                 document.getElementById("StandButton").innerHTML="hit";                   
             } else {
-                document.getElementById(say).innerHTML=Check("player hits");
+                say.innerHTML=Check("player hits");
             }
-            if(Cards==21){
-                Win()
-            }else if(Cards>21){
-                document.getElementById(say).innerHTML="Player busts";
+            if (score==21) {
+                Win();
+            } else if (score>21) {
+                say.innerHTML="Player busts";
             }
             document.getElementById("CardsLeft").style.paddingLeft=deck.length-1+"px"
         }
+        
         function Win() {
-            document.getElementById(say).innerHTML="Player wins.";
+            say.innerHTML="Player wins.";
         } 
-        function AceOne(){
-            Cards+=1
-            ValueAce()
+        
+        function ValueAce() { //resolves modal
+            if (document.getElementById("a").checked == true) {
+                score += 1;
+            } else if (document.getElementById("b").checked == true) {
+                score += 11;
+            }
+            say.innerHTML="";
+            say.innerHTML="Value of the Ace choosen by player";
+            StandValue=0;
+            deck.pop();
+            CommentCheck();
+            modal.style.display = "none";
         }
-        function AceEleven(){
-            Cards+=11
-            ValueAce()
-        }
-        function ValueAce(){
-            document.getElementById("AceQuestion").innerHTML=""
-            document.getElementById(say).innerHTML="Value of the Ace choosen by player"
-            StandValue=0
-            deck.pop()
-            CommentCheck()
-        }
+        
         function Stand() {
-            document.getElementById("CardsPile")
-            if(StandValue==100){
-                document.getElementById(say).innerHTML="Please confirm your ace value"
+            if (StandValue==100) {
+               say.innerHTML="Please confirm your ace value";
             } else {
-                if(Cards<14) { 
-                    document.getElementById(say).innerHTML=
-                    "You are not to stand with less than 14. Player is caught trying to cheat. Follow the rules of the Fabulous Casino and play like proper gentlemen, of you please. "
-                } else if(Cards>21){
-                    document.getElementById(say).innerHTML="Cannot stand"
+                if (score<14) { 
+                    say.innerHTML = "You are not to stand with less than 14. Player is caught trying to cheat. Follow the rules of the Fabulous Casino and play like proper gentlemen, of you please. ";
+                } else if (score>21){
+                    say.innerHTML="Cannot stand";
                 } else {
-                    StandValue=Cards
-                    document.getElementById(say).innerHTML=["player stays at "+StandValue]
+                    StandValue = score
+                    say.innerHTML = ["player stays at "+StandValue];
                 }
             }
         }
-        function Value(a){
-            if(a=="J"||a=="Q"||a=="K"){
-                return 10;
-            } else if(a=="A"){
-                return AceValue;
+        
+        function Value(a) {
+            if(a=="J" || a=="Q" || a=="K") {
+                return 10; // royals are worth 10
+            } else if (a=="A") {
+                return 0;
             } else {
+                return a; // numbers are worth their own value
+            }
+        }
+        
+        function Check(a) {
+            if (score < 21 && StandValue == 0){
                 return a;
-            }
-        }
-        function Check(a){
-            if(Cards<21){
-                if (StandValue==0){
-                    return a;
-                } else {
-                    return "";
-                }
-            }else{
+            } else {
                 return "";
             }
         }
+    
     </script>
 </html>
