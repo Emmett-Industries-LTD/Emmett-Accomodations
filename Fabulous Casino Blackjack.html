@@ -55,6 +55,11 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+            .flip{
+                background-color: rgb(241, 84, 64);
+                font-size: 100px;
+                padding: 30px;
+            }
         </style>
     </head>
     <body>
@@ -74,6 +79,7 @@
             <h1><i>Dealer</i></h1><h1 id="Win"></h1>
             <br><br>
             <span id="CardsLeft" style="padding-left: 52px;padding-top: 106px;background-color: whitesmoke; padding-bottom: 51px;"></span>
+<<<<<<< HEAD
             <span id="CardPile" style="background-color: rgb(241, 84, 64);font-size: 100px; padding: 30px;"><img src="spades.png" style="width:50px;height:80px;"></span>
             <span class="pile" id="11"></span>
             <span class="pile" id="12"></span>
@@ -83,6 +89,17 @@
             <span class="pile" id="16"></span>
             <span class="pile" id="17"></span>
             <span class="pile" id="18"></span>
+=======
+            <span id="CardPile" class="flip"><img src="spades.png" style="width:50px;height:80px;"></span>
+            <span class="cards" id="11"></span>
+            <span class="cards" id="12"></span>
+            <span class="cards" id="13"></span>
+            <span class="cards" id="14"></span>
+            <span class="cards" id="15"></span>
+            <span class="cards" id="16"></span>
+            <span class="cards" id="17"></span>
+            <span class="cards" id="18"></span>
+>>>>>>> b717b5a7951cfe010cffd24019d946fda34909c0
         </div>        
         <div class="TableOne" style="background-color: green;border-radius: 10ch;padding: 100px;"> 
             <h1><i>You</i></h1>
@@ -137,6 +154,9 @@
             if (StandValue == 0) {
                 deck.pop();
             }
+            if(card==2){
+                Deal()
+            }
             CommentCheck();
             // Dealer();
         }
@@ -148,9 +168,15 @@
         */
 
         function CommentCheck() {
+<<<<<<< HEAD
             if (card==2) {
                 say.innerHTML="cards dealed to dealer and player";
                 document.getElementById("StandButton").innerHTML="hit";                   
+=======
+            if (card==3) {
+                say.innerHTML = "cards dealed to dealer and player";
+                document.getElementById("StandButton").innerHTML = "hit";                   
+>>>>>>> b717b5a7951cfe010cffd24019d946fda34909c0
             } else {
                 say.innerHTML=Check("player hits");
             }
@@ -211,7 +237,6 @@
             } else {
                 return "";
             }
-        }
-    
+        }  
     </script>
 </html>
