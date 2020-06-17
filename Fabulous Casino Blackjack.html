@@ -46,6 +46,11 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+            .flip{
+                background-color: rgb(241, 84, 64);
+                font-size: 100px;
+                padding: 30px;
+            }
         </style>
     </head>
     <body>
@@ -69,7 +74,7 @@
             <h1><i>Dealer</i></h1><h1 id="Win"></h1>
             <br><br>
             <span id="CardsLeft" style="padding-left: 52px;padding-top: 106px;background-color: whitesmoke; padding-bottom: 51px;"></span>
-            <span id="CardPile" style="background-color: rgb(241, 84, 64);font-size: 100px; padding: 30px;"><img src="spades.png" style="width:50px;height:80px;"></span>
+            <span id="CardPile" class="flip"><img src="spades.png" style="width:50px;height:80px;"></span>
             <span class="cards" id="11"></span>
             <span class="cards" id="12"></span>
             <span class="cards" id="13"></span>
@@ -142,6 +147,9 @@
             if (StandValue == 0) {
                 deck.pop();
             }
+            if(card==2){
+                Deal()
+            }
             CommentCheck();
             // Dealer();
         }
@@ -153,7 +161,7 @@
         */
 
         function CommentCheck() {
-            if (card==2) {
+            if (card==3) {
                 say.innerHTML = "cards dealed to dealer and player";
                 document.getElementById("StandButton").innerHTML = "hit";                   
             } else {
@@ -228,7 +236,6 @@
             } else {
                 return "";
             }
-        }
-    
+        }  
     </script>
 </html>
