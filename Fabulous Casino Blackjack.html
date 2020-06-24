@@ -13,40 +13,12 @@
                 font-size: 100px;
                 border-radius: 4px;
             }
-            /* The Modal (background) 
-            .modal {
-                display: none; 
-                position: fixed; 
-                z-index: 1; 
-                padding-top: 50px; 
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%; 
-                overflow: auto; 
-                background-color: rgb(0,0,0); 
-                background-color: rgba(0,0,0,0.4); 
-            }
-            .modal-content {
-                background-color: white;
-                margin: auto;
-                padding: 20px;
-                width: 80%;
-            }
-
-            The Close Button 
-            .close {
-                color: #aaaaaa;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-            }*/
             .flip{
                 background-color: rgb(241, 84, 64);
                 font-size: 100px;
                 padding: 25px;
             }
-            #betting{
+            #buttons{
                 background-color: brown;
                 border-radius:none;
             }
@@ -62,74 +34,76 @@
                 padding-bottom: 100px;
             }
             .bet{
+                border: white 5px solid;
                 border-radius: 50%;
                 width: 75px;
                 height: 75px;
+                background-color: red;
+            }
+            #win{
+                display:none;
+                position: sticky -webkit-sticky;
+                background-color: whitesmoke;
+                height: fit-content;
+                border: solid 1px black;
+                padding: 50px;
             }
         </style>
     </head>
     <body>
         <div class="Controls" style="background-color: brown;border-radius: 10ch;padding: 50px;">
             <h1>Welcome to BlackJack at the Fabulous Casino! With Emmett Accomodations, home to the most lovely jovely</h1>
-             <!--</div>
-        <div id="rules">
-            <div id="myModal" class="modal"> 
-            <div class="modal-content">
-                <span class="cards" style="padding: 25px; border: black solid 1px; float: left; top: 20px;">A</span>
-                <h1>You have recieved an ace. Would you prefer it to be worth 1 or 11?</h1>
-                <button onclick="AceEleven()"><h1>Eleven</h1></button>
-                <button onclick="AceOne()"><h1>One</h1></button> 
-                <br><br>
-                <div id="AceQuestion">
-                </div>
-                <br><br>
-                <!--<input type="radio" name="response" id="a" onchange="ValueAce()">One or<br><input type="radio" name="response" id="b" onchange="ValueAce()">Eleven?
-            </div>-->
+            
+        </div>
+        <div id="win">
+            <h1 id="WinMessage"></h1>
+            <button onclick="Reset()"><h1 style="font-family: cursive;">Continue</h1></button>                <!-- Trigger the modal with a button -->
         </div>
         <div class="container">
-        
-        <div class="TableTwo" style="background-color: green;padding: 50px;border-radius: 10ch; width:50%; float:right;">
-            <h1><i>Dealer</i></h1><h1 id="Win"></h1>
-            <span>    
-                <span id="CardsLeft" style="padding-left: 52px;padding-top: 101px;background-color: whitesmoke; padding-bottom: 46px; top:100px;"></span>
-                <span id="CardPile" class="flip"><img src="spades.png" style="width:50px;height:80px;top:100px;"></span>
-            </span>
-            <span>
-                <span class="flip" id="Unflip" style="padding:0px;border-radius: 4px;"><!--<img src="spades.png" style="width:50px;height:80px;">--></span>
-                <span class="cards" id="11"></span>
-                <span class="cards" id="12"></span>
-                <span class="cards" id="13"></span>
-                <span class="cards" id="14"></span>
-                <span class="cards" id="15"></span>
-                <span class="cards" id="16"></span>
-                <span class="cards" id="17"></span>
-                <span class="cards" id="18"></span>
-                <span class="cards" id="19"></span>
-                <span class="cards" id="20"></span>
-            </span>
-        </div>  
-        <div class="TableOne" style="background-color: green;border-radius: 10ch;padding:50px; width: 50%; float:left;"> 
-            <h1><i>You</i></h1>
-            <span class="cards" id="1"></span>
-            <span class="cards" id="2"></span>
-            <span class="cards" id="3"></span>
-            <span class="cards" id="4"></span>
-            <span class="cards" id="5"></span>
-            <span class="cards" id="6"></span>
-            <span class="cards" id="7"></span>
-            <span class="cards" id="8"></span>
-            <span class="cards" id="9"></span> 
-            <span class="cards" id="10"></span>   
-        </div>
+            <div class="TableTwo" style="background-color: green;padding: 50px;border-radius: 10ch; width:50%; float:right;">
+                <h1><i>Dealer</i></h1><h1 id="Win"></h1>
+                <span>    
+                    <span id="CardsLeft" style="padding-left: 52px;padding-top: 101px;background-color: whitesmoke; padding-bottom: 46px; top:100px;"></span>
+                    <span id="CardPile" class="flip"><img src="spades.png" style="width:50px;height:80px;top:100px;"></span>
+                </span>
+                <span>
+                    <span class="flip" id="Unflip" style="padding:0px;border-radius: 4px;"><!--<img src="spades.png" style="width:50px;height:80px;">--></span>
+                    <span class="cards" id="11"></span>
+                    <span class="cards" id="12"></span>
+                    <span class="cards" id="13"></span>
+                    <span class="cards" id="14"></span>
+                    <span class="cards" id="15"></span>
+                    <span class="cards" id="16"></span>
+                    <span class="cards" id="17"></span>
+                    <span class="cards" id="18"></span>
+                    <span class="cards" id="19"></span>
+                    <span class="cards" id="20"></span>
+                </span>
+            </div>  
+            <div class="TableOne" style="background-color: green;border-radius: 10ch;padding:50px; width: 50%; float:left;"> 
+                <h1><i>You</i></h1>
+                <span class="cards" id="1"></span>
+                <span class="cards" id="2"></span>
+                <span class="cards" id="3"></span>
+                <span class="cards" id="4"></span>
+                <span class="cards" id="5"></span>
+                <span class="cards" id="6"></span>
+                <span class="cards" id="7"></span>
+                <span class="cards" id="8"></span>
+                <span class="cards" id="9"></span> 
+                <span class="cards" id="10"></span>
+            </div>
+            <!--<div>
+                <button class="bet" id="betOne" onclick="Onebet()"><h1>1</h1></button>
+                <button class="bet" id="betFive" onclick="Twobet()"><h1>5</h1></button>
+                <button class="bet" id="betTen" onclick="Tenbet()"><h1>10</h1></button>
+                <button class="bet" id="betHundred" onclick="HundredBet()"><h1>100</h1></button>
+            </div>-->
         </div>
         <div style="background-color: brown;padding: 50px; border-radius: 10ch;">
-            <div id="betting">
+            <div id="buttons">
                 <button onclick="Deal()"><h1 style="font-family: serif;" id="StandButton">deal cards</h1></button>
                 <button onclick="Stand()"><h1>Stand</h1></button><br>
-                <button class="bet" id="101" onclick="Onebet()"><h1>1</h1></button>
-                <button class="bet" id="105" onclick="Twobet()"><h1>5</h1></button>
-                <button class="bet" id="110" onclick="Tenbet()"><h1>10</h1></button>
-                <button class="bet" id="200" onclick="HundredBet()"><h1>100</h1></button>
             </div>
             <h1 id="commentary"></h1>
         </div>
@@ -183,10 +157,12 @@
             if (card==2) {
                 UnflippedCard.innerHTML="<img src='spades.png' style='width:50px;height:80px;'>";
                 UnflippedCard.style.padding="25px";
+                UnflippedCard.style.backgroundColor="rgb(241, 84, 64)"
                 document.getElementById("11").innerHTML=deck[deck.length-1];
                 if (deck[deck.length-1] == "A") {
                     AceValues-=1;
                 }
+                dealerCards==1;
                 dealerScore=Value(deck.pop());
                 document.getElementById("11").style.padding="25px";
             }
@@ -201,28 +177,22 @@
             }
             if (score==21) {
                 say.innerHTML= "Player wins.";
-                Stand()
+                Stand();
             }else if(AceValues>=1&&score==11){
                 score=21;
-                CommentCheck()
+                CommentCheck();
             }else if (score>21) {
                 say.innerHTML="Player busts";
+                document.getElementById("win").style.display="block";
+                document.getElementById("WinMessage").innerHTML="You lose";
             }
             document.getElementById("CardsLeft").style.paddingLeft=[[deck.length]+"px"]
         }
-        /*function AceOne(){score += 1;ValueAce();}
-        function AceEleven() {score += 11;ValueAce();}
-        function ValueAce() { //resolves modal say.innerHTML = "";say.innerHTML = "Value of the Ace choosen by player";
-            StandValue=0;
-            deck.pop();
-            CommentCheck();
-            modal.style.display = "none";}
-        */
         function Stand() {
             if (score>21||StandValue>0){
                 say.innerHTML = "Cannot stand";
             } else {
-                StandValue = score
+                StandValue = score;
                 if(AceValues>0&&[StandValue+10]<21){
                     StandValue+=10;//Aces can be worth more for player
                 }
@@ -238,8 +208,9 @@
                 if(deck.pop()=="A"){
                     AceValues+=1;//aces can be 11 not just 1, but only if it doesn't make score too high
                 }
-                for(a=12; dealerScore<=StandValue, dealerScore<21; a++){ 
-                    if((dealerScore+10)<=21&&(dealerScore+10)>StandValue){
+                dealerCards=3
+                for(a=12; dealerScore<=StandValue, dealerScore<17; a++, dealerCards+=1){ 
+                    if(AceValues>0&&(dealerScore+10)<=21&&(dealerScore+10)>StandValue){
                         dealerScore+=10;
                         break;//aces can be 11 not just 1, but only if it doesn't make score too high
                     } 
@@ -247,21 +218,47 @@
                         break;
                     }
                     dealerScore+=Value(deck[deck.length-1]);
-                    document.getElementById(String(a)).innerHTML=deck.pop();
+                    document.getElementById(String(a)).innerHTML=deck[deck.length-1];
                     document.getElementById(String(a)).style.padding="25px";
+                    if(deck.pop()=="A"){
+                        AceValues+=1
+                    }
                 }
-                if(dealerScore>StandValue&&dealerScore<=21){
+                if(dealerScore==StandValue){
+                    say.innerHTML+="push";
+                    document.getElementById("win").style.display="block";
+                    document.getElementById("WinMessage").innerHTML="Push";
+                }else if(dealerScore>StandValue&&dealerScore<=21){
                     say.innerHTML+="Dealer wins";
-                    dealerWin();
-                }else if(dealerScore==StandValue){
-                    say.innerHTML+="push"
-                    Push()
+                    document.getElementById("win").style.display="block";
+                    document.getElementById("WinMessage").innerHTML="House Wins";
                 }else{
-                    say.innerHTML+="Player Wins!"
+                    say.innerHTML+="Player Wins!";
+                    document.getElementById("win").style.display="block";
+                    document.getElementById("WinMessage").innerHTML="You win! You have won some shiny betting tokens!";
                 }
             }
         }
-        //end functions
+        function Reset() {
+            document.getElementById("win").style.display="none";
+            for(i=card; i>=1; i--){
+                document.getElementById(String(i)).style.padding="0px";
+                document.getElementById(String(i)).innerHTML="";
+            }
+            for(b=dealerCards+10+2; b>=11; b--){
+                document.getElementById(String(b)).style.padding="0px";
+                document.getElementById(String(b)).innerHTML="";
+            }
+            UnflippedCard.style.padding="0px";
+            UnflippedCard.innerHTML="";
+            AceValues=0;
+            dealerScore=0;
+            card = 1;
+            score = 0;
+            dealerCards = 0;
+            StandValue = 0;
+            Round++;
+        }
         function Value(a) {
             if(a=="J" || a=="Q" || a=="K") {
                 return 10; // royals are worth 10

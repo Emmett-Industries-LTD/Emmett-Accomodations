@@ -1,119 +1,184 @@
+<!--©2020 Emmett Accomodations, Private, LTD™, ©®™. All rights reserved.-->
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="25">
-    <title>The Plan</title>
-</head>
-<body>
-    <h1>The Plan! The <button onclick="window.print()"><h1>scan!</h1></button></h1>
-    <h1 style="background-color:none">And always obey the Plan</h1>
-    <h1 style="background-color: brown;" id="now">right now I shall be doing</h1>
-    <h1 id="next">Next up is:</h1>
-    <div style="background-color: none;">
-        <h1>Today is</h1>
-        <h1 id="time"></h1>
-    </div>
-    <button onclick="dateT()"><h1>Today</h1></button>
-    <button onclick="dateY()"><h1>Yesterday</h1></button>
-    <button onclick="dateM()"><h1>tommorrow</h1></button>
-    <button onclick="dateA()"><h1>All</h1></button>
-    <div style="background-color: none;">
-        <h1 id="today">stuff to do today:</h1>
-        <h1 id="doStuff"></h1>
-        <h5 id="All"></h6>
-    </div>
-    <footer>Want your own Accomodations plan? call Emmett Accomodations!</footer>
-    <script>
-        var d=new Date();
-        var ChooseDay=1;
-        var stuff=[
-            ["sleep", "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "<br>breakfast ", 
-            "<br>coding ",
-            "<br> reading", 
-            "<br>chess ", 
-            "<br>lunch ", 
-            "<br>baseball with hewitt", 
-            "<br>pipecleaners and something new",
-            "<br> bike",
-            "<br>bike",
-            "<br>diner",
-            "<br>tennis",
-            "<br>sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep"],
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="60">
+        <title>The Plan</title>
+    </head>
+    <body>
+        <h1>The Plan! The Scan!<button onclick="window.print()"><h1>scan!</h1></button></h1>
+        <h1 style="background-color:none">And always obey the Plan</h1>
+        <h1 style="background-color: brown;" id="now">right now I shall be doing</h1>
+        <h1 id="next">Next up is:</h1>
+        <div style="background-color: none;">
+            <h1>Today is</h1>
+            <h1 id="time"></h1>
+        </div>
+        <h1>more features (for you reference):</h1>
+        <div>
+            <button onclick="dateT()"><h1>Today</h1></button>
+            <button onclick="dateY()"><h1>Yesterday</h1></button>
+            <button onclick="dateM()"><h1>tommorrow</h1></button>
+            <button onclick="dateA()"><h1>All</h1></button>
+            <button onclick="dateN()"><h1>none</h1></button>
+            <button onclick="Features()"><h1 style="font-family: cursive;">more</h1></button>
+        </div>
+        <div style="background-color: none;">
+            <h1 id="today">stuff to do today:</h1>
+            <h1 id="doStuff"></h1>
+            <h5 id="All"></h5>
+        </div>
+        <div id="More">
+            <!--Stats will appear here with "innerHTML"-->
+        </div>
+        <footer><p>Want your own Accomodations plan? call Emmett Accomodations!</p><p style="font-size: 7px;">page will be reloaded every 60 seconds</p></footer>
+        <script>
+            var d=new Date();
+            var ChooseDay=2;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var stuff=[
+                ["sleep", "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "<br>breakfast ", 
+                "<br>coding ",
+                "<br> reading", 
+                "<br>chess ", 
+                "<br>lunch ", 
+                "<br>baseball with hewitt", 
+                "<br>pipecleaners and something new",
+                "<br> bike",
+                "<br>bike;",
+                "<br>diner",
+                "<br>tennis",
+                "<br>sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep"],
 
-            [
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "<br> breakfast",
-            "<br> Chinese",
-            "<br>Chess, prodigy",
-            "<br> pipecleaners",
-            "<br>eat lunch",
-            "<br>reading; read test",
-            "<br>Dad; adventure; yard",
-            "<br>rest; test prep",
-            "<br>dinner",
-            "<br>walk",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep",
-            "sleep"
-            ]
-        ];
-        document.getElementById("time").innerHTML=GetTheday(d.getDay());
-        document.getElementById("doStuff").innerHTML=stuff[ChooseDay];
-        document.getElementById("now").innerHTML+=stuff[ChooseDay][(d.getHours())];
-        document.getElementById("now").innerHTML+="<br>"+[60-d.getMinutes()]+" minutes left";
-        document.getElementById("next").innerHTML+=stuff[ChooseDay][d.getHours()+1]+"<br>"+"coming in "+[60-d.getMinutes()]+" minutes"
-        if([60-d.getHours()]<=10){
-            document.getElementById("now").innerHTML+=["get ready for"+stuff[ChooseDay][d.getHours()+1]+"<br> it is soon!"]
-        }
-        function dateY(){
-            document.getElementById("doStuff").innerHTML=stuff[ChooseDay-1];
-            document.getElementById("now").innerHTML=
-            ["I would have been doing:"+stuff[ChooseDay][(d.getHours())]+"<br>"+[60-d.getMinutes()]+" minutes left"];
-            document.getElementById("today").innerHTML="stuff to do yesterday:"
-        }
-        function dateM(){
-            document.getElementById("doStuff").innerHTML=stuff[ChooseDay-1];
-            document.getElementById("now").innerHTML=
-            ["I will be doing:"+stuff[ChooseDay+1][(d.getHours())]]+"<br>"+[60-d.getMinutes()]+" minutes left";
-            document.getElementById("today").innerHTML="stuff to do tomorrow:"
-        }
-        function dateA(){
-            document.getElementById("today").innerHTML="All the stuff to do:"
-            document.getElementById("All").innerHTML=stuff;
-            document.getElementById("doStuff").innerHTML=""
-            document.getElementById("now").innerHTML="today's stuff <br>"+stuff[ChooseDay]
-        }
-        function dateT(){
-            document.getElementById("time").innerHTML=GetTheday(d.getDay());
-            document.getElementById("doStuff").innerHTML=stuff[ChooseDay];
-            document.getElementById("now").innerHTML="right now I shall be doing"+stuff[ChooseDay][(d.getHours())];
-            document.getElementById("now").innerHTML+="<br>"+[60-d.getMinutes()]+" minutes left";
-        }
-        function GetTheday(a){if (a==1){return "Monday";}else if (a==2){return "Tuesday";}else if (a==3){return "Wednesday";}else if (a==4){return "Thursday";}else if (a==5){return "Friday!";}else{return "Weekend";}};
-    </script>
-</body>
+                [
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "<br> breakfast",
+                "<br> Chinese",
+                "<br>Chinese then Chess; prodigy",
+                "<br> pipecleaners",
+                "<br>eat lunch",
+                "<br>reading; read test",
+                "<br>Dad; adventure; yard",
+                "<br>rest; test prep",
+                "<br>bike",
+                "<br>dinner",
+                "walk",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                ],
+                [
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "<br>breakfast",
+                "<br>coding",
+                "<br>pipecleaners",
+                "<br>cool games",
+                "<br>Lunch; 'jazz appreciation' show",
+                "<br>baseball with hewitt",
+                "<br>pipecleaners, something with mom",
+                "<br>Bike",
+                "<br>bike; continued",
+                "<br>tennis at 5:00",
+                "<br>dinner leftover",
+                "<br>free time",
+                "walk",
+                "read",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                ]
+                //add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
+            ];
+            dateN();
+            if([60-d.getMinutes()]<10){
+                document.getElementById("now").innerHTML+=["<br><br>get ready for"+stuff[ChooseDay][d.getHours()+1]]
+            }
+            //button functions:
+            function dateY(){
+                document.getElementById("doStuff").innerHTML=stuff[ChooseDay-1];
+                document.getElementById("now").innerHTML=
+                ["I would have been doing:"+stuff[ChooseDay][(d.getHours())]+"<br>"+[60-d.getMinutes()]+" minutes left"];
+                document.getElementById("today").innerHTML="stuff to do yesterday:"
+            }
+            function dateM(){
+                if(stuff.length==[ChooseDay+1]){
+                    document.getElementById("doStuff").innerHTML="Nothing is planned for tomorrow, currently."
+                }else{
+                    document.getElementById("doStuff").innerHTML=stuff[ChooseDay-1];
+                    document.getElementById("now").innerHTML=
+                    ["I will be doing:"+stuff[ChooseDay+1][(d.getHours())]]+"<br>"+[60-d.getMinutes()]+" minutes left";
+                    document.getElementById("today").innerHTML="stuff to do tomorrow:"
+                }
+                document.getElementById("All").innerHTML="";
+            }
+            function dateA(){
+                document.getElementById("today").innerHTML="All the stuff to do:"
+                document.getElementById("All").innerHTML=stuff;
+                document.getElementById("doStuff").innerHTML=""
+                document.getElementById("now").innerHTML="today's stuff <br>"+stuff[ChooseDay]
+            }
+            function dateT(){
+                document.getElementById("time").innerHTML=GetTheday(d.getDay());
+                document.getElementById("doStuff").innerHTML=stuff[ChooseDay];
+                document.getElementById("now").innerHTML="right now I shall be doing"+stuff[ChooseDay][(d.getHours())];
+                document.getElementById("now").innerHTML+="<br>"+[60-d.getMinutes()]+" minutes left";
+                document.getElementById("today").innerHTML="stuff to do today:";
+                document.getElementById("All").innerHTML="";
+            }
+            function dateN() {
+                document.getElementById("doStuff").innerHTML="";
+                document.getElementById("today").innerHTML="";
+                document.getElementById("All").innerHTML="";
+                document.getElementById("time").innerHTML=GetTheday(d.getDay());
+                document.getElementById("now").innerHTML="right now I shall be doing:"+stuff[ChooseDay][(d.getHours())]+"<br>"+[60-d.getMinutes()]+" minutes left";
+                document.getElementById("next").innerHTML="next up is:"+stuff[ChooseDay][d.getHours()+1]+"<br>"+"coming in "+[60-d.getMinutes()]+" minutes";
+            }
+            function Features(){
+                document.getElementById("More").innerHTML+=
+                "<span class='chartEvents' style='background-color:"+GetColorValues(stuff[ChooseDay][1])+"'>"+ stuff[ChooseDay][1] +"</span>"
+            }
+            //technical value functions:
+            function GetColorValues(a) {
+                var b=toUpperCase(a)
+                if(b.search("BIKE")>=0){
+                    return "brown";
+                }else{
+                    return "white";
+                }
+            }
+            function GetTheday(a){
+                if (a==1){return "Monday";}else if (a==2){return "Tuesday";}else if (a==3){return "Wednesday";}else if (a==4){return "Thursday";}else if (a==5){return "Friday!";}else{return "Weekend";}
+            }
+        </script>
+    </body>
 </html>
