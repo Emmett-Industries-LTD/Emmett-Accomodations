@@ -27,7 +27,7 @@
             <button onclick="dateM()"><h1>Tommorrow</h1></button>
             <button onclick="MyAcheivements()"><h1>My Acheivements</h1></button>
             <button onclick="dateA()"><h1>List</h1></button>
-            <button onclick="dateN()"><h1>None</h1></button>
+            <button onclick="dateN(); functionName='N'"><h1>None</h1></button>
             <button onclick="lineBrakes+=0.5; includeLineBreaksFunctions();" id="ButtonIncludeBR"><h1 id="IncludeBR">Include line breaks</h1></button>
         </div>
         <div style="background-color: none;">
@@ -46,7 +46,7 @@
         <footer><p>Want your own Accomodations plan? call Emmett Accomodations!</p><p style="font-size: 7px;">page will be reloaded every 60 seconds</p></footer>
         <script>
             var ChartOne;
-            var functionName;
+            var functionName="N";
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
@@ -377,7 +377,7 @@
                 "journal",
                 "sleep",
                 "sleep",
-                "sleep"]
+                "sleep",]
                 //add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
             ];
             dateN();
@@ -386,14 +386,15 @@
             }
             //button functions:
             function dateY(){
+                functionName="Y"; 
                 dateN();
                 document.getElementById("doStuff").innerHTML=getBr(stuff[ChooseDay-1]);
                 document.getElementById("now").innerHTML=
                 ["I would have been doing:<br>"+stuff[ChooseDay][(d.getHours())]+"<br>"+[60-d.getMinutes()]+" minutes left"];
                 document.getElementById("today").innerHTML="stuff to do yesterday:"
-                functionName="Y"
             }
             function dateM(){
+                functionName="M"
                 dateN();
                 if(stuff.length==[ChooseDay+1]){
                     document.getElementById("today"),innerHTML="Tomorrow's stuff:";
@@ -404,23 +405,22 @@
                     ["I will be doing:<br>"+stuff[ChooseDay+1](d.getHours())-1]+"<br>"+[60-d.getMinutes()]+" minutes left";
                     document.getElementById("today").innerHTML="stuff to do tomorrow:";
                 }
-                functionName="M"
             }
             function dateA(){
+                functionName="A";
                 dateN();
                 document.getElementById("today").innerHTML="All the stuff to do:"
                 document.getElementById("All").innerHTML=getBr(stuff);
                 document.getElementById("now").innerHTML="today's stuff <br>"+stuff[ChooseDay];
-                functionName="A"
             }
             function dateT(){
+                functionName="T";
                 dateN();
                 document.getElementById("time").innerHTML=GetTheday(d.getDay());
                 document.getElementById("doStuff").innerHTML=getBr(stuff[ChooseDay]);
                 document.getElementById("now").innerHTML="right now I shall be doing<br>"+stuff[ChooseDay][(d.getHours())-1];
                 document.getElementById("now").innerHTML+="<br>"+[60-d.getMinutes()]+" minutes left";
                 document.getElementById("today").innerHTML="stuff to do today:";
-                functionName="T";
             }
             function dateN() {
                 document.getElementById("doStuff").innerHTML=null;
@@ -431,7 +431,11 @@
                 document.getElementById("next").innerHTML="next up is:"+stuff[ChooseDay][d.getHours()]+"<br>"+"coming in "+[60-d.getMinutes()]+" minutes";
                 document.getElementById("More").innerHTML=null;
                 document.getElementById("Schedule").innerHTML=null;
-                document.getElementById("ButtonIncludeBR").style.display="block";
+                if(functionName=="N"){
+                    document.getElementById("ButtonIncludeBR").style.display="none";
+                }else{
+                    document.getElementById("ButtonIncludeBR").style.display="block";
+                }
                 functionName="N";
             }
             function MyAcheivements(){
