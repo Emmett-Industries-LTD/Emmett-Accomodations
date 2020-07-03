@@ -438,8 +438,14 @@
                 dateN();
                 scheduled={
                     brown:0, pink:0,green:0, gold:0,purple:0, violet:0, yellowgreen:0, turquoise:0,
-                    red:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, hotpink:0, whitesmoke:0
+                    red:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, hotpink:0, beige:0, whitesmoke:0
                 }; //list of achievements
+                var listScheduled=[
+                    "brown", "pink","green", "gold","purple", "violet", "yellowgreen", "turquoise",
+                    "red", "orange", "lightblue", "lightgreen", "teal", "tan", "hotpink", "beige", "whitesmoke"]
+                var ScheduledNameTags=[
+                    "Biking", "Pipecleaners","Tennis", "Gold","Mommy Time", "Something New and 'Cultural'", "Meeting Pals", "Reading and Journal",
+                    "Test Prep", "Walk", "Sleep", "Outside", "Hewitt, Games, and Movie", "Eating", "Skills", "Coding", "Other"]
                 for(i=0; i<stuff.length-1; i++){
                     for(x=0;x<stuff[i].length; x++){
                         scheduled[GetColorValues(stuff[i][x])]+=1;
@@ -447,33 +453,76 @@
                 }
                 DivContainer=document.getElementById("More");
                 DivContainer.innerHTML="<h1>My achievements!</h1>";
+                for(i=0;i<16;i++){
+                    DivContainer.innerHTML+=
+                        "<div class='A'><div style='float:left;background-color:"+listScheduled[i]+"; height:75px;width:"+scheduled[listScheduled[i]]*20+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
+                        +scheduled[listScheduled[i]]+" hours spent, Percent of grand plan: "+Percent(scheduled[listScheduled[i]])+"%, or "
+                        +scheduled[listScheduled[i]]+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                }
+                /*
                 DivContainer.innerHTML+=
                     "<div class='A'><div style='float:left;background-color:brown; height:75px;width:"+scheduled.brown*20+"px;'></div> <h1 style='position:absolute;'><i>biking </i> "
-                    +scheduled.brown+" hours spent, Percent of grand plan (%) "+Percent(scheduled.brown)+", or "
+                    +scheduled.brown+" hours spent, Percent of grand plan: "+Percent(scheduled.brown)+"%, or "
                     +scheduled.brown+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
                 DivContainer.innerHTML+=
                     "<div class='A'><div style='float:left;background-color:pink; height:75px;width:"+scheduled.pink*20+"px;'></div><h1 style='position:absolute;'><i>pipecleaners </i>"
-                    +scheduled.pink+" hours spent, Percent of grand plan (%) "+Percent(scheduled.pink)+", or "
+                    +scheduled.pink+" hours spent, Percent of grand plan: "+Percent(scheduled.pink)+"%, or "
                     +scheduled.pink+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
                 DivContainer.innerHTML+=
                     "<div class='A'><div style='float:left;background-color:green; height:75px;width:"+scheduled.green*20+"px;'></div><h1 style='position:absolute;'><i>tennis</i> "
-                    +scheduled.green+" hours spent, Percent of grand plan (%) "+Percent(scheduled.green)+", or "
+                    +scheduled.green+" hours spent, Percent of grand plan: "+Percent(scheduled.green)+"%, or "
                     +scheduled.green+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
                 DivContainer.innerHTML+=
                     "<div class='A'><div style='float:left;background-color:purple; height:75px;width:"+scheduled.purple*20+"px;'></div><h1 style='position:absolute;'><i>Mommy time</i>: "
-                    +scheduled.purple+" hours spent, Percent of grand plan (%) "+Percent(scheduled.purple)+", or "
+                    +scheduled.purple+" hours spent, Percent of grand plan: "+Percent(scheduled.purple)+"%, or "
                     +scheduled.purple+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
                 DivContainer.innerHTML+=
-                    "<div class='A'><div style='float:left;background-color:violet; height:75px;width:"+scheduled.violet*20+"px;'></div><h1 style='position:absolute;'><i>something new, 'cultural'</i> "
-                    +scheduled.violet+" hours spent, Percent of grand plan (%) "+Percent(scheduled.violet)+", or "
+                    "<div class='A'><div style='float:left;background-color:violet; height:75px;width:"+scheduled.violet*20+"px;'></div><h1 style='position:absolute;'><i>something new and  'cultural'</i> "
+                    +scheduled.violet+" hours spent, Percent of grand plan: "+Percent(scheduled.violet)+"%, or "
                     +scheduled.violet+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
                 DivContainer.innerHTML+=
-                    "<div class='A'><div style='float:left;background-color:yellowgreen; height:75px;width:"+scheduled.yellowgreen*20+"px;'></div><h1 style='position:absolute;'><i>meets</i>  "
-                    +scheduled.yellowgreen+" hours spent, Percent of grand plan (%) "+Percent(scheduled.yellowgreen)+", or "
+                    "<div class='A'><div style='float:left;background-color:yellowgreen; height:75px;width:"+scheduled.yellowgreen*20+"px;'></div><h1 style='position:absolute;'><i>Meets</i>  "
+                    +scheduled.yellowgreen+" hours spent, Percent of grand plan: "+Percent(scheduled.yellowgreen)+"%, or "
                     +scheduled.yellowgreen+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
                 DivContainer.innerHTML+=
                     "<div class='A'><div style='float:left;background-color:turquoise; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
-                    +scheduled.turquoise+" hours spent, Percent of grand plan (%) "+Percent(scheduled.turquoise)+", or "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan: "+Percent(scheduled.turquoise)+"%, or "
+                    +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:red; height:75px;width:"+scheduled.red*20+"px;'></div><h1 style='position:absolute;'><i>Test Prep</i>: "
+                    +scheduled.red+" hours spent, Percent of grand plan: "+Percent(scheduled.red)+"%, or "
+                    +scheduled.red+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:orange; height:75px;width:"+scheduled.orange*20+"px;'></div><h1 style='position:absolute;'><i>Walk</i>: "
+                    +scheduled.orange+" hours spent, Percent of grand plan: "+Percent(scheduled.orange)+"%, or "
+                    +scheduled.orange+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:lightblue; height:75px;width:"+scheduled.lightblue*20+"px;'></div><h1 style='position:absolute;'><i>Sleeping and Napping</i>: "
+                    +scheduled.lightblue+" hours spent, Percent of grand plan: "+Percent(scheduled.lightblue)+"%, or "
+                    +scheduled.lightblue+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:lightgreen; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan: "+Percent(scheduled.turquoise)+"%, or "
+                    +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:teal; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan: "+Percent(scheduled.turquoise)+"%, or "
+                    +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:tan; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan: "+Percent(scheduled.turquoise)+"%, or "
+                    +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:hotpink; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan: "+Percent(scheduled.turquoise)+"%, or "
+                    +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:beige; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan: "+Percent(scheduled.turquoise)+"%, or "
+                    +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:whitesmoke; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan: "+Percent(scheduled.turquoise)+"%, or "
                     +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
                 /*
                 DivContainer.innerHTML+=
@@ -529,7 +578,7 @@
             //technical value functions:
             function Percent(a){
                 var b=String(100/((24*stuff.length)/a))
-                return b.charAt(0)+b.charAt(1)+b.charAt(2);
+                return b.charAt(0)+b.charAt(1)+b.charAt(2)+b.charAt(3);
             }
             function getBr(a){
                 if(lineBrakes==Math.floor(lineBrakes)){
@@ -575,7 +624,7 @@
                     return "lightblue";
                 }else if(b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0){
                     return "lightgreen";
-                }else if(b.search("HEWITT")>=0||b.search("GAME")>=0||b.search("MOVIE")>=0){
+                }else if(b.search("HEWITT")>=0||b.search("GAME")>=0||b.search("MOVIE")>=0||b.search("Minecraft")>=0){
                     return "teal";
                 }else if(b.search("FOOD")>=0||b.search("LUNCH")>=0||b.search("BREAKFAST")>=0||b.search("DINNER")>=0||b.search("EAT")>=0){
                     return "tan";
