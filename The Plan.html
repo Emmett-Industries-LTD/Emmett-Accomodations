@@ -7,6 +7,7 @@
         <meta http-equiv="refresh" content="60">
         <title>The Plan</title>
         <style>
+            .A{position:relative;}
         </style>
     </head>
     <body>
@@ -18,34 +19,38 @@
             <h1>Today is</h1>
             <h1 id="time"></h1>
         </div>
+        <h1>Have a great day!</h1>
+        <h1>And remember: Lovely Jovely!</h1>
         <div>
             <button onclick="dateT()"><h1>Today</h1></button>
             <button onclick="dateY()"><h1>Yesterday</h1></button>
-            <button onclick="dateM()"><h1>tommorrow</h1></button>
-            <button onclick="Features()"><h1>schedule</h1></button>
-            <button onclick="Graphs()"><h1>My acheivements</h1></button>
-            <button onclick="dateA()"><h1>All</h1></button>
+            <button onclick="dateM()"><h1>Tommorrow</h1></button>
+            <button onclick="MyAcheivements()"><h1>My Acheivements</h1></button>
+            <button onclick="dateA()"><h1>List</h1></button>
+            <button onclick="dateN()"><h1>None</h1></button>
             <button onclick="lineBrakes+=0.5; includeLineBreaksFunctions();" id="ButtonIncludeBR"><h1 id="IncludeBR">Include line breaks</h1></button>
-            <button onclick="dateN()"><h1>none</h1></button>
         </div>
         <div style="background-color: none;">
             <h1 id="today">stuff to do today:</h1>
             <h1 id="doStuff"></h1>
             <h5 id="All"></h5>
+            <div id="More">
+                <!--Stats will appear here with "innerHTML"-->
+                <!--"my achievements" appear here-->
+            </div>
+            <div id="Schedule">
+                 <!--"scheduled" appear here-->
+            </div>
         </div>
-        <div id="More">
-            <!--Stats will appear here with "innerHTML"-->
-            <!--Both "my achievements" and "scheduled" appear here-->
-        </div>
+        
         <footer><p>Want your own Accomodations plan? call Emmett Accomodations!</p><p style="font-size: 7px;">page will be reloaded every 60 seconds</p></footer>
         <script>
             var ChartOne;
             var functionName;
             var d=new Date();
             var lineBrakes=0;
-            var scheduled=[["brown", "pink","green", "gold","purple", "violet", "yellowgreen", "turquoise", "silver",
-                "red", "orange", "lightblue","lightgreen", "teal", "tan", "hotpink", "whitesmoke"]]; //list of achievements
-            var ChooseDay=6;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var scheduled;
+            var ChooseDay=11;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -234,7 +239,145 @@
                     "sleep",
                     "sleep"
 
-                ]
+                ],
+                [
+                    
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "Breakfast",
+                    "schedule",
+                    "games with Hewitt",
+                    "read",
+                    "lunch",
+                    "mini golf outside",
+                    "mini golf outside",
+                    "mini golf and outside",
+                    "drive",
+                    "minecraft game",
+                    "dinner",
+                    "tennis",
+                    "walk",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                ],
+                [
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "breakfast",
+                "chinese",
+                "read",
+                "catch with Hewitt",
+                "lunch",
+                "drive",
+                "drive",
+                "drive",
+                "swim outside",
+                "games outside",
+                "adventure",
+                "dinner",
+                "movie",
+                "walk",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                ],
+                [
+                    
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "breakfast",
+                "read",
+                "games with Hewitt",
+                "catcher pitcher",
+                "lunch with mom",
+                "something new",
+                "badminton",
+                "movie",
+                "read",
+                "outside",
+                "dinner",
+                "movie",
+                "walk",
+                "Lovely festival outside",
+                "walk",
+                "sleep",
+                "sleep",
+                "sleep"
+                ],
+                [
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                    "breakfast",
+                    "outside",
+                    "campfire outside",
+                    "adventure",
+                    "lunch",
+                    "drive",
+                    "drive",
+                    "drive",
+                    "cultural",
+                    "bike",
+                    "meet with Leia and Elena",
+                    "dinner",
+                    "minecraft",
+                    "walk",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                ],
+                [
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "sleep",
+                "breakfast",
+                "reading",
+                "coding",
+                "catch",
+                "lunch",
+                "outside",
+                "meet bill",
+                "minecraft",
+                "meet Juliet",
+                "games",
+                "dinner",
+                "movie",
+                "movie",
+                "journal",
+                "sleep",
+                "sleep",
+                "sleep"]
                 //add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
             ];
             dateN();
@@ -243,6 +386,7 @@
             }
             //button functions:
             function dateY(){
+                dateN();
                 document.getElementById("doStuff").innerHTML=getBr(stuff[ChooseDay-1]);
                 document.getElementById("now").innerHTML=
                 ["I would have been doing:<br>"+stuff[ChooseDay][(d.getHours())]+"<br>"+[60-d.getMinutes()]+" minutes left"];
@@ -281,47 +425,92 @@
             function dateN() {
                 document.getElementById("doStuff").innerHTML=null;
                 document.getElementById("today").innerHTML=null;
-                document.getElementById("All").innerHTML=null
+                document.getElementById("All").innerHTML=null;
                 document.getElementById("time").innerHTML=GetTheday(d.getDay());
                 document.getElementById("now").innerHTML="right now I shall be doing:<br>"+stuff[ChooseDay][(d.getHours())-1]+"<br>"+[60-d.getMinutes()]+" minutes left";
                 document.getElementById("next").innerHTML="next up is:"+stuff[ChooseDay][d.getHours()]+"<br>"+"coming in "+[60-d.getMinutes()]+" minutes";
-                //document.getElementById("now").style.backgroundColor=GetColorValues(stuff[ChooseDay][[d.getHours()]])
                 document.getElementById("More").innerHTML=null;
-                functionName="N"
+                document.getElementById("Schedule").innerHTML=null;
+                document.getElementById("ButtonIncludeBR").style.display="block";
+                functionName="N";
             }
-            function Features(){
+            function MyAcheivements(){
                 dateN();
+                scheduled={
+                    brown:0, pink:0,green:0, gold:0,purple:0, violet:0, yellowgreen:0, turquoise:0,
+                    red:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, hotpink:0, whitesmoke:0
+                }; //list of achievements
+                for(i=0; i<stuff.length-1; i++){
+                    for(x=0;x<stuff[i].length; x++){
+                        scheduled[GetColorValues(stuff[i][x])]+=1;
+                    }
+                }
+                DivContainer=document.getElementById("More");
+                DivContainer.innerHTML="<h1>My achievements!</h1>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:brown; height:75px;width:"+scheduled.brown*20+"px;'></div> <h1 style='position:absolute;'><i>biking </i> "
+                    +scheduled.brown+" hours spent, Percent of grand plan (%) "+Percent(scheduled.brown)+", or "
+                    +scheduled.brown+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:pink; height:75px;width:"+scheduled.pink*20+"px;'></div><h1 style='position:absolute;'><i>pipecleaners </i>"
+                    +scheduled.pink+" hours spent, Percent of grand plan (%) "+Percent(scheduled.pink)+", or "
+                    +scheduled.pink+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:green; height:75px;width:"+scheduled.green*20+"px;'></div><h1 style='position:absolute;'><i>tennis</i> "
+                    +scheduled.green+" hours spent, Percent of grand plan (%) "+Percent(scheduled.green)+", or "
+                    +scheduled.green+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:purple; height:75px;width:"+scheduled.purple*20+"px;'></div><h1 style='position:absolute;'><i>Mommy time</i>: "
+                    +scheduled.purple+" hours spent, Percent of grand plan (%) "+Percent(scheduled.purple)+", or "
+                    +scheduled.purple+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:violet; height:75px;width:"+scheduled.violet*20+"px;'></div><h1 style='position:absolute;'><i>something new, 'cultural'</i> "
+                    +scheduled.violet+" hours spent, Percent of grand plan (%) "+Percent(scheduled.violet)+", or "
+                    +scheduled.violet+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:yellowgreen; height:75px;width:"+scheduled.yellowgreen*20+"px;'></div><h1 style='position:absolute;'><i>meets</i>  "
+                    +scheduled.yellowgreen+" hours spent, Percent of grand plan (%) "+Percent(scheduled.yellowgreen)+", or "
+                    +scheduled.yellowgreen+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                DivContainer.innerHTML+=
+                    "<div class='A'><div style='float:left;background-color:turquoise; height:75px;width:"+scheduled.turquoise*20+"px;'></div><h1 style='position:absolute;'><i>Reading, Journal</i>: "
+                    +scheduled.turquoise+" hours spent, Percent of grand plan (%) "+Percent(scheduled.turquoise)+", or "
+                    +scheduled.turquoise+"/"+24*stuff.length+".</h1></div><br><br><br><br><br>";
+                /*
+                DivContainer.innerHTML+=
+                    "<div id='G' style='background-color:turquoise'><h1><i>Turquoise Tag</i> steps to success: "
+                    +scheduled.turquoise+", Percent of grand plan (%) "+Percent(scheduled.turquoise)+", or "
+                    +scheduled.turquoise+"/"+24*stuff.length+"</h1></div>";
+                DivContainer.innerHTML+=
+                    "<div id='I' style='background-color:red'><h1><i>Red Tag</i> steps to success: "
+                    +scheduled.red+", Percent of grand plan (%) "+Percent(scheduled.red)+", or "
+                    +scheduled.red+"/"+24*stuff.length+"</h1></div>";
+                DivContainer.innerHTML+=
+                    "<div id='J' style='background-color:orange'><h1><i>Orange Tag</i> steps to success: "
+                    +scheduled.orange+", Percent of grand plan (%) "+Percent(scheduled.orange)+", or "
+                    +scheduled.orange+"/"+24*stuff.length+"</h1></div>";
+                DivContainer.innerHTML+=
+                    "<div id='K' style='background-color:lightblue'><h1><i>Sleep Tag</i> steps to success: "
+                    +scheduled.lightblue+", Percent of grand plan (%) "+Percent(scheduled.lightblue)+", or "
+                    +scheduled.lightblue+"/"+24*stuff.length+"</h1></div>";
+                functionName="G";
+                document.getElementById("ButtonIncludeBR").style.display="none";*/
                 var b=1;
+                document.getElementById("Schedule").innerHTML="<h1>Acheivement Schedule</h1>"
                 for(i=0; i<=stuff.length-1; i++){
-                    for(a=0; a<24; a++){
-                        document.getElementById("More").innerHTML+=
-                        "<span id="+a+" class='MoreStuff'><b>"+stuff[i][a]+"</b></span> ";
+                    for(a=0; a<24; a++, b++){
+                        document.getElementById("Schedule").innerHTML+=
+                        "<span id="+b+" class='MoreStuff'><b>"+stuff[i][a]+"</b></span> ";
                         if(lineBrakes!=Math.floor(lineBrakes)){
-                            document.getElementById("More").innerHTML+="<br>"
+                            document.getElementById("Schedule").innerHTML+="<br>"
                         }
-                        document.getElementById(a).style.backgroundColor=GetColorValues(stuff[i][a]);
+                        document.getElementById(b).style.backgroundColor=GetColorValues(stuff[i][a]);
                     }
                 }
                 functionName="F"
             }
-            function Graphs(){
-                dateN();
-                for(i=0; i<=stuff.length-1; i++){
-                    for(a=0; a<24; a++){
-
-                    }
-                }
-                document.getElementById("More").innerHTML=
-                "<h1>My achievements!</h1>"
-                for(a=0; a<17; a++){
-                    document.getElementById("More").innerHTML+="<div id="+a+"><h1></h1></div>"
-                    //document.getElementById(a).style.backgroundColor=scheduled[0][a]
-                }
-                functionName="G";
-            }
             function includeLineBreaksFunctions(){
                 if(lineBrakes==Math.floor(lineBrakes)){
-                    document.getElementById("IncludeBR").innerHTML="Include Line Breaks"; 
+                    document.getElementById("IncludeBR").innerHTML="Include Line Breaks";
                 }else{
                     document.getElementById("IncludeBR").innerHTML="No line breaks";
                 }
@@ -336,20 +525,23 @@
                 }else if(functionName=="F"){
                     Features();
                 } 
-                
             }
             //technical value functions:
+            function Percent(a){
+                var b=String(100/((24*stuff.length)/a))
+                return b.charAt(0)+b.charAt(1)+b.charAt(2);
+            }
             function getBr(a){
                 if(lineBrakes==Math.floor(lineBrakes)){
                     return a;
                 }else{
                     var text = "";
                     var i;
-                    for (i = 0; i < 24; i++) {
+                    for (i=0; i<a.length; i++) {
                         if(Array.isArray(a[i])==true){
                             for(b=0; b<a[i].length-1; b++){
-                            text += a[i][b] + "<br>";
-                        }
+                                text += a[i][b] + "<br>";
+                            }
                         }else{
                             text += a[i] + "<br>";
                         }
@@ -357,8 +549,8 @@
                     return text;
                 }
             }
-            function GetColorValues(c) {
-                var b=c.toUpperCase();
+            function GetColorValues(a) {
+                var b=a.toUpperCase();
                 if(b.search("BIKE")>=0){
                     return "brown";
                 }else if(b.search("PIPECLEANERS")>=0){
@@ -375,8 +567,6 @@
                     return "yellowgreen";
                 }else if(b.search("READ")>=0||b.search("JOURNAL")>=0){
                     return "turquoise";
-                }else if(b.search("PIANO")>=0||b.search("MUSIC")>=0||b.search("JAZZ")>=0){
-                    return "silver";
                 }else if(b.search("TEST")>=0){
                     return "red";
                 }else if(b.search("WALK")>=0){
@@ -385,12 +575,14 @@
                     return "lightblue";
                 }else if(b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0){
                     return "lightgreen";
-                }else if(b.search("HEWITT")>=0||b.search("GAMES")>=0||b.search("MOVIE")>=0){
+                }else if(b.search("HEWITT")>=0||b.search("GAME")>=0||b.search("MOVIE")>=0){
                     return "teal";
                 }else if(b.search("FOOD")>=0||b.search("LUNCH")>=0||b.search("BREAKFAST")>=0||b.search("DINNER")>=0||b.search("EAT")>=0){
                     return "tan";
-                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("CODING")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0){
+                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0){
                     return "hotpink";
+                }else if(b.search("CODING")>=0){
+                    return "beige";
                 }else{
                     return "whitesmoke";
                 }
