@@ -69,7 +69,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=16;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=17;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -523,6 +523,32 @@
                     "sleep",
                     "sleep",
                     "sleep"
+                    ],
+                    [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding",
+                    "piano",
+                    "test prep",
+                    "mommy thing",
+                    "late lunch",
+                    "pipecleaners",
+                    "yard",
+                    "read",
+                    "coding",
+                    "dinner",
+                    "meet leia and elena",
+                    "walk",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep"
                     ]
                 //add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
             ];
@@ -612,10 +638,10 @@
                 }
                 scheduled={brown:0, pink:0, green:0, beige:0, gold:0,purple:0, violet:0, yellowgreen:0, turquoise:0,
                     red:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, hotpink:0, whitesmoke:0}; //list of achievements
-                /*scheduledImprove={brown:0, pink:0, green:0, beige:0, gold:0,purple:0, violet:0, yellowgreen:0, turquoise:0,
-                    red:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, hotpink:0, whitesmoke:0};*/
-                var ScheduledNameTags=["Biking", "Pipecleaners","Tennis", "Coding", "Daddy time","Mommy Time", "Something New and 'Cultural'", "Meet, Social", "Reading and Journal",
-                    "Test Prep", "Walk", "Sleep", "Outside", "Hewitt, Games, and Movie", "Meals and eating", "Skills", "Other"];
+                var ScheduledNameTags=["Biking", "Pipecleaners","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New and 'Cultural'", "Meet, Social,", "Reading and Journal",
+                    "Test Prep", "Walk ", "Sleep", "Outside,", "Hewitt, Games, and Movie ", "Meals and eating ", "Skills", "Other"];
+                var goals={brown:1, pink:0.5, green:0.5, beige:1, gold:0.5,purple:0.5, violet:0.33, yellowgreen:0.33, turquoise:1,
+                    red:1, orange:1, lightblue:10, lightgreen:1, teal:1, tan:3, hotpink:1, whitesmoke:0.33}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
                         scheduled[GetColorValues(stuff[i][x])]++;
@@ -632,10 +658,18 @@
                 DivContainer.innerHTML="<h1>My achievements!</h1>";
                 for(i=0;i<=16;i++){
                     var color=GetColorValues(ScheduledNameTags[i])
+                    if((goals[color]*(ChooseDay+1))<=scheduled[color]){
+                        var c="green"
+                    }else{
+                        var c="red"
+                    }
                     DivContainer.innerHTML+=
-                        "<div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
+                        "<div class='A' style='background-color:"+color+"; width:"+(goals[color]*(ChooseDay+1))*(ChooseDay-weekChoosen)+"px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>"+ScheduledNameTags[i]+"</i>"
+                        +" Goal: "+goals[color]+S(" hour",goals[color])+"  per day, or "+Math.round((goals[color]*(ChooseDay+1)))+" hours spent in plan already. Reached goal: <i style='background-color:"+c+";'>"
+                        +((goals[color]*(ChooseDay+1))<=scheduled[color])+"</i></h1>"
+                        +"<br><br><br><br><br><div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
                         +scheduled[color]+" hours spent, Percent of grand plan: "+firstFew(Percent(scheduled[color]))+"%, or "
-                        +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+".</h1></div><br><br><br><br><br>";
+                        +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))+" hours per day</h1></div><br><br><br><br><br>";
                     document.getElementById("chart").innerHTML+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
                 }
                 Schedule(); //two separate functions so exicution speed can bee faster when include line breaks is on
