@@ -94,17 +94,17 @@
         </div>
         <div id="popupIntroductions" style="bottom:0px; position:fixed;">
             <div id="pandas">
-                <!--Will show up with animations--
-                <svg class="pandasSvg" height="150" width="50"><!--The first black leg->
-                    <rect style="fill:rgb(34, 34, 34)" height="150" width="100"></rect>
-                </svg><!--The white body-><svg class="pandasSvg" height="150" width="100">
-                    <rect style="fill:floralwhite;" height="100" width="100"></rect>
-                </svg><!--Black leg two-><svg class="pandasSvg" height="150" width="50">    
-                    <rect style="fill:rgb(34, 34, 34)" height="150" width="50"></rect>
-                </svg><!--The head-><svg class="pandasSvg" height="150" width="100">    
-                    <rect style="fill:floralwhite" height="100" width="100"></rect>  
+                <!--Will show up with animations-->
+                <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
+                    <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
+                </svg><!--The white body--><svg class="pandasSvg" height="205" width="150">
+                    <rect style="fill:floralwhite;" height="155" width="150"></rect>
+                </svg><!--Black leg two--><svg class="pandasSvg" height="200" width="50">    
+                    <rect style="fill:rgb(34, 34, 34)" height="200" width="50"></rect>
+                </svg><!--The head--><span><svg class="pandasSvg" height="200" width="100">    
+                    <rect style="fill:floralwhite" height="125" width="100"></rect>  
                     <rect style="fill:rgb(34,34,34)" height="66" width="33"></rect>
-                </svg>-->
+                </svg></span>
             </div>
         </div>
     </div>
@@ -119,9 +119,9 @@
                 var b=Math.floor(Math.random()*20+10);
                 document.getElementById("bambooBackground").innerHTML+=
                 "<div style='bottom:0px; position:fixed; left:"+(w+b)+
-                "px'><svg height="+a+" width='25px'><rect height='"+a+"' width='25' style='fill:rgb("+
+                "px'><svg height="+a+" width='50'><rect height='"+a+"' width='50' style='fill:rgb("+
                 [Math.floor(Math.random()*10+163), Math.floor(Math.random()*10+195),Math.floor(Math.random()*10+100)]+")'></rect></svg></div>";
-                w+=20+b;
+                w+=50+b;
                 i++;
             };
             i=0;
@@ -130,9 +130,9 @@
                 var b=Math.floor(Math.random()*20+10);
                 document.getElementById("bambooBackground").innerHTML+=
                 "<div style='bottom:0px; position:fixed; left:"+(wTwo+b)+
-                "px'><svg height="+a+" width='25px'><rect height='"+a+"' width='25' style='fill:rgb("+
+                "px'><svg height="+a+" width='35'><rect height='"+a+"' width='35' style='fill:rgb("+
                 [Math.floor(Math.random()*10+173), Math.floor(Math.random()*10+175),Math.floor(Math.random()*10+105)]+")'></rect></svg></div>";
-                wTwo+=20+b;
+                wTwo+=35+b;
                 i++;
             };
             
