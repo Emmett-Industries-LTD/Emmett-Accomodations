@@ -9,6 +9,9 @@
            /* background-image:url("bamboo(1).jpg"); */
             background-color: rgba(155, 177, 238, 0.795); 
         }
+        .rect{
+            stroke: none;
+        }
         .HiddenBamboo{
             width: 60%;
             max-width: 700px;
@@ -37,8 +40,10 @@
             background-color: rgba(0,0,0,0.4);
         }
         #pandas{
-            z-index: 1;
-            transform: translateX(10deg);
+            display:none;
+        }
+        #ButtonContinue{
+            display: none;
         }
         @keyframes displaymodual{0%{background-color: rgb(0, 0, 0, 0.01);}
             100%{background-color: rgb(0, 0, 0, 0.4);}}
@@ -92,19 +97,21 @@
                 </div>
             </div>
         </div>
+        <button id="ButtonContinue"><h1></h1></button>
         <div id="popupIntroductions" style="bottom:0px; position:fixed;">
             <div id="pandas">
                 <!--Will show up with animations-->
                 <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
                     <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
-                </svg><!--The white body--><svg class="pandasSvg" height="205" width="150">
-                    <rect style="fill:floralwhite;" height="155" width="150"></rect>
+                </svg><!--The white body--><svg class="pandasSvg" height="200" width="150">
+                    <rect style="fill:floralwhite;" height="150" width="150"></rect>
                 </svg><!--Black leg two--><svg class="pandasSvg" height="200" width="50">    
                     <rect style="fill:rgb(34, 34, 34)" height="200" width="50"></rect>
-                </svg><!--The head--><span><svg class="pandasSvg" height="200" width="100">    
-                    <rect style="fill:floralwhite" height="125" width="100"></rect>  
-                    <rect style="fill:rgb(34,34,34)" height="66" width="33"></rect>
-                </svg></span>
+                </svg><!--space for the neck--><!--<svg class="pandasSvg" height="200" width="5">    <rect style="fill:floralwhite" height="125" width="5"></rect>--></svg><!--The head--><svg class="pandasSvg" height="200" width="150">    
+                    <rect style="fill:floralwhite" height="150" width="150"></rect>
+                </svg><!--space for the neck--><!--<svg class="pandasSvg" height="200" width="5">    
+                    <rect style="fill:floralwhite" height="125" width="5"></rect>
+                </svg>-->
             </div>
         </div>
     </div>
@@ -141,12 +148,15 @@
         function Popups(){
             var Modual=document.getElementById("displaybackground");
             var HiddenBamboo=document.getElementsByClassName("burlyWoodMessage");
+            var Panda=document.getElementById("pandas");
+            pandas.style.display="block";
+            document.getElementById("ButtonContinue").style.display="block";
             HiddenBamboo[0].style.display="block";
             HiddenBamboo[0].style.animationName="displayhiddenbamboo";
             HiddenBamboo[0].style.animationDuration="2s";
-            Modual.style.display="block"
-            Modual.style.animationName="displaymodual"
-            Modual.style.animationDuration="2s"
+            Modual.style.display="block";
+            Modual.style.animationName="displaymodual";
+            Modual.style.animationDuration="2s";
         };
     </script>
 </body>
