@@ -38,8 +38,11 @@
             height: 100%; 
             background-color: rgba(0,0,0,0.4);
         }
-        #pandas{
-            display:none;
+        #popupIntroductions{
+            display: none;
+            width: 600px;
+            left:10%;
+            right:10%;
         }
         #ButtonContinue{
             display: none;
@@ -50,6 +53,10 @@
         @keyframes displayhiddenbamboo{
             0%{background-color: rgba(222, 184, 135, 0);color:rgb(0, 0, 0, 0.01)}
             100%{background-color: burlywood;color: rgb(0, 0, 0, 1);}
+        }
+        @keyframes PopupPandaLand{
+            1%{bottom:-500px}
+            100%{bottom:0px}
         }
     </style>
 </head>
@@ -88,57 +95,49 @@
         <div id="modualAlerts">
             <div class="HiddenBamboo">
                 <h1 class="burlyWoodMessage">
-                    Welcome to the hidden bamboo forests sanctuary, located  among the pandas in the midst of southern China     
-                </h1>
+                    Welcome to the hidden bamboo forests sanctuary, located  among the pandas in the midst of southern China. 
+                    <br>
+                    The village invites you for a match of the ancient game of mancala with the village's own wise and old mancala legendary master, <i>Master Emmett</i> </h1>
                 <button id="ButtonContinue" onclick="Continue()"><h1>Continue</h1></button>
-            </div>
-            <div class="HiddenBamboo">
-                <h1 class="burlyWoodMessage">
-                    the village invites you for a match of the ancient game of mancala with the village's own wise and old mancala legendary master, <i>Master Emmett</i>
-                </h1>
             </div>
         </div>    
     </div>
-    <div id="popupIntroductions" style="bottom:0px; position:fixed;">
-        <div id="mountainsOne" style="position:fixed; bottom:0">
+    <div id="popupIntroductions" style="bottom:0px; position:fixed; display: block;">
+        <div id="mountainIntroductionOne" style="position: fixed; bottom:0px;display: none;">
             <svg width="600" height="200" id="mountainsSvgTwo">
                 <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
                 <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
                 <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
             </svg>
         </div>
-        <div id="bambooIntroduction" style="position: fixed; bottom: 0px;">
+        <div id="bambooIntroduction" style="position: fixed; bottom: 0px; display: none;">
             <svg height="300" width="57">
-                <rect height="400" width="51" style="fill:rgb(191, 233, 135)"></rect>
+                <rect height="400" width="51" style="fill:rgb(182, 236, 112)"></rect>
             </svg>
             <svg height="310" width="54">
-                <rect height="400" width="39" style="fill:rgb(191, 233, 135)"></rect>
+                <rect height="400" width="39" style="fill:rgb(183, 207, 93)"></rect>
             </svg>
             <svg height="285" width="58">
-                <rect height="400" width="40" style="fill:rgb(191, 233, 135)"></rect>
+                <rect height="400" width="40" style="fill:rgb(179, 216, 132)"></rect>
             </svg>
             <svg height="314" width="57">
                 <rect height="400" width="45" style="fill:rgb(191, 233, 135)"></rect>
             </svg>
             <svg height="304" width="59">
-                <rect height="400" width="46" style="fill:rgb(191, 233, 135)"></rect>
+                <rect height="400" width="46" style="fill:rgb(195, 207, 124)"></rect>
             </svg>
             <svg height="300" width="54">
-                <rect height="400" width="40" style="fill:rgb(191, 233, 135)"></rect>
+                <rect height="400" width="40" style="fill:rgb(176, 231, 114)"></rect>
             </svg>
             <svg height="305" width="58">
-                <rect height="400" width="41" style="fill:rgb(191, 233, 135)"></rect>
+                <rect height="400" width="41" style="fill:rgb(219, 224, 150)"></rect>
             </svg>
             <svg height="308" width="57">
-                <rect height="400" width="47" style="fill:rgb(191, 233, 135)"></rect>
-            </svg>
-            <svg height="289" width="60">
-                <rect height="400" width="49" style="fill:rgb(191, 233, 135)"></rect>
+                <rect height="400" width="47" style="fill:rgb(190, 240, 124)"></rect>
             </svg>
         </div>
-        <div id="pandas" style="bottom: 0px; position: relative;">
+        <div id="pandas" style="bottom:0px; position: fixed; display: none;">
             <!--Will show up with animations-->
-                <!--panda One-->
             <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
                 <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
             </svg><!--The white body--><svg class="pandasSvg" height="200" width="150">
@@ -184,12 +183,23 @@
             var Modual=document.getElementById("displaybackground");
             var HiddenBamboo=document.getElementsByClassName("burlyWoodMessage");
             var Panda=document.getElementById("pandas");
-            pandas.style.display="block";
-            document.getElementById("ButtonContinue").style.display="block";
-            HiddenBamboo[0].style.display="block";
+            var Mountain=document.getElementById("mountainIntroductionOne");
+            var Bamboo=document.getElementById("bambooIntroduction");
+            var b="block";
+            document.getElementById("ButtonContinue").style.display=b;
+            Panda.style.animationName="PopupPandaLand";
+            Mountain.style.animationName="PopupPandaLand";
+            Bamboo.style.animationName="PopupPandaLand";
+            Panda.style.animationDuration="2s";
+            Mountain.style.animationDuration="2s";
+            Bamboo.style.animationDuration="2s";
+            Panda.style.display=b;
+            Mountain.style.display=b;
+            Bamboo.style.display=b;
+            HiddenBamboo[0].style.display=b;
             HiddenBamboo[0].style.animationName="displayhiddenbamboo";
             HiddenBamboo[0].style.animationDuration="2s";
-            Modual.style.display="block";
+            Modual.style.display=b;
             Modual.style.animationName="displaymodual";
             Modual.style.animationDuration="2s";
         };
