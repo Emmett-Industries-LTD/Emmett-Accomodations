@@ -24,9 +24,20 @@
             display:none;
             margin:10px;
         }
+        .mountainInroduction{
+            position: fixed; 
+            bottom:0px;
+            display: none;
+        }
         .bamboo{
             padding:5px;
             background-color: rgb(223, 200, 153);
+        }
+        .pandaIntroduction{
+            bottom:0px; position: fixed; display: none;
+        }
+        .bambooIntroduction{
+            position: fixed; bottom: 0px; display: none;
         }
         #displaybackground {
             display: none; 
@@ -41,13 +52,12 @@
         #popupIntroductions{
             display: none;
             width: 600px;
-            left:10%;
-            right:10%;
         }
         #ButtonContinue{
             display: none;
             margin: 10px;
         }
+
         @keyframes displaymodual{0%{background-color: rgb(0, 0, 0, 0.01);}
             100%{background-color: rgb(0, 0, 0, 0.4);}}
         @keyframes displayhiddenbamboo{
@@ -102,15 +112,22 @@
             </div>
         </div>    
     </div>
-    <div id="popupIntroductions" style="bottom:0px; position:fixed; display: block;">
-        <div id="mountainIntroductionOne" style="position: fixed; bottom:0px;display: none;">
+    <div id="popupIntroductions">
+        <div class="mountainIntroduction">
             <svg width="600" height="200" id="mountainsSvgTwo">
                 <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
                 <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
                 <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
             </svg>
         </div>
-        <div id="bambooIntroduction" style="position: fixed; bottom: 0px; display: none;">
+       <!-- <div class="mountianIntroduction" style="left: 600px;">
+            <svg width="600" height="200" id="mountainsSvgFour">
+                <polygon points="150,0 0,200 300,200" style="fill:yellowgreen;"></polygon>
+                <polygon points="300,50 200,200 600,200" style="fill:rgb(207, 231, 159)"></polygon>
+                <polygon points="450,0 300,200 600,200" style="fill:rgb(163, 196, 99)"></polygon>
+            </svg>
+        </div>-->
+        <div class="bambooIntroduction">
             <svg height="300" width="57">
                 <rect height="400" width="51" style="fill:rgb(182, 236, 112)"></rect>
             </svg>
@@ -136,7 +153,33 @@
                 <rect height="400" width="47" style="fill:rgb(190, 240, 124)"></rect>
             </svg>
         </div>
-        <div id="pandas" style="bottom:0px; position: fixed; display: none;">
+        <!--<div class="bambooIntroduction" style="left: 450px;">
+            <svg height="300" width="57">
+                <rect height="400" width="51" style="fill:rgb(170, 218, 107)"></rect>
+            </svg>
+            <svg height="310" width="54">
+                <rect height="400" width="39" style="fill:rgb(155, 172, 94)"></rect>
+            </svg>
+            <svg height="285" width="58">
+                <rect height="400" width="40" style="fill:rgb(179, 212, 117)"></rect>
+            </svg>
+            <svg height="314" width="57">
+                <rect height="400" width="45" style="fill:rgb(205, 240, 160)"></rect>
+            </svg>
+            <svg height="304" width="59">
+                <rect height="400" width="46" style="fill:rgb(199, 214, 112)"></rect>
+            </svg>
+            <svg height="300" width="54">
+                <rect height="400" width="40" style="fill:rgb(184, 233, 128)"></rect>
+            </svg>
+            <svg height="305" width="58">
+                <rect height="400" width="41" style="fill:rgb(165, 190, 118)"></rect>
+            </svg>
+            <svg height="308" width="57">
+                <rect height="400" width="47" style="fill:rgb(194, 236, 140)"></rect>
+            </svg>
+        </div>-->
+        <div class="pandas">
             <!--Will show up with animations-->
             <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
                 <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
@@ -147,7 +190,19 @@
             </svg><!--The head--><svg class="pandasSvg" height="200" width="150">    
                 <rect style="fill:floralwhite" height="150" width="150"></rect>
             </svg>
-        </div>
+        </div><!--
+        <div class="pandas" style="left: 600px;">
+            <!--Will show up with animations--
+            <svg class="pandasSvg" height="200" width="50"><!--The first black leg--
+                <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
+            </svg><!--The white body--<svg class="pandasSvg" height="200" width="150">
+                <rect style="fill:floralwhite;" height="150" width="150"></rect>
+            </svg><!--Black leg two--<svg class="pandasSvg" height="200" width="50">    
+                <rect style="fill:rgb(34, 34, 34)" height="200" width="50"></rect>
+            </svg><!--The head--<svg class="pandasSvg" height="200" width="150">    
+                <rect style="fill:floralwhite" height="150" width="150"></rect>
+            </svg>
+        </div>-->
     </div>
     <script>
         Resize();
@@ -182,20 +237,21 @@
         function Popups(){
             var Modual=document.getElementById("displaybackground");
             var HiddenBamboo=document.getElementsByClassName("burlyWoodMessage");
-            var Panda=document.getElementById("pandas");
-            var Mountain=document.getElementById("mountainIntroductionOne");
-            var Bamboo=document.getElementById("bambooIntroduction");
+            var Panda=document.getElementsByClassName("pandas");
+            var Mountain=document.getElementsByClassName("mountainIntroductionOne");
+            var Bamboo=document.getElementsByClassName("bambooIntroduction");
             var b="block";
             document.getElementById("ButtonContinue").style.display=b;
-            Panda.style.animationName="PopupPandaLand";
-            Mountain.style.animationName="PopupPandaLand";
-            Bamboo.style.animationName="PopupPandaLand";
-            Panda.style.animationDuration="2s";
-            Mountain.style.animationDuration="2s";
-            Bamboo.style.animationDuration="2s";
-            Panda.style.display=b;
-            Mountain.style.display=b;
-            Bamboo.style.display=b;
+            var i=0;
+                Panda[i].style.animationName="PopupPandaLand";
+                Mountain[i].style.animationName="PopupPandaLand";
+                Bamboo[i].style.animationName="PopupPandaLand";
+                Panda[i].style.animationDuration="2s";
+                Mountain[i].style.animationDuration="2s";
+                Bamboo[i].style.animationDuration="2s";
+                Panda[i].style.display=b;
+                Mountain[i].style.display=b;
+                Bamboo[i].style.display=b;
             HiddenBamboo[0].style.display=b;
             HiddenBamboo[0].style.animationName="displayhiddenbamboo";
             HiddenBamboo[0].style.animationDuration="2s";
