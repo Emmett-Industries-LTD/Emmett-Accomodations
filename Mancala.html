@@ -31,7 +31,6 @@
         #displaybackground {
             display: none; 
             position: fixed; 
-            z-index: 2;  
             left: 0;
             top: 0;
             padding-top: 30px;
@@ -44,6 +43,7 @@
         }
         #ButtonContinue{
             display: none;
+            margin: 10px;
         }
         @keyframes displaymodual{0%{background-color: rgb(0, 0, 0, 0.01);}
             100%{background-color: rgb(0, 0, 0, 0.4);}}
@@ -83,36 +83,71 @@
         <div id="bambooBackground">
             <!--Items will go here, (function:resize)-->
         </div>
-        <div id="displaybackground">
-            <div id="modualAlerts">
-                <div class="HiddenBamboo">
-                    <h1 class="burlyWoodMessage">
-                        Welcome to the hidden bamboo forests sanctuary, located  among the pandas in the midst of southern China 
-                    </h1>
-                </div>
-                <div class="HiddenBamboo">
-                    <h1 class="burlyWoodMessage">
-                        the village invites you for a match of the ancient game of mancala with the village's own wise and old mancala legendary master, <i>Master Emmett</i>
-                    </h1>
-                </div>
+    </div>
+    <div id="displaybackground">
+        <div id="modualAlerts">
+            <div class="HiddenBamboo">
+                <h1 class="burlyWoodMessage">
+                    Welcome to the hidden bamboo forests sanctuary, located  among the pandas in the midst of southern China     
+                </h1>
+                <button id="ButtonContinue" onclick="Continue()"><h1>Continue</h1></button>
             </div>
+            <div class="HiddenBamboo">
+                <h1 class="burlyWoodMessage">
+                    the village invites you for a match of the ancient game of mancala with the village's own wise and old mancala legendary master, <i>Master Emmett</i>
+                </h1>
+            </div>
+        </div>    
+    </div>
+    <div id="popupIntroductions" style="bottom:0px; position:fixed;">
+        <div id="mountainsOne" style="position:fixed; bottom:0">
+            <svg width="600" height="200" id="mountainsSvgTwo">
+                <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
+                <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
+                <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
+            </svg>
         </div>
-        <button id="ButtonContinue"><h1></h1></button>
-        <div id="popupIntroductions" style="bottom:0px; position:fixed;">
-            <div id="pandas">
-                <!--Will show up with animations-->
-                <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
-                    <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
-                </svg><!--The white body--><svg class="pandasSvg" height="200" width="150">
-                    <rect style="fill:floralwhite;" height="150" width="150"></rect>
-                </svg><!--Black leg two--><svg class="pandasSvg" height="200" width="50">    
-                    <rect style="fill:rgb(34, 34, 34)" height="200" width="50"></rect>
-                </svg><!--space for the neck--><!--<svg class="pandasSvg" height="200" width="5">    <rect style="fill:floralwhite" height="125" width="5"></rect>--></svg><!--The head--><svg class="pandasSvg" height="200" width="150">    
-                    <rect style="fill:floralwhite" height="150" width="150"></rect>
-                </svg><!--space for the neck--><!--<svg class="pandasSvg" height="200" width="5">    
-                    <rect style="fill:floralwhite" height="125" width="5"></rect>
-                </svg>-->
-            </div>
+        <div id="bambooIntroduction" style="position: fixed; bottom: 0px;">
+            <svg height="300" width="57">
+                <rect height="400" width="51" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="310" width="54">
+                <rect height="400" width="39" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="285" width="58">
+                <rect height="400" width="40" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="314" width="57">
+                <rect height="400" width="45" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="304" width="59">
+                <rect height="400" width="46" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="300" width="54">
+                <rect height="400" width="40" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="305" width="58">
+                <rect height="400" width="41" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="308" width="57">
+                <rect height="400" width="47" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+            <svg height="289" width="60">
+                <rect height="400" width="49" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>
+        </div>
+        <div id="pandas" style="bottom: 0px; position: relative;">
+            <!--Will show up with animations-->
+                <!--panda One-->
+            <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
+                <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
+            </svg><!--The white body--><svg class="pandasSvg" height="200" width="150">
+                <rect style="fill:floralwhite;" height="150" width="150"></rect>
+            </svg><!--Black leg two--><svg class="pandasSvg" height="200" width="50">    
+                <rect style="fill:rgb(34, 34, 34)" height="200" width="50"></rect>
+            </svg><!--The head--><svg class="pandasSvg" height="200" width="150">    
+                <rect style="fill:floralwhite" height="150" width="150"></rect>
+            </svg>
         </div>
     </div>
     <script>
