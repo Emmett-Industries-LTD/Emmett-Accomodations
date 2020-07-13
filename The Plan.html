@@ -38,7 +38,7 @@
         <div style="background-color: none;">
             <h1 id="today">stuff to do today:</h1>
             <h1 id="doStuff"></h1>
-            <h5 id="All"></h5>
+            <h6 id="All"></h6>
             <h1 id="Daysago"></h1>
             
             <div id="More">
@@ -68,7 +68,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=20;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=21;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -110,7 +110,7 @@
                 "eat lunch",
                 "reading; read test",
                 "Dad; adventure; yard",
-                "rest; test prep",
+                "coding",
                 "bike",
                 "dinner",
                 "walk",
@@ -212,7 +212,7 @@
                     "sleep",
                     "sleep",
                 "breakfast eggs",
-                "outside",
+                "coding",
                 'rest',
                 "games with Hewitt",
                 "watch",
@@ -629,7 +629,32 @@
                     "sleep",
                     "sleep",
                     "sleep",
-                    "sleep,"]
+                    "sleep"],
+                    ["sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "schedule",
+                    "pipecleaners",
+                    "lunch",
+                    "read",
+                    "coding",
+                    "yard",
+                    "bike",
+                    "minecraft games",
+                    "dinner",
+                    "walk",
+                    "hangout with mom",
+                    "journal",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                    ]
                 //add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
             ];
             dateN();
@@ -717,11 +742,11 @@
                     document.getElementById("ButtonWeekAchievements").style.display="none";
                 }
                 scheduled={brown:0, pink:0, green:0, beige:0, gold:0,purple:0, violet:0, yellowgreen:0, turquoise:0,
-                    red:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, hotpink:0, whitesmoke:0}; //list of achievements
-                var ScheduledNameTags=["Biking", "Pipecleaners","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New and 'Cultural'", "Meet, Social,", "Reading and Journal",
-                    "Test Prep", "Walk ", "Sleep", "Outside,", "Hewitt, Games, and Movie ", "Meals and eating ", "Skills", "Other"];
-                var goals={brown:1.33, pink:0.33, green:0.5, beige:1, gold:0.5,purple:0.5, violet:0.33, yellowgreen:0.33, turquoise:1.66,
-                    red:0.66, orange:1, lightblue:10, lightgreen:1, teal:1, tan:3, hotpink:1, whitesmoke:0.33}
+                    hotpink:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, whitesmoke:0}; //list of achievements
+                var ScheduledNameTags=["Biking", "Pipecleaners","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social,", "Reading and Journal",
+                    "Test Prep And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
+                var goals={brown:1, pink:0.5, green:0.5, beige:1, gold:0.5,purple:0.5, violet:0.33, yellowgreen:0.33, turquoise:1.5,
+                    hotpink:1, orange:1, lightblue:10, lightgreen:1, teal:1, tan:3, whitesmoke:0.33}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
                         scheduled[GetColorValues(stuff[i][x])]++;
@@ -737,7 +762,7 @@
                 DivContainer=document.getElementById("More");
                 DivContainer.innerHTML="<h1>My achievements!</h1>"+
                 "<h1>And don't forget to write down what you actually did, in the plan to get proper achievements</h1>";
-                for(i=0;i<=16;i++){
+                for(i=0;i<=15;i++){
                     var color=GetColorValues(ScheduledNameTags[i])
                     if((goals[color]*(ChooseDay+1))<=scheduled[color]){
                         var c="green"
@@ -745,10 +770,10 @@
                         var c="red"
                     }
                     DivContainer.innerHTML+=
-                        "<div class='A' style='background-color:"+color+"; width:"+(goals[color]*(ChooseDay+1))*(ChooseDay-weekChoosen)+"px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>"+ScheduledNameTags[i]+"</i>"
-                        +" Goal: "+goals[color]+S(" hour",goals[color])+"  per day, or "+Math.round((goals[color]*(ChooseDay+1)))+" hours spent in plan already. Reached goal: <i style='background-color:"+c+";'>"
+                        "<div class='A' style='background-color:"+color+"; width:"+(goals[color]*(ChooseDay+1)-weekChoosen)*250/ChooseDay+"px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>"+ScheduledNameTags[i]+"</i>"
+                        +" Goal: "+goals[color]+S(" hour",goals[color])+"  per day, or "+Math.floor((goals[color]*(ChooseDay+1)))+" hours spent in plan already. Reached goal: <i style='background-color:"+c+";'>"
                         +((goals[color]*(ChooseDay+1))<=scheduled[color])+"</i></h1>"
-                        +"<br><br><br><br><br><div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
+                        +"<br><br><br><br><br><div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*250/ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
                         +scheduled[color]+" hours spent, Percent of grand plan: "+firstFew(Percent(scheduled[color]))+"%, or "
                         +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))+" hours per day</h1></div><br><br><br><br><br>";
                     document.getElementById("chart").innerHTML+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
@@ -832,7 +857,7 @@
                     return "green";
                 }else if(b.search("CODING")>=0){
                     return "beige";
-                }else if(b.search("DAD")>=0||b.search("ADVENTURE")>=0||b.search("YARD")>=0){
+                }else if(b.search("DAD")>=0||b.search("ADVENTURE")>=0){
                     return "gold";
                 }else if(b.search("MOM")>=0){
                     return "purple";
@@ -842,20 +867,18 @@
                     return "yellowgreen";
                 }else if(b.search("READ")>=0||b.search("JOURNAL")>=0){
                     return "turquoise";
-                }else if(b.search("TEST")>=0){
-                    return "red";
+                }else if(b.search("TEST")>=0||b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0){
+                    return "hotpink";
                 }else if(b.search("WALK")>=0){
                     return "orange";
                 }else if(b.search("SLEEP")>=0||b.search("NAP")>=0||b.search("REST")>=0||b.search("CALM")>=0){
                     return "lightblue";
-                }else if(b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0||b.search("CATCH")>=0){
+                }else if(b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0||b.search("CATCH")>=0||b.search("YARD")>=0){
                     return "lightgreen";
                 }else if(b.search("HEWITT")>=0||b.search("GAME")>=0||b.search("MOVIE")>=0||b.search("MINECRAFT")>=0||b.search("FREE")>=0){
                     return "teal";
                 }else if(b.search("FOOD")>=0||b.search("LUNCH")>=0||b.search("BREAKFAST")>=0||b.search("DINNER")>=0||b.search("EAT")>=0){
                     return "tan";
-                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0){
-                    return "hotpink";
                 }else{
                     return "whitesmoke";
                 }
