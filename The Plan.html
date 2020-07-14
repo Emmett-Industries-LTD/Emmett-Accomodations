@@ -746,9 +746,9 @@
                     }
                     DivContainer.innerHTML+=
                         "<div class='A' style='background-color:"+color+"; width:"+(goals[color]*(ChooseDay+1))*(ChooseDay-weekChoosen)+"px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>"+ScheduledNameTags[i]+"</i>"
-                        +" Goal: "+goals[color]+S(" hour",goals[color])+"  per day, or "+Math.round((goals[color]*(ChooseDay+1)))+" hours spent in plan already. Reached goal: <i style='background-color:"+c+";'>"
+                        +" Goal: "+goals[color]+S(" hour",goals[color])+"  per day, or "+Math.round((goals[color]*(ChooseDay+1-weekChoosen)))+" hours spent in plan already. Reached goal: <i style='background-color:"+c+";'>"
                         +((goals[color]*(ChooseDay+1))<=scheduled[color])+"</i></h1>"
-                        +"<br><br><br><br><br><div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
+                        +"<br><br><br><br><br><div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*200/ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
                         +scheduled[color]+" hours spent, Percent of grand plan: "+firstFew(Percent(scheduled[color]))+"%, or "
                         +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))+" hours per day</h1></div><br><br><br><br><br>";
                     document.getElementById("chart").innerHTML+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
