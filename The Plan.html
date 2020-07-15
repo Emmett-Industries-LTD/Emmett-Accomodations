@@ -30,7 +30,7 @@
             <button onclick="dateT();"><h1>Today</h1></button>
             <button onclick="dateY();"><h1>Yesterday</h1></button>
             <button onclick="dateM();"><h1>Tommorrow</h1></button>
-            <button onclick="MyAcheivements();"><h1>My Acheivements</h1></button>
+            <button onclick="ConfirmAcheivements();"><h1>My Acheivements</h1></button>
             <button onclick="dateA();"><h1>All</h1></button>
             <button onclick="functionName='N'; dateN();"><h1>None</h1></button>
             <button onclick="lineBrakes+=0.5; includeLineBreaksFunctions();" id="ButtonIncludeBR"><h1 id="IncludeBR">Include line breaks</h1></button>
@@ -38,7 +38,7 @@
         <div style="background-color: none;">
             <h1 id="today">stuff to do today:</h1>
             <h1 id="doStuff"></h1>
-            <h6 id="All"></h6>
+            <h1 id="All"></h1>
             <h1 id="Daysago"></h1>
             
             <div id="More">
@@ -68,7 +68,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=21;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=23;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -641,8 +641,8 @@
                     "breakfast",
                     "schedule",
                     "pipecleaners",
-                    "lunch",
                     "read",
+                    "late lunch",
                     "coding",
                     "yard",
                     "bike",
@@ -651,6 +651,59 @@
                     "walk",
                     "hangout with mom",
                     "journal",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                    ],
+                    [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "chinese",
+                    "chinese; then read",
+                    "lunch bike",
+                    "bike",
+                    "read",
+                    "test prep",
+                    "yard",
+                    "minecraft",
+                    "lunch",
+                    "dinner",
+                    "walk",
+                    "Journal",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                    ],
+                    [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "adventure",
+                    "coding",
+                    "test",
+                    "lunch",
+                    "Edmond's birthday party meet",
+                    "Edmond's birthday meet",
+                    "pipecleaners",
+                    "games outside",
+                    "minecraft with Hewitt",
+                    "dinner",
+                    "journal",
+                    "walk",
+                    "sleep",
                     "sleep",
                     "sleep",
                     "sleep"
@@ -687,7 +740,7 @@
                 dateN();
                 document.getElementById("today").innerHTML="All the stuff to do:"
                 document.getElementById("All").innerHTML=getBr(stuff);
-                document.getElementById("now").innerHTML="today's stuff <br>"+stuff[ChooseDay];
+                document.getElementById("now").innerHTML="today's stuff <br>"+getBr(stuff[ChooseDay]);
                 functionName="A";
             }
             function dateT(){
@@ -726,6 +779,12 @@
                 }
                 functionName="N";
             }
+            function ConfirmAcheivements(){
+                var ConfirmAcheivements=confirm("Are you sure you want to peek to your acheivements and pose a threat towards the well-needed simplicity and lovelyness of this black-and white simple plan? My acheivements may also be inaccurate and incorrect and not reflect what was actually done,creating sereral other problems");
+                if(ConfirmAcheivements==true){
+                    MyAcheivements();
+                }
+            }
             function MyAcheivements(){
                 functionName="F";
                 dateN();
@@ -733,10 +792,10 @@
                     weekChoosen=0;
                 }
                 document.getElementById("ButtonWeekAchievements").style.display="block";
-                document.getElementById("ButtonWeekAchievements").innerHTML="<h1>"+(weekChoosen+1)+ S("day", weekChoosen+1)+ " ago...</h1>";
+                document.getElementById("ButtonWeekAchievements").innerHTML="<h1>"+(weekChoosen+1)+ S("day",weekChoosen+1)+ " ago...</h1>";
                 document.getElementById("ButtonNowAchievements").style.display="block";
                 if(weekChoosen>0){
-                    document.getElementById("Daysago").innerHTML="As of "+weekChoosen + S("day", weekChoosen) +" ago";
+                    document.getElementById("Daysago").innerHTML="As of "+weekChoosen + S("day",weekChoosen) +" ago";
                 }
                 if(weekChoosen>=(ChooseDay)){
                     document.getElementById("ButtonWeekAchievements").style.display="none";
@@ -745,8 +804,8 @@
                     hotpink:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, whitesmoke:0}; //list of achievements
                 var ScheduledNameTags=["Biking", "Pipecleaners","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social,", "Reading and Journal",
                     "Test Prep And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
-                var goals={brown:1, pink:0.5, green:0.5, beige:1, gold:0.5,purple:0.5, violet:0.33, yellowgreen:0.33, turquoise:1.5,
-                    hotpink:1, orange:1, lightblue:10, lightgreen:1, teal:1, tan:3, whitesmoke:0.33}
+                var goals={brown:1, pink:"none", green:0.5, beige:1, gold:0.5,purple:0.5, violet:0.33, yellowgreen:0.33, turquoise:1.5,
+                    hotpink:1, orange:1, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
                         scheduled[GetColorValues(stuff[i][x])]++;
@@ -764,16 +823,19 @@
                 "<h1>And don't forget to write down what you actually did, in the plan to get proper achievements</h1>";
                 for(i=0;i<=15;i++){
                     var color=GetColorValues(ScheduledNameTags[i])
-                    if((goals[color]*(ChooseDay+1))<=scheduled[color]){
-                        var c="green"
-                    }else{
-                        var c="red"
-                    }
-                    DivContainer.innerHTML+=
+                    if(goals[color]!="none"){
+                        if((goals[color]*(ChooseDay+1))<=scheduled[color]){
+                            var c="green"
+                        }else{
+                            var c="red"
+                        }
+                        DivContainer.innerHTML+=
                         "<div class='A' style='background-color:"+color+"; width:"+(goals[color]*(ChooseDay+1)-weekChoosen)*250/ChooseDay+"px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>"+ScheduledNameTags[i]+"</i>"
                         +" Goal: "+goals[color]+S(" hour",goals[color])+"  per day, or "+Math.floor((goals[color]*(ChooseDay+1)))+" hours spent in plan already. Reached goal: <i style='background-color:"+c+";'>"
-                        +((goals[color]*(ChooseDay+1))<=scheduled[color])+"</i></h1>"
-                        +"<br><br><br><br><br><div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*250/ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
+                        +((goals[color]*(ChooseDay+1))<=scheduled[color])+"</i></h1></div><br><br><br><br><br>";
+                    }
+                    DivContainer.innerHTML+=
+                        "<div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*250/ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
                         +scheduled[color]+" hours spent, Percent of grand plan: "+firstFew(Percent(scheduled[color]))+"%, or "
                         +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))+" hours per day</h1></div><br><br><br><br><br>";
                     document.getElementById("chart").innerHTML+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
