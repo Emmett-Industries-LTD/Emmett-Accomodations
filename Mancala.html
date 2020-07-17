@@ -56,6 +56,17 @@
             1%{bottom:-500px}
             100%{bottom:0px}
         }
+        /*backwards @keyframes*/
+        @keyframes PopupPandaLandB{
+            0%{bottom:0px}
+            100%{bottom:-500px}
+        }
+        @keyframes displayhiddenbambooB{
+            100%{background-color: rgba(222, 184, 135, 0);color:rgb(0, 0, 0, 0.01)}
+            0%{background-color: burlywood;color: rgb(0, 0, 0, 1);}
+        }
+        @keyframes displaymodualB{0%{background-color: rgb(0, 0, 0, 0.01);}
+            100%{background-color: rgb(0, 0, 0, 0.4);}}
     </style>
 </head>
 <body onresize="Resize();">
@@ -221,21 +232,16 @@
         function Continue(){
             Resize();
             document.getElementById("ButtonContinue").style.display="none";
-            Panda.style.animationDirection="alternate"
-            Panda.style.animationName="PopupPandaLand";
-            Mountain.style.animationDirection="alternate"
-            Mountain.style.animationName="PopupPandaLand";
-            Bamboo.style.animationDirection="alternate";
-            Bamboo.style.animationName="PopupPandaLand";
+            Panda.style.animationName="PopupPandaLandB";
+            Mountain.style.animationName="PopupPandaLandB";
+            Bamboo.style.animationName="PopupPandaLandB";
             Panda.style.animationDuration="2s";
             Mountain.style.animationDuration="2s";
             Bamboo.style.animationDuration="2s";
-            HiddenBamboo.style.animationName="displayhiddenbamboo";
-            HiddenBamboo.style.animationDirection="alternate"
+            HiddenBamboo.style.animationName="displayhiddenbambooB";
             HiddenBamboo.style.animationDuration="2s";
-            Modual.style.animationName="displaymodual";
+            Modual.style.animationName="displaymodualB";
             Modual.style.animationDuration="2s";
-            HiddenBamboo.style.animationDirection="alternate";
             var close=setTimeout(Close, 2000);
         }
         function Close(){
@@ -244,7 +250,6 @@
             Mountain.style.display="none";
             Bamboo.style.display="none";
             HiddenBamboo.style.display="none";
-            Modual.style.display="none";
         }
     </script>
 </body>

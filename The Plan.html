@@ -779,7 +779,7 @@
                 functionName="Y"; 
             }
             function dateM(){
-                functionName="A";
+                functionName="M";
                 dateN();
                 if(stuff.length==[ChooseDay+1]){
                     document.getElementById("today"),innerHTML="Tomorrow's stuff:";
@@ -790,7 +790,7 @@
                     ["I will be doing:<br>"+stuff[ChooseDay+1](d.getHours())-1]+"<br>"+[60-d.getMinutes()]+" minutes left";
                     document.getElementById("today").innerHTML="stuff to do tomorrow:";
                 }
-                functionName="A";
+                functionName="M";
             }
             function dateA(){
                 functionName="A";
@@ -893,11 +893,10 @@
                 for(i=0; i<=stuff.length-1-weekChoosen; i++){
                     for(a=0; a<24; a++, b++){
                         document.getElementById("Schedule").innerHTML+=
-                        "<span id="+b+" class='MoreStuff'><b>"+stuff[i][a]+"</b></span> ";
+                        "<span style='background-color:"+GetColorValues(stuff[i][a])+";'><b>"+stuff[i][a]+"</b></span> ";
                         if(lineBrakes!=Math.floor(lineBrakes)){
                             document.getElementById("Schedule").innerHTML+="<br>"
                         }
-                        document.getElementById(b).style.backgroundColor=GetColorValues(stuff[i][a]);
                     }
                 }
                 functionName="F";
