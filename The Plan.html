@@ -31,7 +31,7 @@
             <button onclick="dateT();"><h1>Today</h1></button>
             <button onclick="dateY();"><h1>Yesterday</h1></button>
             <button onclick="dateM();"><h1>Tommorrow</h1></button>
-            <button onclick="ConfirmAcheivements();"><h1>My Acheivements</h1></button>
+            <button onclick="MyAcheivements();"><h1>My Acheivements</h1></button>
             <button onclick="dateA();"><h1>All</h1></button>
             <button onclick="functionName='N'; dateN();"><h1>None</h1></button>
             <button onclick="lineBrakes+=0.5; includeLineBreaksFunctions();" id="ButtonIncludeBR"><h1 id="IncludeBR">Include line breaks</h1></button>
@@ -69,7 +69,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=23;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=25;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -193,7 +193,7 @@
                     "cultural",
                     "read",
                     "piano",
-                    "yard",
+                    "yard outside",
                     "bike",
                     "bike",
                     "order dinner",
@@ -306,7 +306,7 @@
                 "drive",
                 "swim outside",
                 "games outside",
-                "adventure",
+                "adventure with dad",
                 "dinner",
                 "movie",
                 "walk",
@@ -410,7 +410,7 @@
                 "reading",
                 "lunch watch",
                 "games",
-                "adventure",
+                "adventure with dad",
                 "bike",
                 "bike",
                 "minecraft",
@@ -512,8 +512,8 @@
                     "typing club",
                     "lunch ",
                     "reading",
-                    "yard",
-                    "adventure",
+                    "yard with dad",
+                    "adventure with dad",
                     "lazer tag game",
                     "minecraft",
                     "dinner",
@@ -539,7 +539,7 @@
                     "mommy thing",
                     "late lunch",
                     "pipecleaners",
-                    "yard",
+                    "yard with dad",
                     "read",
                     "coding",
                     "dinner",
@@ -621,7 +621,7 @@
                     "something with mom",
                     "coding",
                     "read",
-                    "yard",
+                    "yard with dad",
                     "pipecleaners",
                     "self tape",
                     "dinner",
@@ -646,7 +646,7 @@
                     "read",
                     "late lunch",
                     "coding",
-                    "yard",
+                    "yard with dad",
                     "bike",
                     "bike",
                     "games with Hewitt",
@@ -674,7 +674,7 @@
                     "bike",
                     "read",
                     "test prep",
-                    "yard",
+                    "yard with dad",
                     "minecraft",
                     "lunch",
                     "dinner",
@@ -694,19 +694,73 @@
                     "sleep",
                     "sleep",
                     "sleep",
-                    "adventure",
+                    "adventure with dad",
                     "coding",
                     "test",
                     "lunch",
                     "Edmond's birthday party meet",
                     "Edmond's birthday meet",
-                    "pipecleaners",
+                    "drive with mom",
+                    "walk",
                     "games outside",
-                    "minecraft with Hewitt",
+                    "dinner",
+                    "boat outside in water",
+                    "read",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                    ],
+                    [
+
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast egg",
+                    "beach outside",
+                    "boat outside",
+                    "games",
+                    "lunch",
+                    "minecraft video games",
+                    "mini golf outside",
+                    "badminton and beach outside",
+                    "bike",
+                    "tennis",
                     "dinner",
                     "journal",
-                    "walk",
+                    "new ibis paint",
                     "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                    ],
+                    [
+                        
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "drive with mom",
+                    "drive with mom",
+                    "drive with mom",
+                    "lunch-snack",
+                    "coding",
+                    "test prep",
+                    "yard with dad",
+                    "minecraft with Hewitt",
+                    "dinner watch",
+                    "movie",
+                    "movie",
+                    "Journal",
                     "sleep",
                     "sleep",
                     "sleep"
@@ -782,12 +836,6 @@
                 }
                 functionName="N";
             }
-            function ConfirmAcheivements(){
-                var ConfirmAcheivements=confirm("Are you sure you want to peek to your acheivements and pose a threat towards the well-needed simplicity and lovelyness of this black-and white simple plan? My acheivements may also be inaccurate and incorrect and not reflect what was actually done,creating sereral other problems");
-                if(ConfirmAcheivements==true){
-                    MyAcheivements();
-                }
-            }
             function MyAcheivements(){
                 functionName="F";
                 dateN();
@@ -814,16 +862,10 @@
                         scheduled[GetColorValues(stuff[i][x])]++;
                     }
                 }
-                /*
-                for(i=0; i<=stuff.length-2; i++){
-                    for(x=0;x<24; x++){
-                        scheduledImprove[GetColorValues(stuff[i][x])]+=1;
-                    }
-                }*///var Sort=Object.values(scheduled).sort(function(a,b){return a - b;})
                 document.getElementById("chart").innerHTML="<br><h1>Activity distributation</h1>";
                 DivContainer=document.getElementById("More");
                 DivContainer.innerHTML="<h1>My achievements!</h1>";
-                for(i=0;i<=16;i++){
+                for(i=0;i<16;i++){
                     var color=GetColorValues(ScheduledNameTags[i])
                     if(goals[color]!="none"){
                         if((goals[color]*(ChooseDay+1))<=scheduled[color]){
@@ -839,12 +881,13 @@
                     DivContainer.innerHTML+=
                         "<div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*250/ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
                         +scheduled[color]+" hours spent, Percent of grand plan: "+firstFew(Percent(scheduled[color]))+"%, or "
-                        +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))+" hours per day</h1></div><br><br><br><br><br>";
+                        +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))
+                        +S("hour", firstFew(scheduled[color]/(ChooseDay-1-weekChoosen)))+"per day</h1></div><br><br><br><br><br>";
                     document.getElementById("chart").innerHTML+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
                 }
-                Schedule(); //two separate functions so exicution speed can bee faster when include line breaks is on
+                Scheduled(); //two separate functions so exicution speed can bee faster when include line breaks is on
             }
-            function Schedule(){//function has a for loop which evaluates all the arrays and assigns color tags
+            function Scheduled(){//function has a for loop which evaluates all the arrays and assigns color tags
                 var b=1;
                 document.getElementById("Schedule").innerHTML="<br><br><br><br><br><h1>Acheivement Schedule</h1>"
                 for(i=0; i<=stuff.length-1-weekChoosen; i++){
@@ -874,15 +917,15 @@
                 }else if(functionName=="A"){
                     dateA();
                 }else if(functionName=="F"){
-                    Schedule();
+                    Scheduled();
                 } 
             }
             //technical value functions:
             function S(a, b){
                 if(b==1){
-                    return " "+a;
+                    return " " + a +" ";
                 }else{
-                    return " "+a+"s"
+                    return " " + a + "s "
                 }
             }
             function firstFew(a){
@@ -921,7 +964,7 @@
                     return "green";
                 }else if(b.search("CODING")>=0){
                     return "beige";
-                }else if(b.search("DAD")>=0||b.search("ADVENTURE")>=0||b.search("YARD")>=0){
+                }else if(b.search("DAD")>=0){
                     return "gold";
                 }else if(b.search("MOM")>=0){
                     return "purple";
@@ -931,13 +974,11 @@
                     return "yellowgreen";
                 }else if(b.search("READ")>=0||b.search("JOURNAL")>=0){
                     return "turquoise";
-                }else if(b.search("TEST")>=0){
-                    return "red";
                 }else if(b.search("WALK")>=0){
                     return "orange";
                 }else if(b.search("SLEEP")>=0||b.search("NAP")>=0||b.search("REST")>=0||b.search("CALM")>=0){
                     return "lightblue";
-                }else if(b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0||b.search("CATCH")>=0){
+                }else if(b.search("ADVENTURE")>=0||b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0||b.search("CATCH")>=0||b.search("YARD")>=0){
                     return "lightgreen";
                 }else if(b.search("HEWITT")>=0||b.search("GAME")>=0||b.search("MOVIE")>=0||b.search("MINECRAFT")>=0||b.search("FREE")>=0){
                     return "teal";
@@ -978,13 +1019,7 @@
                 }else{
                     return "lazy night";
                 }
-            }/*
-            function Meal(time){
-                var a=" hours until ";
-                if(time>18){
-                    return (18-time+8)+a+b;
-                }
-            }*/
+            }
         </script>
     </body>
 </html>
