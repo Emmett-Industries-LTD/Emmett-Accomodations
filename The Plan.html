@@ -25,6 +25,7 @@
         </div>
         <h1 id="Time"></h1>
         <h1 id="Stage"></h1>
+        <h1 id="MealTime"></h1>
         <h1>Have a great day!</h1>
         <div>
             <button onclick="dateT();"><h1>Today</h1></button>
@@ -110,7 +111,7 @@
                 "eat lunch",
                 "reading; read test",
                 "Dad; adventure; yard",
-                "coding",
+                "rest; test prep",
                 "bike",
                 "dinner",
                 "walk",
@@ -212,7 +213,7 @@
                     "sleep",
                     "sleep",
                 "breakfast eggs",
-                "coding",
+                "outside",
                 'rest',
                 "games with Hewitt",
                 "watch",
@@ -630,6 +631,7 @@
                     "sleep",
                     "sleep",
                     "sleep"],
+
                     ["sleep",
                     "sleep",
                     "sleep",
@@ -646,9 +648,10 @@
                     "coding",
                     "yard",
                     "bike",
-                    "minecraft games",
+                    "bike",
+                    "games with Hewitt",
+                    "minecraft",
                     "dinner",
-                    "walk",
                     "hangout with mom",
                     "journal",
                     "sleep",
@@ -819,9 +822,8 @@
                 }*///var Sort=Object.values(scheduled).sort(function(a,b){return a - b;})
                 document.getElementById("chart").innerHTML="<br><h1>Activity distributation</h1>";
                 DivContainer=document.getElementById("More");
-                DivContainer.innerHTML="<h1>My achievements!</h1>"+
-                "<h1>And don't forget to write down what you actually did, in the plan to get proper achievements</h1>";
-                for(i=0;i<=15;i++){
+                DivContainer.innerHTML="<h1>My achievements!</h1>";
+                for(i=0;i<=16;i++){
                     var color=GetColorValues(ScheduledNameTags[i])
                     if(goals[color]!="none"){
                         if((goals[color]*(ChooseDay+1))<=scheduled[color]){
@@ -919,7 +921,7 @@
                     return "green";
                 }else if(b.search("CODING")>=0){
                     return "beige";
-                }else if(b.search("DAD")>=0||b.search("ADVENTURE")>=0){
+                }else if(b.search("DAD")>=0||b.search("ADVENTURE")>=0||b.search("YARD")>=0){
                     return "gold";
                 }else if(b.search("MOM")>=0){
                     return "purple";
@@ -929,18 +931,20 @@
                     return "yellowgreen";
                 }else if(b.search("READ")>=0||b.search("JOURNAL")>=0){
                     return "turquoise";
-                }else if(b.search("TEST")>=0||b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0){
-                    return "hotpink";
+                }else if(b.search("TEST")>=0){
+                    return "red";
                 }else if(b.search("WALK")>=0){
                     return "orange";
                 }else if(b.search("SLEEP")>=0||b.search("NAP")>=0||b.search("REST")>=0||b.search("CALM")>=0){
                     return "lightblue";
-                }else if(b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0||b.search("CATCH")>=0||b.search("YARD")>=0){
+                }else if(b.search("OUTSIDE")>=0||b.search("BASEBALL")>=0||b.search("CATCH")>=0){
                     return "lightgreen";
                 }else if(b.search("HEWITT")>=0||b.search("GAME")>=0||b.search("MOVIE")>=0||b.search("MINECRAFT")>=0||b.search("FREE")>=0){
                     return "teal";
                 }else if(b.search("FOOD")>=0||b.search("LUNCH")>=0||b.search("BREAKFAST")>=0||b.search("DINNER")>=0||b.search("EAT")>=0){
                     return "tan";
+                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0){
+                    return "hotpink";
                 }else{
                     return "whitesmoke";
                 }

@@ -12,28 +12,21 @@
         .rect{
             stroke: none;
         }
-        .HiddenBamboo{
+        .bamboo{
+            padding:5px;
+            background-color: rgb(223, 200, 153);
+        }
+        #HiddenBamboo{
             width: 60%;
             max-width: 700px;
             padding-bottom:10px;
             position: absolute;
         }
-        .burlyWoodMessage{
+        #burlyWoodMessage{
             background-color: burlywood;
             padding:5px;
             display:none;
             margin:10px;
-        }
-        #mountainInroduction{
-            position: fixed; 
-            bottom:0px;
-            display: none;
-        }
-        #pandaIntroduction{
-            bottom:0px; position: fixed; display: none;
-        }
-        #bambooIntroduction{
-            position: fixed; bottom: 0px; display: none;
         }
         #displaybackground {
             display: none; 
@@ -47,15 +40,12 @@
         }
         #popupIntroductions{
             display: none;
-            width: 600px;
-            bottom:0;
-            z-index: 1;
+            width: 1200px;
         }
         #ButtonContinue{
             display: none;
             margin: 10px;
         }
-
         @keyframes displaymodual{0%{background-color: rgb(0, 0, 0, 0.01);}
             100%{background-color: rgb(0, 0, 0, 0.4);}}
         @keyframes displayhiddenbamboo{
@@ -68,7 +58,7 @@
         }
     </style>
 </head>
-<body>
+<body onresize="Resize();">
     <div id="backgrounds" style="bottom:0">
         <div id="mountainsOne" style="position:fixed; bottom:0">
             <svg width="600" height="200" id="mountainsSvgTwo">
@@ -105,28 +95,22 @@
                 <h1 id="burlyWoodMessage">
                     Welcome to the hidden bamboo forests sanctuary, located  among the pandas in the midst of southern China. 
                     <br>
-                    The village invites you for a match of the ancient game of mancala with the village's own wise and old mancala legendary master, <i>Master Emmett</i> 
-                </h1>
+                    The village invites you for a match of the ancient game of mancala with the village's own wise and old mancala legendary master, <i>Master Emmett</i> </h1>
                 <button id="ButtonContinue" onclick="Continue()"><h1>Continue</h1></button>
             </div>
         </div>    
     </div>
-    <div id="popupIntroductions">
-        <div id="mountainIntroduction">
-            <svg width="600" height="200" id="mountainsSvgTwo">
-                <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
-                <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
-                <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
-            </svg>
+    <div id="popupIntroductions" style="bottom:0px; position:fixed; display: block;">
+        <div id="mountainIntroductionOne" style="position: absolute; bottom:0px;display: none;">
+            <div style="left:0px"></div>
+                <svg width="600" height="200">
+                    <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
+                    <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
+                    <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
+                </svg>
+            </div>
         </div>
-       <!-- <div class="mountianIntroduction" style="left: 600px;">
-            <svg width="600" height="200" id="mountainsSvgFour">
-                <polygon points="150,0 0,200 300,200" style="fill:yellowgreen;"></polygon>
-                <polygon points="300,50 200,200 600,200" style="fill:rgb(207, 231, 159)"></polygon>
-                <polygon points="450,0 300,200 600,200" style="fill:rgb(163, 196, 99)"></polygon>
-            </svg>
-        </div>-->
-        <div id="bambooIntroduction">
+        <div id="bambooIntroduction" style="position: fixed; bottom: 0px; display: none;">
             <svg height="300" width="57">
                 <rect height="400" width="51" style="fill:rgb(182, 236, 112)"></rect>
             </svg>
@@ -152,8 +136,9 @@
                 <rect height="400" width="47" style="fill:rgb(190, 240, 124)"></rect>
             </svg>
         </div>
-        <div id="pandas">
+        <div id="pandas" style="bottom:0px; position: fixed; display: none; left:10px">
             <!--Will show up with animations-->
+            <!--panda one-->
             <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
                 <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
             </svg><!--The white body--><svg class="pandasSvg" height="200" width="150">
@@ -164,11 +149,10 @@
                 <rect style="fill:floralwhite" height="150" width="150"></rect>
             </svg>
         </div>
-        </div>
     </div>
     <script>
-        Resize();
-        function Resize(){
+        BambooCreate();
+        function BambooCreate(){
             var w=0;
             var wTwo=0;
             var i=0;
@@ -193,17 +177,30 @@
                 wTwo+=35+b;
                 i++;
             };
-            
+            while(i<100){
+                var a=(100-Math.floor(Math.random()*50));
+                var b=Math.floor(Math.random()*20+10);
+                document.getElementById("bambooIntroduction").innerHTML+=
+                "<div style='bottom:0px; position:fixed; left:"+(wTwo+b)+
+                "px'><svg height="+a+" width='35'><rect height='"+a+"' width='35' style='fill:rgb("+
+                [Math.floor(Math.random()*10+173), Math.floor(Math.random()*10+175),Math.floor(Math.random()*10+105)]+")'></rect></svg></div>";
+                wTwo+=35+b;
+                i++;
+            };
+
         };
-        var TimeInterval = setTimeout(Popups, 750);
+        var Modual=document.getElementById("displaybackground");
+        var HiddenBamboo=document.getElementById("burlyWoodMessage");
+        var Panda=document.getElementById("pandas");
+        var Mountain=document.getElementById("mountainIntroductionOne");
+        var Bamboo=document.getElementById("bambooIntroduction");
+        var b="block";
+        function Resize(){
+            //resets the position of objects
+        }
+        var TimeInterval = setTimeout(Popups, 500);
         function Popups(){
-            var Modual=document.getElementById("displaybackground");
-            var HiddenBamboo=document.getElementById("burlyWoodMessage");
-            var Panda=document.getElementById("pandas");
-            var Mountain=document.getElementById("mountainIntroductionOne");
-            var Bamboo=document.getElementById("bambooIntroduction");
-            var b="block";
-            HiddenBamboo.style.display="block";
+            Resize();
             document.getElementById("ButtonContinue").style.display=b;
             Panda.style.animationName="PopupPandaLand";
             Mountain.style.animationName="PopupPandaLand";
@@ -222,7 +219,32 @@
             Modual.style.animationDuration="2s";
         };
         function Continue(){
-            alert("hello world");
+            Resize();
+            document.getElementById("ButtonContinue").style.display="none";
+            Panda.style.animationDirection="alternate"
+            Panda.style.animationName="PopupPandaLand";
+            Mountain.style.animationDirection="alternate"
+            Mountain.style.animationName="PopupPandaLand";
+            Bamboo.style.animationDirection="alternate";
+            Bamboo.style.animationName="PopupPandaLand";
+            Panda.style.animationDuration="2s";
+            Mountain.style.animationDuration="2s";
+            Bamboo.style.animationDuration="2s";
+            HiddenBamboo.style.animationName="displayhiddenbamboo";
+            HiddenBamboo.style.animationDirection="alternate"
+            HiddenBamboo.style.animationDuration="2s";
+            Modual.style.animationName="displaymodual";
+            Modual.style.animationDuration="2s";
+            HiddenBamboo.style.animationDirection="alternate";
+            var close=setTimeout(Close, 2000);
+        }
+        function Close(){
+            document.getElementById("popupIntroductions").innerHTML=null;
+            Panda.style.display="none";
+            Mountain.style.display="none";
+            Bamboo.style.display="none";
+            HiddenBamboo.style.display="none";
+            Modual.style.display="none";
         }
     </script>
 </body>
