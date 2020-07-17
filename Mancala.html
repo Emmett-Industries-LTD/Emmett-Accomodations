@@ -46,6 +46,15 @@
             display: none;
             margin: 10px;
         }
+        #head{
+            display: none;
+            min-width: 250px;
+            width:40%; 
+            height:50%;
+            background-color: rgb(255, 223, 175);
+            position: absolute; 
+            bottom:0;
+        }
         @keyframes displaymodual{0%{background-color: rgb(0, 0, 0, 0.01);}
             100%{background-color: rgb(0, 0, 0, 0.4);}}
         @keyframes displayhiddenbamboo{
@@ -113,13 +122,11 @@
     </div>
     <div id="popupIntroductions" style="bottom:0px; position:fixed; display: block;">
         <div id="mountainIntroductionOne" style="position: absolute; bottom:0px;display: none;">
-            <div style="left:0px"></div>
-                <svg width="600" height="200">
-                    <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
-                    <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
-                    <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
-                </svg>
-            </div>
+            <svg width="600" height="200">
+                <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
+                <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
+                <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
+            </svg>
         </div>
         <div id="bambooIntroduction" style="position: fixed; bottom: 0px; display: none;">
             <svg height="300" width="57">
@@ -159,6 +166,14 @@
             </svg><!--The head--><svg class="pandasSvg" height="200" width="150">    
                 <rect style="fill:floralwhite" height="150" width="150"></rect>
             </svg>
+        </div>
+    </div>
+    <div id="MasterEmmett" style=" margin-left: 30%;">
+        <div id="coneHat">
+            <!--hat must be resized to fit-->
+        </div>
+        <div id="head">
+        emmett
         </div>
     </div>
     <script>
@@ -208,6 +223,7 @@
         var b="block";
         function Resize(){
             //resets the position of objects
+            
         }
         var TimeInterval = setTimeout(Popups, 500);
         function Popups(){
@@ -245,6 +261,7 @@
             var close=setTimeout(Close, 2000);
         }
         function Close(){
+            Resize();
             document.getElementById("popupIntroductions").innerHTML=null;
             Panda.style.display="none";
             Mountain.style.display="none";
