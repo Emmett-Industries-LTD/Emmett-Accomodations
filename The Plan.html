@@ -8,10 +8,6 @@
         <title>The Plan</title>
         <style>
             .A{position:relative;}
-            button{
-                border-radius: none;
-                border:1px solid rgb(167, 167, 167);
-            }
         </style>
     </head>
     <body>
@@ -69,7 +65,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=25;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=27;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -755,16 +751,70 @@
                     "lunch-snack",
                     "coding",
                     "test prep",
-                    "yard with dad",
-                    "minecraft with Hewitt",
-                    "dinner watch",
+                    "lazer tag outside",
+                    "minecraft with Anthony",
+                    "dinner",
                     "movie",
-                    "movie",
+                    "pipecleaners",
                     "Journal",
                     "sleep",
                     "sleep",
                     "sleep"
-                    ]
+                    ],
+                    //saturday jul 18
+                    [
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "breakfast egg",
+                        "read with mom",
+                        "coding",
+                        "pipecleaners",
+                        "late lunch watch",
+                        "read",
+                        "bike",
+                        "piano",
+                        "minecraft with Hewitt",
+                        "dinner watch",
+                        "watch",
+                        "tennis",
+                        "calm",
+                        "sleep",
+                        "sleep",
+                        "sleep"
+                    ],
+                    [
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "late breakfast",
+                        "piano",
+                        "sunday runday",
+                        "late lunch",
+                        "something new",
+                        "read",
+                        "test",
+                        "pipecleaners",
+                        "minecraft with Hewitt",
+                        "dinner",
+                        "movie",
+                        "movie",
+                        "sleep",
+                        "sleep",
+                        "sleep"
+                    ],
+                    
                 //add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
             ];
             dateN();
@@ -855,13 +905,14 @@
                     hotpink:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, whitesmoke:0}; //list of achievements
                 var ScheduledNameTags=["Biking", "Pipecleaners","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social,", "Reading and Journal",
                     "Test Prep And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
-                var goals={brown:1, pink:"none", green:0.5, beige:1, gold:0.5,purple:0.5, violet:0.33, yellowgreen:0.33, turquoise:1.5,
+                var goals={brown:1, pink:"none", green:0.5, beige:1, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
                     hotpink:1, orange:1, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
                         scheduled[GetColorValues(stuff[i][x])]++;
                     }
                 }
+                var Chart="";
                 document.getElementById("chart").innerHTML="<br><h1>Activity distributation</h1>";
                 var DivContainer="";
                 DivContainer.innerHTML="<h1>My achievements!</h1>";
@@ -874,18 +925,19 @@
                             var c="red"
                         }
                         DivContainer+=
-                        "<div class='A' style='background-color:"+color+"; width:"+(goals[color]*(ChooseDay+1)-weekChoosen)*250/ChooseDay+"px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>"+ScheduledNameTags[i]+"</i>"
+                        "<div class='A' style='background-color:"+color+"; width:"+(goals[color]*(ChooseDay+1))*250/ChooseDay+"px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>"+ScheduledNameTags[i]+"</i>"
                         +" Goal: "+goals[color]+S(" hour",goals[color])+"  per day, or "+Math.floor((goals[color]*(ChooseDay+1)))+" hours spent in plan already. Reached goal: <i style='background-color:"+c+";'>"
-                        +((goals[color]*(ChooseDay+1))<=scheduled[color])+"</i></h1></div><br><br><br><br><br>";
+                        +((goals[color]*(ChooseDay+1)-weekChoosen)<=scheduled[color])+"</i></h1></div><br><br><br><br><br>";
                     }
                     DivContainer+=
-                        "<div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*250/ChooseDay+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
+                        "<div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*250/(ChooseDay+1)+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
                         +scheduled[color]+" hours spent, Percent of grand plan: "+firstFew(Percent(scheduled[color]))+"%, or "
                         +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))
                         +S("hour", firstFew(scheduled[color]/(ChooseDay-1-weekChoosen)))+"per day</h1></div><br><br><br><br><br>";
-                    document.getElementById("chart").innerHTML+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
+                    Chart+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
                 }
-                document.getElementById("More").innerHTML=DivContainer
+                document.getElementById("chart").innerHTML=Chart;
+                document.getElementById("More").innerHTML=DivContainer;
                 Scheduled(); //two separate functions so exicution speed can bee faster when include line breaks is on
             }
             function Scheduled(){//function has a for loop which evaluates all the arrays and assigns color tags

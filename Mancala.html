@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mancala</title>
     <style>
         body{
@@ -17,8 +16,6 @@
             background-color: rgb(223, 200, 153);
         }
         #HiddenBamboo{
-            width: 60%;
-            max-width: 700px;
             padding-bottom:10px;
             position: absolute;
         }
@@ -47,32 +44,44 @@
             margin: 10px;
         }
         #head{
-            display: none;
-            min-width: 250px;
             width:40%; 
             height:50%;
+            margin-left: 30%;
             background-color: rgb(255, 223, 175);
-            position: absolute; 
-            bottom:0;
+            position: fixed; 
+            bottom:15%;
+            display: none;
         }
         @keyframes displaymodual{0%{background-color: rgb(0, 0, 0, 0.01);}
             100%{background-color: rgb(0, 0, 0, 0.4);}}
         @keyframes displayhiddenbamboo{
-            0%{background-color: rgba(222, 184, 135, 0);color:rgb(0, 0, 0, 0.01)}
+            0%{background-color: rgba(222, 184, 135, 0);color:rgb(0, 0, 0, 0.01);}
             100%{background-color: burlywood;color: rgb(0, 0, 0, 1);}
         }
-        @keyframes PopupPandaLand{
-            1%{bottom:-500px}
+        @keyframes Popup{
+            0%{bottom:-500px}
             100%{bottom:0px}
         }
+        @keyframes MasterEmmett{
+            0%{bottom:-100%;}
+            100%{bottom:15%;}
+        }
+        @keyframes MancalaBoard{
+            0%{bottom:-100%};
+            100%{bottom:0px};
+        }
+        @keyframes Hat{
+            0%{bottom:-33%;}
+            100%{bottom:60%;}
+        }
         /*backwards @keyframes*/
-        @keyframes PopupPandaLandB{
-            0%{bottom:0px}
-            100%{bottom:-500px}
+        @keyframes PopupB{
+            0%{bottom:0px;}
+            100%{bottom:-500px;}
         }
         @keyframes displayhiddenbambooB{
-            100%{background-color: rgba(222, 184, 135, 0);color:rgb(0, 0, 0, 0.01)}
             0%{background-color: burlywood;color: rgb(0, 0, 0, 1);}
+            100%{background-color: rgba(222, 184, 135, 0);color:rgb(0, 0, 0, 0.01)}
         }
         @keyframes displaymodualB{0%{background-color: rgb(0, 0, 0, 0.01);}
             100%{background-color: rgb(0, 0, 0, 0.4);}}
@@ -80,7 +89,7 @@
 </head>
 <body onresize="Resize();">
     <div id="backgrounds" style="bottom:0">
-        <div id="mountainsOne" style="position:fixed; bottom:0">
+        <div id="mountainsOne" style="position: fixed; bottom:0">
             <svg width="600" height="200" id="mountainsSvgTwo">
                 <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
                 <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
@@ -102,11 +111,11 @@
                 <polygon points="450,0 300,200 600,200" style="fill:rgb(163, 196, 99)"></polygon>
             </svg>
         </div>
-        <div id="bambooBackgroundBehind" >
-            <!--Items will go here, (function:resize)-->
+        <div id="bambooBackgroundBehind">
+            <!--Items will go here-->
         </div>
         <div id="bambooBackground">
-            <!--Items will go here, (function:resize)-->
+            <!--Items will go here-->
         </div>
     </div>
     <div id="displaybackground">
@@ -120,15 +129,15 @@
             </div>
         </div>    
     </div>
-    <div id="popupIntroductions" style="bottom:0px; position:fixed; display: block;">
-        <div id="mountainIntroductionOne" style="position: absolute; bottom:0px;display: none;">
+    <div id="popupIntroductions" style="bottom:0px; position:fixed; display: none;">
+        <div id="mountainIntroductionOne" style="position: absolute; bottom:0px;/*display: none;*/">
             <svg width="600" height="200">
                 <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
                 <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
                 <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
             </svg>
         </div>
-        <div id="bambooIntroduction" style="position: fixed; bottom: 0px; display: none;">
+        <div id="bambooIntroduction" style="position: absolute; bottom: 0px;">
             <svg height="300" width="57">
                 <rect height="400" width="51" style="fill:rgb(182, 236, 112)"></rect>
             </svg>
@@ -154,7 +163,7 @@
                 <rect height="400" width="47" style="fill:rgb(190, 240, 124)"></rect>
             </svg>
         </div>
-        <div id="pandas" style="bottom:0px; position: fixed; display: none; left:10px">
+        <div id="pandas" style="bottom:0px; position: absolute;  left:10px">
             <!--Will show up with animations-->
             <!--panda one-->
             <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
@@ -168,15 +177,33 @@
             </svg>
         </div>
     </div>
-    <div id="MasterEmmett" style=" margin-left: 30%;">
-        <div id="coneHat">
+    <div id="MasterEmmett" style="bottom:0;position: fixed;">
+        <div id="head">
+            <div style="height: 1%; padding-top:1px; width:3%; position: absolute; background-color: black; left:12%; top:30%;">
+            </div>
+            <div style="height: 1%; padding-top:1px; width:3%; position: absolute; background-color: black; left:85%; top:30%;">
+            </div>
+            <div style="height: 1%; padding-top:1px; width:6%; position: absolute; background-color: black; left:47%; bottom:15%">
+            </div>
+        </div>
+        <div id="coneHat" style="position: fixed; margin-left: 25%; bottom:60%;display: none;">
             <!--hat must be resized to fit-->
         </div>
-        <div id="head">
-        emmett
+    </div>
+    <div>
+        <div id="mancalaBoard" style=
+        "background-color: rgb(214, 167, 105); height: 20%; width:60%; margin-left: 20%; bottom: 0px; position: fixed; display: none;">
         </div>
     </div>
     <script>
+        var Modual=document.getElementById("displaybackground");
+        var HiddenBamboo=document.getElementById("burlyWoodMessage");
+        var popup=document.getElementById("popupIntroductions");
+        var coneHat=document.getElementById("coneHat");
+        var Head=document.getElementById("head");
+        var Board=document.getElementById("mancalaBoard")
+        var b="block";
+        Resize();
         BambooCreate();
         function BambooCreate(){
             var w=0;
@@ -215,45 +242,38 @@
             };
 
         };
-        var Modual=document.getElementById("displaybackground");
-        var HiddenBamboo=document.getElementById("burlyWoodMessage");
-        var Panda=document.getElementById("pandas");
-        var Mountain=document.getElementById("mountainIntroductionOne");
-        var Bamboo=document.getElementById("bambooIntroduction");
-        var b="block";
         function Resize(){
-            //resets the position of objects
-            
+            //sets the position + size of objects
+            var height=window.innerHeight/3;
+            var width=window.innerWidth/2;
+            coneHat.innerHTML=
+                "<svg height='"+height+"' width='"+width+"'>"
+                +"<polygon style='fill:rgb(190, 160, 81)' points='"
+                +[width/2,0]+" "+[width, height]+" "+[0, height]+"'></polygon>"
+                +"</svg>";
+            Board.innerHTML=
+            //
+            ""
+
         }
         var TimeInterval = setTimeout(Popups, 500);
         function Popups(){
-            Resize();
             document.getElementById("ButtonContinue").style.display=b;
-            Panda.style.animationName="PopupPandaLand";
-            Mountain.style.animationName="PopupPandaLand";
-            Bamboo.style.animationName="PopupPandaLand";
-            Panda.style.animationDuration="2s";
-            Mountain.style.animationDuration="2s";
-            Bamboo.style.animationDuration="2s";
-            Panda.style.display=b;
-            Mountain.style.display=b;
-            Bamboo.style.display=b;
-            HiddenBamboo.style.display=b;
+            popup.style.animationName="Popup";
+            popup.style.animationDuration="2s";
+            popup.style.display=b;
             HiddenBamboo.style.animationName="displayhiddenbamboo";
+            HiddenBamboo.style.display=b;
             HiddenBamboo.style.animationDuration="2s";
             Modual.style.display=b;
             Modual.style.animationName="displaymodual";
             Modual.style.animationDuration="2s";
         };
         function Continue(){
-            Resize();
             document.getElementById("ButtonContinue").style.display="none";
-            Panda.style.animationName="PopupPandaLandB";
-            Mountain.style.animationName="PopupPandaLandB";
-            Bamboo.style.animationName="PopupPandaLandB";
-            Panda.style.animationDuration="2s";
-            Mountain.style.animationDuration="2s";
-            Bamboo.style.animationDuration="2s";
+            popup.style.animationName="PopupB";
+            popup.style.animationName="PopupB";
+            popup.style.animationDuration="2s";
             HiddenBamboo.style.animationName="displayhiddenbambooB";
             HiddenBamboo.style.animationDuration="2s";
             Modual.style.animationName="displaymodualB";
@@ -262,11 +282,17 @@
         }
         function Close(){
             Resize();
-            document.getElementById("popupIntroductions").innerHTML=null;
-            Panda.style.display="none";
-            Mountain.style.display="none";
-            Bamboo.style.display="none";
+            popup.style.display="none";
             HiddenBamboo.style.display="none";
+            coneHat.style.animationName="Hat";
+            coneHat.style.animationDuration="4s";
+            coneHat.style.display=b;
+            Head.style.animationName="MasterEmmett";
+            Head.style.animationDuration="4s";
+            Head.style.display=b;
+            Board.style.animationName="MancalaBoard";
+            Board.style.display=b;
+            Board.style.animationDuration="4s"
         }
     </script>
 </body>
