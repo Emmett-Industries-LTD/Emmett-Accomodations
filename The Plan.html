@@ -49,9 +49,6 @@
                  <!--"scheduled" appear here-->
             </div>
             <button onclick="weekChoosen=0; MyAcheivements();" id="ButtonNowAchievements"><h1>Now</h1></button>
-            <!--<h1>from</h1>
-            <button onclick="weekChoosen=0; MyAcheivements();" id="ButtonNowAchievements"><h1>One day earlier...</h1></button>
-            <h1>to</h1>-->
             <button onclick="weekChoosen++; MyAcheivements();" id="ButtonWeekAchievements"><h1>One day earlier...</h1></button>
         </div>
         
@@ -65,7 +62,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=27;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=28;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -102,7 +99,7 @@
                 "sleep",
                 "breakfast",
                 "Chinese",
-                "Chinese then Chess; prodigy",
+                "Chinese then Chess; read",
                 "pipecleaners",
                 "eat lunch",
                 "reading; read test",
@@ -573,6 +570,8 @@
                     "sleep",
                     "sleep"
                     ],
+//actually recorded events begin here
+
                     [
                          
                     "sleep",
@@ -779,7 +778,7 @@
                         "read",
                         "bike",
                         "piano",
-                        "minecraft with Hewitt",
+                        "free time",
                         "dinner watch",
                         "watch",
                         "tennis",
@@ -806,7 +805,7 @@
                         "read",
                         "test",
                         "pipecleaners",
-                        "minecraft with Hewitt",
+                        "minecraft by myself",
                         "dinner",
                         "movie",
                         "movie",
@@ -814,8 +813,36 @@
                         "sleep",
                         "sleep"
                     ],
+                    [
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "breakfast",
+                        "schedule",
+                        "piano",
+                        "lunch",
+                        "read",
+                        "test",
+                        "get flowers for mom",
+                        "piano",
+                        "minecraft with Hewitt",
+                        "dinner",
+                        "hangout with mom",
+                        "walk",
+                        "journal",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep"
+                    ]
                     
-                //add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
+                //Add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
+                //And also remember to record real events here
             ];
             dateN();
             //button functions:
@@ -868,8 +895,8 @@
                 document.getElementById("time").innerHTML=GetTheday(d.getDay());
                 document.getElementById("now").innerHTML="right now I shall be doing:<br>"+stuff[ChooseDay][(d.getHours())-1]+"<br>"+[60-d.getMinutes()]+" minutes left";
                 document.getElementById("next").innerHTML="next up is:"+stuff[ChooseDay][d.getHours()]+"<br>"+"coming in "+[60-d.getMinutes()]+" minutes";
-                document.getElementById("Time").innerHTML="the time is "+d.getHours()+" hours";
-                document.getElementById("Stage").innerHTML="Current stage: "+Stage(d.getHours());
+                //document.getElementById("Time").innerHTML="the time is "+d.getHours()+" hours";
+                //document.getElementById("Stage").innerHTML="Current stage: "+Stage(d.getHours());
                 //document.getElementById("MealTime").innerHTML=Meal(d.getHours())
                 if([60-d.getMinutes()]<=5){
                     document.getElementById("now").innerHTML+=["<br><br>get ready for"+stuff[ChooseDay][d.getHours()]]
@@ -1038,7 +1065,7 @@
                     return "teal";
                 }else if(b.search("FOOD")>=0||b.search("LUNCH")>=0||b.search("BREAKFAST")>=0||b.search("DINNER")>=0||b.search("EAT")>=0){
                     return "tan";
-                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0){
+                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0||b.search("TEST")>=0){
                     return "hotpink";
                 }else{
                     return "whitesmoke";
