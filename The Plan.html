@@ -62,7 +62,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=30;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=33;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                 "sleep",
@@ -890,7 +890,87 @@
                     "journal",
                     "sleep",
                     "sleep",
-                    "sleep"]
+                    "sleep"],
+                    [
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "breakfast",
+                        "drive",
+                        "read with dad's dad",
+                        "lunch with dad's dad",
+                        "read new books",
+                        "drive",
+                        "test prep",
+                        "test prep",
+                        "essay skills",
+                        "dinner",
+                        "pipecleaners",
+                        "walk",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep"],
+
+                    [
+
+                    "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep in",
+                        "meet jona",
+                        "read",
+                        "lunch",
+                        "pipecleaners",
+                        "essay skills",
+                        "essay and test prep",
+                        "coding",
+                        "piano",
+                        "dinner watch",
+                        "yard",
+                        "hangout with mom",
+                        "journal",
+                        "sleep",
+                        "sleep",
+                        "sleep"
+                    ],
+                    [
+                        
+                    "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "sleep",
+                        "breakfast",
+                        "new phone",
+                        "free time",
+                        "lunch",
+                        "something outside",
+                        "essay skills",
+                        "tennis",
+                        "test prep",
+                        "piano",
+                        "dinner watch",
+                        "movie",
+                        "movie",
+                        "walk",
+                        "Sleep",
+                        "sleep",
+                        "sleep"
+                    ]
                     
                 //Add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
                 //And also remember to record real events here
@@ -984,7 +1064,7 @@
                 var ScheduledNameTags=["Biking", "Pipecleaners","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social,", "Reading and Journal",
                     "Test Prep And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
                 var goals={brown:1, pink:"none", green:0.5, beige:1, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
-                    hotpink:1, orange:1, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
+                    hotpink:1, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
                         scheduled[GetColorValues(stuff[i][x])]++;
