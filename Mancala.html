@@ -18,6 +18,17 @@
         .holes{
             position: absolute; width: 12.5%;background-color: rgb(197, 158, 107); padding:0px;
         }
+        .stoneButton{
+            position:absolute;
+            top:0px;
+            border:none;
+            background-color: rgb(117, 111, 102);
+        }
+        .StoneHoles{
+            top:25%;
+            left:20%;
+            text-align: center;
+        }
         #HiddenBamboo{
             width: 90%;
             padding-bottom:10px;
@@ -211,51 +222,57 @@
         </div>
     </div>
     <div id="mancalaBoard" style="background-color:burlywood; height: 25%; width:80%; margin-left: 10%; bottom: 5px; position: fixed; display: none;">
-        <div class="holes" id="PointsHolePlayer" style="border-radius: 50%;height: 100%;">
-            <h1>Your stones</h1>
+        <div class="holes" style="border-radius: 50%;height:100%; left:0px">
+            <h1 id="PointsHoleMaster">Master Emmett's stones</h1>
         </div>
         <div class="holes" style="border-radius: 50%; margin-left: 12.5%; height: 50%;">
-            <h1 id="HoleP1"></h1>
-            <button id="button1"></button>
+            <h1 id="Hole1" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button1" onclick="holeNumber=0;Play();">pick stones...</button>
         </div>
         <div class="holes" style="border-radius: 50%; margin-left: 25%; height: 50%;">
-            <h1 id="HoleP2"></h1>
-            <button id="button2"></button>
+            <h1 id="Hole2" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button2" onclick="holeNumber=1;Play();">pick stones...</button>
         </div>
         <div class="holes" style="border-radius: 50%; margin-left: 37.5%; height: 50%;">
-            <h1 id="HoleP3"></h1>
-            <button id="button3"></button>
+            <h1 id="Hole3" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button3" onclick="holeNumber=2;Play();">pick stones...</button>
         </div>
         <div class="holes" style="border-radius: 50%; margin-left: 50%; height: 50%;">
-            <h1 id="HoleP4"></h1>
-            <button id="button4"></button>
+            <h1 id="Hole4" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button4" onclick="holeNumber=3;Play();">pick stones...</button>
         </div>
         <div class="holes" style="border-radius: 50%; margin-left:62.5%; height: 50%;">
-            <h1 id="HoleP5"></h1>
-            <button id="button5"></button>
+            <h1 id="Hole5" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button5" onclick="holeNumber=4;Play();">pick stones...</button>
         </div>
         <div class="holes" style="border-radius: 50%; margin-left: 75%; height: 50%;">
-            <h1 id="HoleP6"></h1>
-            <button id="button6"></button>
+            <h1 id="Hole6" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button6" onclick="holeNumber=5;Play();">pick stones...</button>
         </div>
-        <!--bottom holes-->
-        <div class="holes" id="HoleM7" style="border-radius: 50%; margin-left: 12.5%; height: 50%; bottom:0px;">
+        <!--bottom holes (of Master Emmett)-->
+        <div class="holes" style="border-radius: 50%; margin-left: 12.5%; height: 50%; bottom:0px;">
+            <h1 id="Hole12" class="StoneHoles"></h1>
         </div>
-        <div class="holes" id="HoleM8" style="border-radius: 50%; margin-left: 25%; height: 50%;bottom:0px;">
+        <div class="holes" style="border-radius: 50%; margin-left: 25%; height: 50%;bottom:0px;">
+            <h1 id="Hole11" class="StoneHoles"></h1>
         </div>
-        <div class="holes" id="HoleM9" style="border-radius: 50%; margin-left: 37.5%; height: 50%;bottom:0px;">
+        <div class="holes"  style="border-radius: 50%; margin-left: 37.5%; height: 50%;bottom:0px;">
+            <h1 id="Hole10" class="StoneHoles"></h1>
         </div>
-        <div class="holes" id="HoleM10" style="border-radius: 50%; margin-left: 50%; height: 50%;bottom:0px;">
+        <div class="holes" style="border-radius: 50%; margin-left: 50%; height: 50%;bottom:0px;">
+            <h1 id="Hole9" class="StoneHoles"></h1>
         </div>
-        <div class="holes" id="HoleM11" style="border-radius: 50%; margin-left:62.5%; height: 50%;bottom:0px;">
+        <div class="holes" style="border-radius: 50%; margin-left:62.5%; height: 50%;bottom:0px;">
+            <h1 id="Hole8" class="StoneHoles"></h1>
         </div>
-        <div class="holes" id="HoleM12" style="border-radius: 50%; margin-left: 75%; height: 50%;bottom:0px;">
+        <div class="holes" style="border-radius: 50%; margin-left: 75%; height: 50%;bottom:0px;">
+            <h1 id="Hole7" class="StoneHoles"></h1>
         </div>
-        <div class="holes" id="PointsHoleMaster" style="border-radius: 50%;height:100%; right:0px">
-            <h1>Master Emmett's stones</h1>
+        <div class="holes"  style="border-radius: 50%;height: 100%; right:0px;">
+            <h1 id="PointsHolePlayer">Your stones</h1>
         </div>
-        <h1 id="commentary"></h1>
-    </div>
+    </div>    
+    <h1 id="hand" style="position: fixed;"></h1>
     <script>
         var Modual=document.getElementById("displaybackground");
         var HiddenBamboo=document.getElementById("burlyWoodMessage");
@@ -264,6 +281,12 @@
         var Head=document.getElementById("head");
         var Board=document.getElementById("mancalaBoard");
         var b="block";
+        var holeNumber=null;
+        var StonesInHand;
+        var PlayerStones=0;
+        var MasterStones=0;
+        var holeValues=[4,4,4,4,4,4,4,4,4,4,4,4];
+        var counter=0;
         Resize();
         BambooCreate();
         function BambooCreate(){
@@ -304,7 +327,7 @@
                 +'<polygon points="150,0 0,200 300,200" style="fill:yellowgreen;"></polygon>'
                 +'<polygon points="300,50 200,200 600,200" style="fill:rgb(207, 231, 159)"></polygon>'
                 +'<polygon points="450,0 300,200 600,200" style="fill:rgb(163, 196, 99)"></polygon></svg>';
-            }
+            };
         };
         function Resize(){
             //sets the position + size of objects
@@ -354,6 +377,49 @@
             Board.style.animationName="MancalaBoard";
             Board.style.display=b;
             Board.style.animationDuration="4s"
+        }
+        for(i=1;i<=12; i++){
+            document.getElementById("Hole"+i).innerHTML=holeValues[i-1];
+        };
+        function Play(){
+            document.getElementById("PointsHolePlayer").innerHTML=PlayerStones;
+            if(counter==0){
+                StonesInHand=holeValues[holeNumber];//set the stones in hand to the amount in the chosen hole
+                holeValues[holeNumber]=0; //set hole to none as if player took all stones
+            }
+            if(counter<StonesInHand){
+                holeValues[DownToOne(counter+holeNumber+1)]+=1//one stone gets dropped into counter until stones in hand run out
+                for(i=1;i<=12; i++){
+                    document.getElementById("Hole"+i).innerHTML=holeValues[i-1]; //set the stones every time
+                };
+                document.getElementById("hand").innerHTML=StonesInHand-counter;
+                counter++;
+                setTimeout(Play, 500);//allows time until next drop
+                //does not continue
+            }else{
+                counter=0;
+                NewHole=DownToOne(holeNumber+StonesInHand); //the new holeNumber (hole to be picked) is how far the stone went from original stone
+                if(holeValues[NewHole]>1){//repeat if there are stones already in hole
+                    holeNumber=NewHole; 
+                    Play();
+                };
+                for(i=1;i<=12; i++){
+                    document.getElementById("Hole"+i).innerHTML=holeValues[i-1];
+                };
+            }
+        }
+        function DownToOne(Player){
+            if(Player==5){
+                if(StonesInHand-counter>1){
+                    PlayerStones++;
+                    StonesInHand--;
+                    return 5;
+                }
+            }
+            if(Player>=12){
+                return Player-12;
+            }
+            return Player;
         }
     </script>
 </body>
