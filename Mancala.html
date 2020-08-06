@@ -16,18 +16,13 @@
             background-color: rgb(223, 200, 153);
         }
         .holes{
-            position: absolute; width: 12.5%;background-color: rgb(197, 158, 107); padding:0px;
+            position: absolute; width: 12.5%;background-color: rgb(214, 172, 117); padding:0px;
         }
         .stoneButton{
             position:absolute;
             top:0px;
             border:none;
             background-color: rgb(117, 111, 102);
-        }
-        .StoneHoles{
-            top:25%;
-            left:20%;
-            text-align: center;
         }
         #HiddenBamboo{
             width: 90%;
@@ -223,7 +218,7 @@
     </div>
     <div id="mancalaBoard" style="background-color:burlywood; height: 25%; width:80%; margin-left: 10%; bottom: 5px; position: fixed; display: none;">
         <div class="holes" style="border-radius: 50%;height:100%; left:0px">
-            <h1 id="PointsHoleMaster">Master Emmett's stones</h1>
+            <h1 class="holes" id="PointsHoleMaster">Master Emmett's stones</h1>
         </div>
         <div class="holes" style="border-radius: 50%; margin-left: 12.5%; height: 50%;">
             <h1 id="Hole1" class="StoneHoles"></h1>
@@ -269,10 +264,12 @@
             <h1 id="Hole7" class="StoneHoles"></h1>
         </div>
         <div class="holes"  style="border-radius: 50%;height: 100%; right:0px;">
-            <h1 id="PointsHolePlayer">Your stones</h1>
+            <h1 class="holes" id="PointsHolePlayer">Your stones</h1>
         </div>
     </div>    
-    <h1 id="hand" style="position: fixed;"></h1>
+    <h1 id="hand" style="position: fixed; bottom:0px;"></h1>
+    <h1 id="Turn" style="position: fixed; bottom:55%; left:73%"></h1>
+    <h1 id="TurnCommentary" style="position: fixed;"></h1>
     <script>
         var Modual=document.getElementById("displaybackground");
         var HiddenBamboo=document.getElementById("burlyWoodMessage");
@@ -287,6 +284,7 @@
         var MasterStones=0;
         var holeValues=[4,4,4,4,4,4,4,4,4,4,4,4];
         var counter=0;
+        var colorAdjust=0;
         Resize();
         BambooCreate();
         function BambooCreate(){
@@ -376,23 +374,35 @@
             Head.style.display=b;
             Board.style.animationName="MancalaBoard";
             Board.style.display=b;
-            Board.style.animationDuration="4s"
-        }
+            Board.style.animationDuration="4s";
+            setTimeout(PickTurn, 5500);
+        };
         for(i=1;i<=12; i++){
             document.getElementById("Hole"+i).innerHTML=holeValues[i-1];
         };
-        function Play(){
+        function PickTurn(){
+            if(Math.random()>0.5){
+                MasterTurn();
+            }else{
+                Buttons();
+            };
             document.getElementById("PointsHolePlayer").innerHTML=PlayerStones;
+            document.getElementById("PointsHoleMaster").innerHTML=MasterStones;
+        };
+        function Buttons(){
+            for(i=1; i<=12; i++){
+                document.getElementById("Hole"+i).style.display="block"
+            }
+        }
+        function Play(){
+            document.getElementById("TurnCommentary").innerHTML="Your Turn";
             if(counter==0){
                 StonesInHand=holeValues[holeNumber];//set the stones in hand to the amount in the chosen hole
                 holeValues[holeNumber]=0; //set hole to none as if player took all stones
             }
             if(counter<StonesInHand){
                 holeValues[DownToOne(counter+holeNumber+1)]+=1//one stone gets dropped into counter until stones in hand run out
-                for(i=1;i<=12; i++){
-                    document.getElementById("Hole"+i).innerHTML=holeValues[i-1]; //set the stones every time
-                };
-                document.getElementById("hand").innerHTML=StonesInHand-counter;
+                document.getElementById("hand").innerHTML=StonesToNumbers(StonesInHand-counter);
                 counter++;
                 setTimeout(Play, 500);//allows time until next drop
                 //does not continue
@@ -402,11 +412,61 @@
                 if(holeValues[NewHole]>1){//repeat if there are stones already in hole
                     holeNumber=NewHole; 
                     Play();
+                }else{ //end turn
+                    setTimeout(MasterTurn, Math.random()*10+1);
+                    counter=0;
                 };
-                for(i=1;i<=12; i++){
-                    document.getElementById("Hole"+i).innerHTML=holeValues[i-1];
+            };
+            for(i=1;i<=12; i++){
+                document.getElementById("Hole"+i).innerHTML=StonesToNumbers(holeValues[i-1]);
+            };
+        };
+        function MasterTurn(){
+            holeNumber=Math.floor(Math.random()*6)+5;
+            document.getElementById("TurnCommentary").innerHTML="Master Emmett's turn";
+            if(Math.random>0.8)document.getElementById("Turn").innerHTML="...";
+            if(Math.random>0.6)document.getElementById("Turn").innerHTML="*chuckles*";
+            if(Math.random>0.2)document.getElementById("Turn").innerHTML="";
+            if(Math.random<=0.2)document.getElementById("Turn").innerHTML="hmmmm...";
+            document.getElementById("PointsHolePlayer").innerHTML=PlayerStones;
+            document.getElementById("PointsHoleMaster").innerHTML=MasterStones;
+            if(counter==0){
+                StonesInHand=holeValues[holeNumber];//set the stones in hand to the amount in the chosen hole
+                holeValues[holeNumber]=0; //set hole to none as if player took all stones
+            };
+            if(counter<StonesInHand){
+                holeValues[DownToOneMaster(counter+holeNumber+1)]+=1;//one stone gets dropped into counter until stones in hand run out
+                document.getElementById("hand").innerHTML=StonesToNumbers(StonesInHand-counter);
+                counter++;
+                setTimeout(MasterTurn, 500);//allows time until next drop
+                //does not continue
+            }else{
+                counter=0;
+                NewHole=DownToOneMaster(holeNumber+StonesInHand); //the new holeNumber (hole to be picked) is how far the stone went from original stone
+                if(holeValues[NewHole]>1){//repeat if there are stones already in hole
+                    holeNumber=NewHole; 
+                    MasterTurn();
+                }else{
+                    Play();
+                    counter=0;
                 };
-            }
+            };
+            for(i=1;i<=12; i++){
+                document.getElementById("Hole"+i).innerHTML=StonesToNumbers(holeValues[i]);
+            };
+        };
+        function DownToOneMaster(Master){
+            if(Master==5){
+                if(StonesInHand-counter>1){
+                    MasterStones++;
+                    StonesInHand--;
+                    return 5;
+                };
+            };
+            if(Master>=12){
+                return Master-12;
+            };
+            return Master;
         }
         function DownToOne(Player){
             if(Player==5){
@@ -414,12 +474,15 @@
                     PlayerStones++;
                     StonesInHand--;
                     return 5;
-                }
-            }
+                };
+            };
             if(Player>=12){
                 return Player-12;
-            }
+            };
             return Player;
+        };
+        function StonesToNumbers(Stones){
+            return Stones;
         }
     </script>
 </body>
