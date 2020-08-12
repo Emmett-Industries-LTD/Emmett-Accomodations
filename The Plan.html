@@ -62,7 +62,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=48;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=50;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                     "sleep",
@@ -1370,6 +1370,88 @@
                     "sleep",
                     "sleep",
                     "sleep"
+                ],
+                [
+                    
+                   "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "schedule and new pentax not waterproof camera",
+                    "bike adventure",
+                    "lunch",
+                    "bike adventure",
+                    "test review answers",
+                    "minecraft",
+                    "minecraft meet juliet",
+                    "project",
+                    "dinner watch",
+                    "watch",
+                    "walk",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                ],
+                //aug 11 chooseday=50
+                [
+
+                   "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "read",
+                    "chinese",
+                    "chinese",
+                    "project",
+                    "late lunch",
+                    "cultural free courses",
+                    "adventure",
+                    "advetnure",
+                    "chess with hewitt",
+                    "dinner",
+                    "project",
+                    "project",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                ],
+                [
+
+                   "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding",
+                    "saxaphone",
+                    "something wiht mom",
+                    "lunch",
+                    "piano",
+                    "test",
+                    "bike",
+                    "project",
+                    "tennis",
+                    "dinner",
+                    "prodigy",
+                    "walk",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep"
                 ]
                 //Add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
                 //And also remember to record real events here
@@ -1455,6 +1537,7 @@
                 if(weekChoosen>0){
                     document.getElementById("Daysago").innerHTML="As of "+weekChoosen + S("day",weekChoosen) +" ago";
                 }
+            
                 if(weekChoosen>=(ChooseDay)){
                     document.getElementById("ButtonWeekAchievements").style.display="none";
                 }
@@ -1462,7 +1545,7 @@
                     hotpink:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, whitesmoke:0}; //list of achievements
                 var ScheduledNameTags=["Biking", "Pipecleaners and legos","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social,", "Reading and Journal",
                     "Test Prep And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
-                var goals={brown:1, pink:"none", green:0.33, beige:1, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
+                var goals={brown:1, pink:"none", green:0.33, beige:0.75, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
                     hotpink:1, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
