@@ -4,9 +4,15 @@
         <title>Hypixel Server</title>
     </head>
     <body>
-
-
+        <h2 id="Cordinates" ></h2>
+        <div id="Player" style="width: 10%; height: 10%; background-color:red; bottom:10%; left:45%; position: fixed;"></div>
         <script>
+            var Player = document.getElementById("Player");
+            var position = [0, 1]
+            var page = setInterval(PageRefresh, 20);
+            function PageRefresh(){
+                document.getElementById("Cordinates").innerHTML=position;
+            }
         </script>
     </body>
 </html>
