@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        The Limosene Game
+        </title>
+    </head>
+    <body>
+        <h1>welcome to the Limosene Game</h1>
+        <h1></h1>
+        <h1 id="Speedomiter">Speed: 20mph</h1>
+        <div id="Limosene" style = "width:30%;height:6%; position:fixed;">
+            <div style = "width:95%; background-color:black; height:50%; left:2%; position:relative;"></div>
+            <div style = "width:100%; background-color:black; height:50%; position:relative;"></div>
+        </div>
+        <div id="RedCouch" style = "width:30%;height:6%; position:fixed;top:50%;left:52%; display:none;">
+            <div style = "width:95%; background-color:red; height:50%; left:2%; position:relative;"></div>
+            <div style = "width:100%; background-color:red; height:50%; position:relative;"></div>
+        </div>
+        <div id="theButtons">
+            <button style="position:fixed; width:25%; height:10%;" onmousedown = "down = 'yes'; TopWays();" onmouseup = "down = 'no';"><h1>Limo Up</h1></button>
+            <button style="position:fixed; width:25%; height:10%;left:20%" onmousedown = "down = 'yes'; DownWays();" onmouseup = "down = 'no';"><h1>Limo Down</h1></button>
+            <br><br><br><br>
+            <button style="position:fixed; width:25%; height:10%;" onmousedown = "down = 'yes'; LeftWays();" onmouseup = "down = 'no';"><h1>Limo Left</h1></button>
+            <button style="position:fixed; width:25%; height:10%;left:20%" onmousedown = "down = 'yes'; RightWays();" onmouseup = "down = 'no';"><h1>Limo Right</h1></button>
+            <br><br><br><br>
+            <button style="position:fixed; width:25%; height:10%;" onmousedown = "down = 'yes'; FastWays();" onmouseup = "down = 'no';"><h1>Limo Speed Faster</h1></button>
+            <button style="position:fixed; width:25%; height:10%;left:20%" onmousedown = "down = 'yes'; SlowWays();" onmouseup = "down = 'no';"><h1>Limo Speed Slower</h1></button>
+            <br><br><br><br>
+        </div>
+        <h1 id = "TimerTimer"></h1>
+        <script>
+            var Limo = document.getElementById("Limosene"); 
+            var Couch = document.getElementById("RedCouch");
+            var Timer = document.getElementById("TimerTimer");
+            var TopDistance = 75; //75% to the top
+            var SideDistance = 55; //55% to the left
+            var Speed = 1; //moves 1% every 20 miliseconds
+            var Time = 60; //seconds
+            var down="no";
+            Couch.style.display="block";
+            Couch.style.left = Math.random() * 99 + "%"; //random left postition of couch
+            Couch.style.top = (Math.random() * 45) + 50 + "%"; //random position of top couch
+            alert("Hey you! Today you are in charge in the limosene. Please hide it behind the red couch before the crowd finds the famous celeberties in it! Sir King Emmett's life depends you!")
+            var PositionInterval = setInterval(Position, 20); //interval of positioning
+            var TimerInterval = setInterval(TimerFunction, 1000); //changes timer by 1 every 1 second
+            function DownWays(){
+                TopDistance += Speed;
+                if(down=="yes"){
+                    setTimeout(DownWays, 20);
+                }
+            }
+            function TopWays(){
+                TopDistance -= Speed;
+                if(down=="yes"){
+                    setTimeout(TopWays, 20);
+                }
+            }
+            function RightWays(){
+                SideDistance += Speed;
+                if(down=="yes"){
+                    setTimeout(RightWays, 20);
+                }
+            }
+            function LeftWays(){
+                SideDistance -= Speed;
+                if(down=="yes"){
+                    setTimeout(LeftWays, 20);
+                }
+            }
+            function FastWays(){
+                Speed += 0.05;
+                if(down=="yes"){
+                    setTimeout(FastWays, 200);
+                }
+            }
+            function SlowWays(){
+                Speed -= 0.05;
+                if(down=="yes"){
+                    setTimeout(SlowWays, 200);
+                }
+            }
+            function Position(){
+                Limo.style.top = TopDistance + "%";
+                Limo.style.left = SideDistance + "%";
+                var limoPosition = Math.round(Limo.style.left.slice(0, 2));
+                var couchPosition = Math.round(Couch.style.left.slice(0, 2));
+                var limoPositionTop = Math.round(Limo.style.top.slice(0, 2));
+                var couchPositionTop = Math.round(Couch.style.top.slice(0, 2));
+                if(Speed<0.05){Speed=0.05}
+                document.getElementById("Speedomiter").innerHTML = "Speed:" + Math.round(Speed * 20) + "mph";
+                Timer.innerHTML = "Time Remaining Until Crowd: " + Time + " seconds";
+                if(couchPosition == limoPosition && couchPositionTop == limoPositionTop){
+                    clearInterval(TimerInterval);
+                    clearInterval(PositionInterval);
+                    setTimeout(Ending, 1000)
+                }
+                if(Time < 1){
+                    Timer.innerHTML="Oh, and here comes the crowd. They find Sir King Emmett and his fellow celeberties', which was not properly hidden by the limosene driver <br>So many people want their pictures with the celeberties, and Emmett's fancy limosene breaks down from the crowds of people and gets all these scratches. The End."
+                    clearInterval(TimerInterval);
+                    clearInterval(Position)
+                }
+            }
+            function Ending(){
+                Limo.style.display = "none";
+                Couch.style.display = "none";
+                Timer.innerHTML = 
+                "Oh, and here comes the crowd. However, they do not find Sir King Emmett and his fellow celeberties', fancy limosene which was elegantly hidden by the limosene driver <br>So many people want their pictures with the celeberties, but they are so confused and cannot find Emmett's limosene, leaving Sir King Emmett and the celebereties safe from the crowd. Yay! You hid the limosene and saved Sir King Emmett's life. I couldn't thank you enough!";
+            }
+            function TimerFunction(){
+                Time--;
+            }
+        </script>
+    </body>
+</html>

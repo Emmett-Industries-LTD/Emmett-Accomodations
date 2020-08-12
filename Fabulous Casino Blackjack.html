@@ -124,6 +124,15 @@
         var UnflippedCard = document.getElementById("Unflip");
         getCardValues();
         function getCardValues(){
+            card = 1;
+            score = 0;
+            dealerCards = 0;
+            StandValue = 0;
+            Round = 1;// variable to represent the modal window
+            unshuffled = [];
+            deck;
+            AceValues=0;
+            dealerScore=0;
             for (let a = 2; a < 15; a++) {
                 for (let b = 0; b < 4; b++) {
                     unshuffled.push(ForValues(Math.floor(a)));
@@ -168,6 +177,11 @@
             CommentCheck();//checks for what to do with cards
         }
         function CommentCheck() {
+            /*if(deck.length==1){
+                say.innerHTML = "Schuffling";
+                Reset();
+                getCardValues();
+            }*/
             if (card==2) {
                 say.innerHTML = "cards dealed to dealer and player";
                 document.getElementById("StandButton").innerHTML = "hit";                   
@@ -213,7 +227,7 @@
                         dealerScore+=10;
                         break;//aces can be 11 not just 1, but only if it doesn't make score too high
                     } 
-                    if(dealerScore>=21||dealerScore>=StandValue){
+                    if(dealerScore>=21||(dealerScore>=StandValue&&StandValue<=17)){
                         break;
                     }
                     dealerScore+=Value(deck[deck.length-1]);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
     <meta charset="UTF-8">
     <title>Mancala</title>
@@ -15,7 +15,17 @@
             padding:5px;
             background-color: rgb(223, 200, 153);
         }
+        .holes{
+            position: absolute; width: 12.5%;background-color: rgb(214, 172, 117); padding:0px;
+        }
+        .stoneButton{
+            position:absolute;
+            top:0px;
+            border:none;
+            background-color: rgb(117, 111, 102);
+        }
         #HiddenBamboo{
+            width: 90%;
             padding-bottom:10px;
             position: absolute;
         }
@@ -37,7 +47,7 @@
         }
         #popupIntroductions{
             display: none;
-            width: 1200px;
+            width: 12000px;
         }
         #ButtonContinue{
             display: none;
@@ -49,7 +59,7 @@
             margin-left: 30%;
             background-color: rgb(255, 223, 175);
             position: fixed; 
-            bottom:15%;
+            bottom:25%;
             display: none;
         }
         @keyframes displaymodual{0%{background-color: rgb(0, 0, 0, 0.01);}
@@ -64,7 +74,7 @@
         }
         @keyframes MasterEmmett{
             0%{bottom:-100%;}
-            100%{bottom:15%;}
+            100%{bottom:25%;}
         }
         @keyframes MancalaBoard{
             0%{bottom:-100%};
@@ -72,7 +82,7 @@
         }
         @keyframes Hat{
             0%{bottom:-33%;}
-            100%{bottom:60%;}
+            100%{bottom:70%;}
         }
         /*backwards @keyframes*/
         @keyframes PopupB{
@@ -130,15 +140,15 @@
         </div>    
     </div>
     <div id="popupIntroductions" style="bottom:0px; position:fixed; display: none;">
-        <div id="mountainIntroductionOne" style="position: absolute; bottom:0px;/*display: none;*/">
-            <svg width="600" height="200">
+        <div id="mountainIntroduction" style="position: absolute; bottom:0px;">
+        <!--<svg width="600" height="200">
                 <polygon points="150,0 0,200 300,200" style="fill:rgb(200, 223, 155)"></polygon>
                 <polygon points="50,45 100,50 150,50 250,200 0,200" style="fill:yellowgreen;"></polygon>
                 <polygon points="500,0 300,200 600,200" style="fill:yellowgreen"></polygon>
-            </svg>
+            </svg>-->
         </div>
         <div id="bambooIntroduction" style="position: absolute; bottom: 0px;">
-            <svg height="300" width="57">
+            <!--<svg height="300" width="57">
                 <rect height="400" width="51" style="fill:rgb(182, 236, 112)"></rect>
             </svg>
             <svg height="310" width="54">
@@ -162,8 +172,24 @@
             <svg height="308" width="57">
                 <rect height="400" width="47" style="fill:rgb(190, 240, 124)"></rect>
             </svg>
+            <svg height="314" width="57">
+                <rect height="400" width="45" style="fill:rgb(191, 233, 135)"></rect>
+            </svg>-->
         </div>
         <div id="pandas" style="bottom:0px; position: absolute;  left:10px">
+            <!--Will show up with animations-->
+            <!--panda one-->
+            <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
+                <rect style="fill:rgb(34, 34, 34)" height="200" width="100"></rect>
+            </svg><!--The white body--><svg class="pandasSvg" height="200" width="150">
+                <rect style="fill:floralwhite;" height="150" width="150"></rect>
+            </svg><!--Black leg two--><svg class="pandasSvg" height="200" width="50">    
+                <rect style="fill:rgb(34, 34, 34)" height="200" width="50"></rect>
+            </svg><!--The head--><svg class="pandasSvg" height="200" width="150">    
+                <rect style="fill:floralwhite" height="150" width="150"></rect>
+            </svg>
+        </div>
+        <div id="pandaTwo" style="bottom:100px; position: absolute;  left:400px; transform: rotate(270deg);">
             <!--Will show up with animations-->
             <!--panda one-->
             <svg class="pandasSvg" height="200" width="50"><!--The first black leg-->
@@ -186,37 +212,94 @@
             <div style="height: 1%; padding-top:1px; width:6%; position: absolute; background-color: black; left:47%; bottom:15%">
             </div>
         </div>
-        <div id="coneHat" style="position: fixed; margin-left: 25%; bottom:60%;display: none;">
+        <div id="coneHat" style="position: fixed; margin-left: 25%; bottom:70%;display: none;">
             <!--hat must be resized to fit-->
         </div>
     </div>
-    <div>
-        <div id="mancalaBoard" style=
-        "background-color: rgb(214, 167, 105); height: 20%; width:60%; margin-left: 20%; bottom: 0px; position: fixed; display: none;">
+    <div id="mancalaBoard" style="background-color:burlywood; height: 25%; width:80%; margin-left: 10%; bottom: 5px; position: fixed; display: none;">
+        <div class="holes" style="border-radius: 50%;height:100%; left:0px">
+            <h1 class="holes" id="PointsHoleMaster">Master Emmett's stones</h1>
         </div>
-    </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 12.5%; height: 50%;">
+            <h1 id="Hole1" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button1" onclick="holeNumber=0;Play();">pick stones...</button>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 25%; height: 50%;">
+            <h1 id="Hole2" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button2" onclick="holeNumber=1;Play();">pick stones...</button>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 37.5%; height: 50%;">
+            <h1 id="Hole3" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button3" onclick="holeNumber=2;Play();">pick stones...</button>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 50%; height: 50%;">
+            <h1 id="Hole4" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button4" onclick="holeNumber=3;Play();">pick stones...</button>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left:62.5%; height: 50%;">
+            <h1 id="Hole5" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button5" onclick="holeNumber=4;Play();">pick stones...</button>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 75%; height: 50%;">
+            <h1 id="Hole6" class="StoneHoles"></h1>
+            <button class="stoneButton" id="button6" onclick="holeNumber=5;Play();">pick stones...</button>
+        </div>
+        <!--bottom holes (of Master Emmett)-->
+        <div class="holes" style="border-radius: 50%; margin-left: 12.5%; height: 50%; bottom:0px;">
+            <h1 id="Hole12" class="StoneHoles"></h1>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 25%; height: 50%;bottom:0px;">
+            <h1 id="Hole11" class="StoneHoles"></h1>
+        </div>
+        <div class="holes"  style="border-radius: 50%; margin-left: 37.5%; height: 50%;bottom:0px;">
+            <h1 id="Hole10" class="StoneHoles"></h1>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 50%; height: 50%;bottom:0px;">
+            <h1 id="Hole9" class="StoneHoles"></h1>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left:62.5%; height: 50%;bottom:0px;">
+            <h1 id="Hole8" class="StoneHoles"></h1>
+        </div>
+        <div class="holes" style="border-radius: 50%; margin-left: 75%; height: 50%;bottom:0px;">
+            <h1 id="Hole7" class="StoneHoles"></h1>
+        </div>
+        <div class="holes"  style="border-radius: 50%;height: 100%; right:0px;">
+            <h1 class="holes" id="PointsHolePlayer">Your stones</h1>
+        </div>
+    </div>    
+    <h1 id="hand" style="position: fixed; bottom:0px;"></h1>
+    <h1 id="Turn" style="position: fixed; bottom:55%; left:73%"></h1>
+    <h1 id="TurnCommentary" style="position: fixed;"></h1>
     <script>
         var Modual=document.getElementById("displaybackground");
         var HiddenBamboo=document.getElementById("burlyWoodMessage");
         var popup=document.getElementById("popupIntroductions");
         var coneHat=document.getElementById("coneHat");
         var Head=document.getElementById("head");
-        var Board=document.getElementById("mancalaBoard")
+        var Board=document.getElementById("mancalaBoard");
         var b="block";
+        var holeNumber=null;
+        var StonesInHand;
+        var PlayerStones=0;
+        var MasterStones=0;
+        var holeValues=[4,4,4,4,4,4,4,4,4,4,4,4];
+        var counter=0;
+        var colorAdjust=0;
         Resize();
         BambooCreate();
         function BambooCreate(){
             var w=0;
             var wTwo=0;
+            var wThree=0;
             var i=0;
             while(i<100){
                 var a=(window.innerHeight-Math.floor(Math.random()*50));
                 var b=Math.floor(Math.random()*20+10);
                 document.getElementById("bambooBackground").innerHTML+=
                 "<div style='bottom:0px; position:fixed; left:"+(w+b)+
-                "px'><svg height="+a+" width='50'><rect height='"+a+"' width='50' style='fill:rgb("+
-                [Math.floor(Math.random()*10+163), Math.floor(Math.random()*10+195),Math.floor(Math.random()*10+100)]+")'></rect></svg></div>";
-                w+=50+b;
+                "px'><svg height="+a+" width='35'><rect height='"+a+"' width='35' style='fill:rgb("+
+                [Math.floor(Math.random()*10+173), Math.floor(Math.random()*10+175),Math.floor(Math.random()*10+105)]+")'></rect></svg></div>";
+                w+=35+b;
                 i++;
             };
             i=0;
@@ -225,22 +308,24 @@
                 var b=Math.floor(Math.random()*20+10);
                 document.getElementById("bambooBackground").innerHTML+=
                 "<div style='bottom:0px; position:fixed; left:"+(wTwo+b)+
-                "px'><svg height="+a+" width='35'><rect height='"+a+"' width='35' style='fill:rgb("+
-                [Math.floor(Math.random()*10+173), Math.floor(Math.random()*10+175),Math.floor(Math.random()*10+105)]+")'></rect></svg></div>";
-                wTwo+=35+b;
+                "px'><svg height="+a+" width='50'><rect height='"+a+"' width='50' style='fill:rgb("+
+                [Math.floor(Math.random()*10+163), Math.floor(Math.random()*10+195),Math.floor(Math.random()*10+100)]+")'></rect></svg></div>";
+                wTwo+=50+b;
                 i++;
             };
-            while(i<100){
-                var a=(100-Math.floor(Math.random()*50));
-                var b=Math.floor(Math.random()*20+10);
+            for(a=0; a<6; a++){
                 document.getElementById("bambooIntroduction").innerHTML+=
-                "<div style='bottom:0px; position:fixed; left:"+(wTwo+b)+
-                "px'><svg height="+a+" width='35'><rect height='"+a+"' width='35' style='fill:rgb("+
-                [Math.floor(Math.random()*10+173), Math.floor(Math.random()*10+175),Math.floor(Math.random()*10+105)]+")'></rect></svg></div>";
-                wTwo+=35+b;
-                i++;
+                '<svg height="300" width="57"><rect height="400" width="51" style="fill:rgb(182, 236, 112)"></rect></svg>'
+                +'<svg height="310" width="54"><rect height="400" width="39" style="fill:rgb(183, 207, 93)"></rect></svg>'
+                +'<svg height="285" width="58"><rect height="400" width="40" style="fill:rgb(179, 216, 132)"></rect></svg>'
+                +'<svg height="314" width="57"><rect height="400" width="45" style="fill:rgb(191, 233, 135)"></rect></svg>'
+                +'<svg height="304" width="59"><rect height="400" width="46" style="fill:rgb(195, 207, 124)"></rect></svg>';
+                document.getElementById("mountainIntroduction").innerHTML+=
+                '<svg width="600" height="200" id="mountainsSvgFour">'
+                +'<polygon points="150,0 0,200 300,200" style="fill:yellowgreen;"></polygon>'
+                +'<polygon points="300,50 200,200 600,200" style="fill:rgb(207, 231, 159)"></polygon>'
+                +'<polygon points="450,0 300,200 600,200" style="fill:rgb(163, 196, 99)"></polygon></svg>';
             };
-
         };
         function Resize(){
             //sets the position + size of objects
@@ -251,9 +336,6 @@
                 +"<polygon style='fill:rgb(190, 160, 81)' points='"
                 +[width/2,0]+" "+[width, height]+" "+[0, height]+"'></polygon>"
                 +"</svg>";
-            Board.innerHTML=
-            //
-            ""
 
         }
         var TimeInterval = setTimeout(Popups, 500);
@@ -292,7 +374,115 @@
             Head.style.display=b;
             Board.style.animationName="MancalaBoard";
             Board.style.display=b;
-            Board.style.animationDuration="4s"
+            Board.style.animationDuration="4s";
+            setTimeout(PickTurn, 5500);
+        };
+        for(i=1;i<=12; i++){
+            document.getElementById("Hole"+i).innerHTML=holeValues[i-1];
+        };
+        function PickTurn(){
+            if(Math.random()>0.5){
+                MasterTurn();
+            }else{
+                Buttons();
+            };
+            document.getElementById("PointsHolePlayer").innerHTML=PlayerStones;
+            document.getElementById("PointsHoleMaster").innerHTML=MasterStones;
+        };
+        function Buttons(){
+            for(i=1; i<=12; i++){
+                document.getElementById("Hole"+i).style.display="block"
+            }
+        }
+        function Play(){
+            document.getElementById("TurnCommentary").innerHTML="Your Turn";
+            if(counter==0){
+                StonesInHand=holeValues[holeNumber];//set the stones in hand to the amount in the chosen hole
+                holeValues[holeNumber]=0; //set hole to none as if player took all stones
+            }
+            if(counter<StonesInHand){
+                holeValues[DownToOne(counter+holeNumber+1)]+=1//one stone gets dropped into counter until stones in hand run out
+                document.getElementById("hand").innerHTML=StonesToNumbers(StonesInHand-counter);
+                counter++;
+                setTimeout(Play, 500);//allows time until next drop
+                //does not continue
+            }else{
+                counter=0;
+                NewHole=DownToOne(holeNumber+StonesInHand); //the new holeNumber (hole to be picked) is how far the stone went from original stone
+                if(holeValues[NewHole]>1){//repeat if there are stones already in hole
+                    holeNumber=NewHole; 
+                    Play();
+                }else{ //end turn
+                    setTimeout(MasterTurn, Math.random()*10+1);
+                    counter=0;
+                };
+            };
+            for(i=1;i<=12; i++){
+                document.getElementById("Hole"+i).innerHTML=StonesToNumbers(holeValues[i-1]);
+            };
+        };
+        function MasterTurn(){
+            holeNumber=Math.floor(Math.random()*6)+5;
+            document.getElementById("TurnCommentary").innerHTML="Master Emmett's turn";
+            if(Math.random>0.8)document.getElementById("Turn").innerHTML="...";
+            if(Math.random>0.6)document.getElementById("Turn").innerHTML="*chuckles*";
+            if(Math.random>0.2)document.getElementById("Turn").innerHTML="";
+            if(Math.random<=0.2)document.getElementById("Turn").innerHTML="hmmmm...";
+            document.getElementById("PointsHolePlayer").innerHTML=PlayerStones;
+            document.getElementById("PointsHoleMaster").innerHTML=MasterStones;
+            if(counter==0){
+                StonesInHand=holeValues[holeNumber];//set the stones in hand to the amount in the chosen hole
+                holeValues[holeNumber]=0; //set hole to none as if player took all stones
+            };
+            if(counter<StonesInHand){
+                holeValues[DownToOneMaster(counter+holeNumber+1)]+=1;//one stone gets dropped into counter until stones in hand run out
+                document.getElementById("hand").innerHTML=StonesToNumbers(StonesInHand-counter);
+                counter++;
+                setTimeout(MasterTurn, 500);//allows time until next drop
+                //does not continue
+            }else{
+                counter=0;
+                NewHole=DownToOneMaster(holeNumber+StonesInHand); //the new holeNumber (hole to be picked) is how far the stone went from original stone
+                if(holeValues[NewHole]>1){//repeat if there are stones already in hole
+                    holeNumber=NewHole; 
+                    MasterTurn();
+                }else{
+                    Play();
+                    counter=0;
+                };
+            };
+            for(i=1;i<=12; i++){
+                document.getElementById("Hole"+i).innerHTML=StonesToNumbers(holeValues[i]);
+            };
+        };
+        function DownToOneMaster(Master){
+            if(Master==5){
+                if(StonesInHand-counter>1){
+                    MasterStones++;
+                    StonesInHand--;
+                    return 5;
+                };
+            };
+            if(Master>=12){
+                return Master-12;
+            };
+            return Master;
+        }
+        function DownToOne(Player){
+            if(Player==5){
+                if(StonesInHand-counter>1){
+                    PlayerStones++;
+                    StonesInHand--;
+                    return 5;
+                };
+            };
+            if(Player>=12){
+                return Player-12;
+            };
+            return Player;
+        };
+        function StonesToNumbers(Stones){
+            return Stones;
         }
     </script>
 </body>
