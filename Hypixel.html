@@ -11,7 +11,7 @@
         <button id="right" onmousedown="MouseDown='yes'; rightWays();" onmouseup="MouseDown = 'no'" style="position:fixed; bottom:10%; right:10%;"><h1>right</h1></button>
         <script>
             var Page = document.getElementById("entirePage");
-            var playerPosition = {x:4, y:0}; //side, up
+            var playerPosition = {x:4, y:0}; //position of view to be changed by left and right buttons (x:side, y:up)
             var PageInterval = setInterval(loadPage, 20); //load the page at a rate that is smooth and fast
             var MouseDown = "no"
             var Objects = [ //the lists of what is at the "x" (side) position of y position
@@ -21,27 +21,28 @@
             ]
             function leftWays(){
                 playerPosition.x -= 0.1;
-                if(MouseDown == "yes") setTimeout(leftWays, 20);
+                //if(MouseDown == "yes") setTimeout(leftWays, 20);
             }
             function rightWays(){
                 playerPosition.x += 0.1;
-                if(MouseDown == "yes") setTimeout(rightWays, 20);
+                //if(MouseDown == "yes") setTimeout(rightWays, 20);
             }
             function loadPage(){
                 var pageData = "";
-                for(y=playerPosition.y; y<=playerPosition.y + 2; y++){ //change which y position is being changed
-                    for(x=playerPosition.x; x<=playerPosition.x + 10; x++){
-                        if(Objects[R(y)][R(x)]=="wool"){
+                for(i = -1, y = i+playerPosition.y; y <= playerPosition.y + 2 + 1; i++, y = i+playerPosition.y){ //while player's position - 1 is smaller than
+                    for(a = -1, x = i+playerPosition.x; x <= playerPosition.x + 10 + 1; a++, y = a+playerPosition.y){
+                        if(Objects[R(y)][R(x)] == "wool"){
                             pageData += 
                                 "<div style='position:absolute; background-color:white; width:10%; height:10%; left:" + 
-                                ((R(x - playerPosition.x) + ((x - R(playerPosition.x))) * 10)) + "%; top:" + ((y - playerPosition.y) * 10) + "%;'></div>"; //page starts with the top corner of the screen
+                                (R(x - playerPosition.x) * 10 + (playerPosition.x - R(playerPosition.x))) + "%; top:" +
+                                ((y - playerPosition.y) * 10) + "%;'></div>"; //page loading starts with the top corner of the screen
                         }
                     }
                 }
                 Page.innerHTML = pageData;
             }
             function R(number){
-                return Math.floor(number);
+                return Math.floor(number); //round down
             }
         </script>
     </body>
