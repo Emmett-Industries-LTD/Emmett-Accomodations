@@ -11,30 +11,37 @@
         <button id="right" onmousedown="MouseDown='yes'; rightWays();" onmouseup="MouseDown = 'no'" style="position:fixed; bottom:10%; right:10%;"><h1>right</h1></button>
         <script>
             var Page = document.getElementById("entirePage");
-            var playerPosition = {x:4, y:0}; //position of view to be changed by left and right buttons (x:side, y:up)
+            var playerPosition = {x:4, y:0, z:0}; //position of view to be changed by left and right buttons (x:side, y:up)
             var PageInterval = setInterval(loadPage, 20); //load the page at a rate that is smooth and fast
             var MouseDown = "no"
             var Objects = [ //the lists of what is at the "x" (side) position of y position
+                ["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"], //list of the y position 0, containing its x positions
+                ["none","none","none","none","none","none","none","none","none","none","wool","wool","wool","wool","wool","none","wool","none","none","none"],
+                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","wool","wool","wool","wool","none","none","none","none","wool"],
                 ["wool","wool","wool","wool","none","none","none","none","none","none","wool","wool","wool","wool","none","none","none","none","none","none"], //list of the y position 0, containing its x positions
                 ["wool","wool","wool","wool","wool","none","none","none","none","none","wool","wool","wool","wool","wool","none","wool","none","none","none"],
-                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","wool","wool","wool","wool","none","none","none","none","wool"]
-            ]
+                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","wool","wool","wool","wool","none","none","none","none","wool"],
+                ["wool","wool","wool","wool","none","none","none","none","none","none","wool","wool","wool","wool","none","none","none","none","none","none"], //list of the y position 0, containing its x positions
+                ["wool","wool","wool","wool","wool","none","none","none","none","none","wool","wool","wool","wool","wool","none","wool","none","none","none"],
+                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","wool","wool","wool","wool","wool","wool","none","none","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+            ];
             function leftWays(){
-                playerPosition.x -= 0.1;
-                //if(MouseDown == "yes") setTimeout(leftWays, 20);
+                playerPosition.x -= 0.05;
+                if(MouseDown == "yes") setTimeout(leftWays, 20);
             }
             function rightWays(){
-                playerPosition.x += 0.1;
-                //if(MouseDown == "yes") setTimeout(rightWays, 20);
+                playerPosition.x += 0.05;
+                if(MouseDown == "yes") setTimeout(rightWays, 20);
             }
             function loadPage(){
                 var pageData = "";
-                for(i = -1, y = i+playerPosition.y; y <= playerPosition.y + 2 + 1; i++, y = i+playerPosition.y){ //while player's position - 1 is smaller than
-                    for(a = -1, x = i+playerPosition.x; x <= playerPosition.x + 10 + 1; a++, y = a+playerPosition.y){
-                        if(Objects[R(y)][R(x)] == "wool"){
+                for(y = 0; y <= R(playerPosition.y) + 9; y++){
+                    for(x = 0; x <= R(playerPosition.x) + 11; x++){ 
+                        if(Objects[y][x] == "wool"){
                             pageData += 
                                 "<div style='position:absolute; background-color:white; width:10%; height:10%; left:" + 
-                                (R(x - playerPosition.x) * 10 + (playerPosition.x - R(playerPosition.x))) + "%; top:" +
+                                ((R(x - playerPosition.x) - (playerPosition.x - R(playerPosition.x))) * 10 ) + "%; top:" +
                                 ((y - playerPosition.y) * 10) + "%;'></div>"; //page loading starts with the top corner of the screen
                         }
                     }

@@ -62,7 +62,7 @@
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=55;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=57;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                     "sleep",
@@ -1550,11 +1550,11 @@
                     "read",
                     "lunch",
                     "coding",
-                    "khan academy",
+                    "khan academy skills",
                     "piano",
-                    "finish project",
-                    "bike",
-                    "something new",
+                    "cultural jazz",
+                    "bike adventure",
+                    "coding",
                     "dinner",
                     "hangout with mom",
                     "journal",
@@ -1562,7 +1562,87 @@
                     "sleep",
                     "sleep",
                     "sleep"
-                ]
+                ],
+                [
+                    
+                   "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "plan",
+                    "plan",
+                    "acedemics with dad",
+                    "lunch bike",
+                    "bike",
+                    "khan academy skills",
+                    "minecraft",
+                    "bedwars with hewitt and juliet",
+                    "piano",
+                    "dinner",
+                    "hangout with mom",
+                    "journal",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                ],
+                [
+                    
+                   "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "read",
+                    "chinese",
+                    "chinese",
+                    "lunch",
+                    "project",
+                    "khan academy skills",
+                    "skills",
+                    "piano",
+                    "bike",
+                    "dinner watch",
+                    "outside catch ",
+                    "walk",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                ],
+                [    
+                    "sleep",
+                     "sleep",
+                     "sleep",
+                     "sleep",
+                     "sleep",
+                     "sleep",
+                     "breakfast",
+                     "coding",
+                     "skills",
+                     "yard with dad",
+                     "acedemics with dad",
+                     "lunch",
+                     "project",
+                     "khan academy skills",
+                     "writing skills",
+                     "piano",
+                     "bike",
+                     "dinner watch",
+                     "outside catch ",
+                     "walk",
+                     "calm",
+                     "sleep",
+                     "sleep",
+                     "sleep"
+                 ],
                 //Add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
                 //And also remember to record real events here
             ];
@@ -1654,7 +1734,7 @@
                 scheduled={brown:0, pink:0, green:0, beige:0, gold:0,purple:0, violet:0, yellowgreen:0, turquoise:0,
                     hotpink:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, whitesmoke:0}; //list of achievements
                 var ScheduledNameTags=["Biking", "Pipecleaners and legos","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social,", "Reading and Journal",
-                    "Test Prep And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
+                    "Test Prep, Acedemic And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
                 var goals={brown:1, pink:"none", green:0.33, beige:0.75, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
                     hotpink:1, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
@@ -1673,10 +1753,10 @@
                     /**/
                     if(goals[color]!="none"){
                         DivContainer+=
-                            "<div class='A' style='background-color:" + color + "; width:" + (Math.floor(goals[color]*(ChooseDay+1)))*250/(ChooseDay+1) + "px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>" + ScheduledNameTags[i] + "</i>"
-                            + " Goal: " + goals[color]+S(" hour",goals[color]) + "  per day, or " + Math.floor((goals[color]*(ChooseDay+1))) + " hours spent in plan already. Reached goal: <i style='background-color:"
+                            "<div class='A' style='background-color:" + color + "; width:" + (Math.floor(goals[color] * (ChooseDay+1))) * 250 / (ChooseDay+1) + "px; height: 75px;float:left;'></div><h1 style='position: absolute;'><i>" + ScheduledNameTags[i] 
+                            + " Goal </i>: " + goals[color] + S(" hour", goals[color]) + "  per day, or " + Math.floor((goals[color] * (ChooseDay + 1))) + " hours spent in plan already. Reached goal: <i style='background-color:"
                             + c + ";'>"
-                            + (Math.floor((goals[color]*(ChooseDay+1)))-weekChoosen<=scheduled[color]) + "</i></h1></div><br><br><br><br><br>";
+                            + (Math.floor((goals[color] * (ChooseDay + 1)))-weekChoosen <=scheduled[color]) + "</i></h1></div><br><br><br><br><br>";
                         if(Math.floor((goals[color] * (ChooseDay + 1))) - weekChoosen <= scheduled[color]){
                             Achieved+=1;
                         }
@@ -1762,7 +1842,9 @@
             }
             function GetColorValues(a) { //returns colors for activity
                 var b=a.toUpperCase(); //converts to not-case-sensitive
-                if(b.search("BIKE")>=0||b.search("BIKING")>=0){
+                if(b.search("OTHER")>=0){
+                    return "whitesmoke";
+                }else if(b.search("BIKE")>=0||b.search("BIKING")>=0){
                     return "brown";
                 }else if(b.search("PIPECLEANERS")>=0||b.search("LEGO")>=0||b.search("PROJECT")>=0||b.search("MAKE")>=0){
                     return "pink";
