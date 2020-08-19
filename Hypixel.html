@@ -6,25 +6,27 @@
     <body>
         <div id="entirePage" style="position: fixed; background-color: lightblue; bottom:0%; left:0%; width:100%; height: 100%;">
         </div>
+        <div id="player" style="position: fixed; background-color: red; bottom:0%; left:45%; width:10%; height: 15%;">
+        </div>
         <button id="left" onmousedown="MouseDown='yes'; leftWays();" onmouseup="MouseDown = 'no'" style="position:fixed; bottom:10%; right:20%;"><h1>left</h1></button>
-
         <button id="right" onmousedown="MouseDown='yes'; rightWays();" onmouseup="MouseDown = 'no'" style="position:fixed; bottom:10%; right:10%;"><h1>right</h1></button>
         <script>
+            var Player = document.getElementById("player");
             var Page = document.getElementById("entirePage");
             var playerPosition = {x:4, y:0, z:0}; //position of view to be changed by left and right buttons (x:side, y:up)
             var PageInterval = setInterval(loadPage, 20); //load the page at a rate that is smooth and fast
             var MouseDown = "no"
             var Objects = [ //the lists of what is at the "x" (side) position of y position
                 ["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"], //list of the y position 0, containing its x positions
-                ["none","none","none","none","none","none","none","none","none","none","wool","wool","wool","wool","wool","none","wool","none","none","none"],
-                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","wool","wool","wool","wool","none","none","none","none","wool"],
-                ["wool","wool","wool","wool","none","none","none","none","none","none","wool","wool","wool","wool","none","none","none","none","none","none"], //list of the y position 0, containing its x positions
-                ["wool","wool","wool","wool","wool","none","none","none","none","none","wool","wool","wool","wool","wool","none","wool","none","none","none"],
-                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","wool","wool","wool","wool","none","none","none","none","wool"],
-                ["wool","wool","wool","wool","none","none","none","none","none","none","wool","wool","wool","wool","none","none","none","none","none","none"], //list of the y position 0, containing its x positions
-                ["wool","wool","wool","wool","wool","none","none","none","none","none","wool","wool","wool","wool","wool","none","wool","none","none","none"],
-                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","wool","wool","wool","wool","wool","wool","none","none","wool"],
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+                ["none","none","none","none","none","none","none","none","none","none","wool","none","none","none","none","none","none","none","none","none"],
+                ["wool","none","none","none","none","none","none","none","none","none","wool","none","none","none","none","none","none","none","none","none"],
+                ["wool","none","none","none","none","none","none","none","none","none","wool","none","none","none","none","none","none","none","none","none"], //list of the y position 0, containing its x positions
+                ["wool","wool","none","none","none","none","none","none","none","none","wool","none","none","none","none","none","none","none","none","none"],
+                ["wool","wool","wool","none","none","none","none","none","none","none","wool","none","wool","wool","wool","none","none","none","none","none"],
+                ["wool","wool","wool","wool","none","none","none","none","none","none","wool","none","none","wood","none","none","wool","none","none","none"], //list of the y position 0, containing its x positions
+                ["wool","wool","wool","wool","wool","none","none","none","none","none","wool","none","none","wood","none","none","wool","none","none","none"],
+                ["wool","wool","wool","wool","wool","wool","none","none","none","none","wool","none","none","wood","none","wool","wool","none","none","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wood","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt"],
             ];
             function leftWays(){
                 playerPosition.x -= 0.05;
@@ -43,6 +45,16 @@
                                 "<div style='position:absolute; background-color:white; width:10%; height:10%; left:" + 
                                 ((R(x - playerPosition.x) - (playerPosition.x - R(playerPosition.x))) * 10 ) + "%; top:" +
                                 ((y - playerPosition.y) * 10) + "%;'></div>"; //page loading starts with the top corner of the screen
+                        }else if(Objects[y][x]=="wood"){
+                            pageData += 
+                                "<div style='position:absolute; background-color:burlywood; width:10%; height:10%; left:" + 
+                                ((R(x - playerPosition.x) - (playerPosition.x - R(playerPosition.x))) * 10 ) + "%; top:" +
+                                ((y - playerPosition.y) * 10) + "%;'></div>";
+                        }else if(Objects[y][x]=="dirt"){
+                            pageData += 
+                                "<div style='position:absolute; background-color:brown; width:10%; height:10%; left:" + 
+                                ((R(x - playerPosition.x) - (playerPosition.x - R(playerPosition.x))) * 10 ) + "%; top:" +
+                                ((y - playerPosition.y) * 10) + "%;'></div>";
                         }
                     }
                 }
