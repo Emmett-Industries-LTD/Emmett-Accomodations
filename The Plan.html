@@ -58,11 +58,32 @@
         <script>
             var weekChoosen=0;
             var ChartOne;
+            /*
+            var reload = setInterval(() => {
+                dateN();
+                if(functionName=="Y"){
+                    dateY();
+                }else if(functionName=="T"){
+                    dateT();
+                }else if(functionName=="M"){
+                    dateM();
+                }else if(functionName=="A"){
+                    dateA();
+                }else if(functionName=="F"){
+                    Scheduled();
+                } 
+            }, 15); 
+            //*/
             var functionName="N";
             var d=new Date();
             var lineBrakes=0;
             var scheduled;
-            var ChooseDay=58;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var otherGoals =
+                "<br>Other Goals: <br> <li>My reading rate goal is 64 lines per minute (double original rate) in the Book of Answers format. "
+                + "Original speed was 32 lpm. Use the BYU online free course to help reading speed. Read from the Book of answers</li>"
+                + "<li>Sat test prep. With help from dad. Use tests</li>"
+                + "<li>finish reading, sat, and other goals by august 31</li>";
+            var ChooseDay=59;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                     "sleep",
@@ -1627,7 +1648,7 @@
                     "sleep",
                     "breakfast",
                     "coding",
-                    "skills",
+                    "reading skills part one",
                     "acedemics with dad",
                     "khan academy math skills",
                     "lunch",
@@ -1651,17 +1672,45 @@
                     "sleep",
                     "sleep",
                     "sleep",
+                    "sleep",
                     "breakfast",
                     "coding",
-                    "skills",
+                    "skills set reading goal",
                     "acedemics with dad",
-                    "khan academy math skills",
+                    "lunch bike",
+                    "bike",
+                    "khan academy skills",
+                    "skills",
+                    "piano",
+                    "bike",
+                    "dinner watch",
+                    "hangout with mom",
+                    "outside catch",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep"
+                 ],
+                 //day 60 of the plan august 21 2020
+                 [
+
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding",
+                    "skills reading section 2",
+                    "acedemics with dad",
                     "lunch",
                     "project",
                     "khan academy skills",
                     "skills",
                     "piano",
-                    "bike",
+                    "read",
                     "dinner watch",
                     "outside catch",
                     "walk",
@@ -1669,7 +1718,7 @@
                     "sleep",
                     "sleep",
                     "sleep"
-                 ],
+                 ]
                 //Add new array everyday. The arrays should look like ["<insert item here>", "<insert item here>"], and 24 items per array.
                 //And also remember to record real events here
             ];
@@ -1760,8 +1809,8 @@
                 }
                 scheduled={brown:0, pink:0, green:0, beige:0, gold:0,purple:0, violet:0, yellowgreen:0, turquoise:0,
                     hotpink:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, whitesmoke:0}; //list of achievements
-                var ScheduledNameTags=["Biking", "Pipecleaners and legos","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social,", "Reading and Journal",
-                    "Test Prep, Acedemic And Skills", "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
+                var ScheduledNameTags=["Biking", "Pipecleaners and legos","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social","Reading and Journal", "Test Prep, Acedemic And Skills",  
+                    "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
                 var goals={brown:1, pink:"none", green:0.33, beige:0.75, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
                     hotpink:1, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
@@ -1794,9 +1843,8 @@
                         +S("hour", firstFew(scheduled[color]/(ChooseDay-1-weekChoosen)))+"per day</h1></div><br><br><br><br><br>";
                     Chart+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
                 }
-                document.getElementById("chart").innerHTML="<br><h1>Activity distributation</h1><br>" + Chart;
-                document.getElementById("More").innerHTML=DivContainer + "<h1>" + Achieved + "/11 goals achieved</h1>"
-                + "<br><h1>Other Goals: <br> <li>My reading rate goal is 50 lines per minute</li></h1>";
+                document.getElementById("chart").innerHTML = "<br><h1>Activity distributation</h1><br>" + Chart;
+                document.getElementById("More").innerHTML = (DivContainer) + "<h1>" + (Achieved) + "/11 goals achieved " + otherGoals + "</h1>";
                 Scheduled(); //two separate functions so exicution speed can bee faster when include line breaks is on
             }
             function Scheduled(){//function has a for loop which evaluates all the arrays and assigns color tags
@@ -1889,6 +1937,8 @@
                     return "yellowgreen";
                 }else if(b.search("READ")>=0||b.search("JOURNAL")>=0){
                     return "turquoise";
+                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0||b.search("TEST")>=0){
+                    return "hotpink";
                 }else if(b.search("WALK")>=0){
                     return "orange";
                 }else if(b.search("SLEEP")>=0||b.search("NAP")>=0||b.search("REST")>=0||b.search("CALM")>=0){
@@ -1899,8 +1949,6 @@
                     return "teal";
                 }else if(b.search("FOOD")>=0||b.search("LUNCH")>=0||b.search("BREAKFAST")>=0||b.search("DINNER")>=0||b.search("EAT")>=0){
                     return "tan";
-                }else if(b.search("CHINESE")>=0||b.search("CHESS")>=0||b.search("PRODIGY")>=0||b.search("TYPING")>=0||b.search("PIANO")>=0||b.search("SKILLS")>=0||b.search("TEST")>=0){
-                    return "hotpink";
                 }else{
                     return "whitesmoke";
                 }
