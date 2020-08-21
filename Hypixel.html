@@ -3,11 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hypixel server 3d</title>
 </head>
 <body>
+    <div id="entirePage" style="position: fixed; background-color: lightblue; bottom:0%; left:0%; width:100%; height: 100%;">
+    </div>
     <script>
-        
+        var page = document.getElementById("entirePage");
+        var WorldShow = setInterval(LoadWorld, 20); //loads world graphics every 20 milliseconds
+        var playerPosition = {x: 2, y:1, z:3}; //x position sideways, y position upwards downwards, z position backwards forwards 
+        var worldData = [
+            [//z backwards position 1
+                [//y up position 1
+                    [//x sideways axis position 1, of y up axis position 1, of z backwards axis position 1
+                        "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
+                    ]
+                ],
+                [//y up position 2
+                    [//x sideways axis position 1, of y up axis position 2, of z backwards axis position 1
+                        "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
+                    ]
+                ],
+                [
+                    [
+                        "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
+                    ]
+                ]
+            ],
+            [//z position 2
+                [//y position 1
+                    [//x position 1, of y axis position 2, of z axis position 2
+                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
+                    ]
+                ]
+            ],
+            [//z position 3
+                [//y position 1
+                    [
+                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
+                    ]
+                ]
+            ],
+            [//z position 4
+                [//y position 1
+                    [   
+                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
+                    ]
+                ]
+            ],
+            [//z position 5
+                [//y position 1
+                    [
+                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
+                    ]
+                ]
+            ],
+
+        ];
+        function LoadWorld(){
+            var pageInnerHTML = "";
+            for(z = playerPosition.z; z <= playerPosition.z + 3; z++){//
+                for(y = playerPosition.y; y <= playerPosition.z + 4; y++){//
+                    for(x = playerPosition.x - 2; x <= playerPosition.x + 2;x++){//center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
+                        if(worldData[1][1][x]=="wool"){
+                            pageInnerHTML += 
+                            "<div style='background-color:white; left:" + ((x * 10) - (playerPosition.x - 2)) + "%'>" +
+                                
+                            "</div>"
+                        }
+                    }
+                }
+            }
+            document.getElementById("Page").innerHTML = pageInnerHTML;
+        }
     </script>
 </body>
 </html>
