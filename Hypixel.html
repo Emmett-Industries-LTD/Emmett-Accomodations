@@ -15,74 +15,49 @@
         var worldData = [
             [//z backwards position 1
                 [//y up position 1
-                    [//x sideways axis position 1, of y up axis position 1, of z backwards axis position 1
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
-                    ]
+                //x sideways axis position 1, of y up axis position 1, of z backwards axis position 1
+                "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
                 ],
-                [//y up position 2
-                    [//x sideways axis position 1, of y up axis position 2, of z backwards axis position 1
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
-                    ]
-                ],
-                [
-                    [
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
-                    ]
-                ]
+                //y up position 2  //x sideways axis position 1, of y up axis position 2, of z backwards axis position 1
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
             ],
             [//z position 2
-                [//y position 1
-                    [//x position 1, of y axis position 2, of z axis position 2
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
-                    ]
-                ],
-                [//y up position 2
-                    [//x sideways axis position 1, of y up axis position 2, of z backwards axis position 2
-                    "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
-                    ]
-                ],
-                [
-                    [
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool",  
-                    ]
-                ]
+                //y position 1
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
             ],
-            [//z position 3
-                [//y position 1
-                    [
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
-                    ]
-                ]
+            [//z position 3//y position 1
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
             ],
             [//z position 4
-                [//y position 1
-                    [   
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
-                    ]
-                ]
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
             ],
             [//z position 5
-                [//y position 1
-                    [
-                        "wool","wool","wool","wool","wool","wool","wool","wool","wool"
-                    ]
-                ]
-            ],
+                //y position 1
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
+            ]
 
         ];
         function LoadWorld(){
             var pageInnerHTML = "";
-            for(z = playerPosition.z; z <= playerPosition.z + 3; z++){//
-                for(y = playerPosition.y; y <= playerPosition.y + 1; y++){//
-                    for(x = playerPosition.x - 2; x <= playerPosition.x + 2;x++){//center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
-                        if(worldData[z][y][x]=="wool"){
-                            pageInnerHTML += 
-                            "<div style='background-color:white; left:" + ((x * 10) - (playerPosition.x - 2)) + "%; position: fixed; width: 20%; height: 50%'>" +
-                                
-                            "</div>";
-                        }
+            for(z = playerPosition.z; z < playerPosition.z + 3; z++){//
+                for(y = playerPosition.y; y < playerPosition.y + 1; y++){//
+                    for(x = playerPosition.x - 2; x < playerPosition.x + 2;x++){//center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
+                        console.log("Stuff true")
                     }
                 }
+            }
+            console.log(worldData[0][0])
+            if(worldData[0][0][3]=="wool"){
+                console.log("hello")
+                pageInnerHTML += "stuff"
+                //"<div style='background-color:white; left:" + ((x * 10) - (playerPosition.x - 2)) + "%; position: absolute; width: 20%; height: 50%'>" +
+                //"</div>";
             }
             page.innerHTML = pageInnerHTML;
         }
