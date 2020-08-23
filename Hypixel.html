@@ -12,61 +12,261 @@
     <script>
         var page = document.getElementById("entirePage");
         var WorldShow = setInterval(LoadWorld, 20); //loads world graphics every 20 milliseconds
-        var playerPosition = {x: 2, y:1, z:2}; //x position sideways, y position upwards downwards, z position backwards forwards 
+        var playerPosition = {x: 7, y:1, z:0}; //x position sideways, y position upwards downwards, z position backwards forwards 
         var worldData = [
-            [//z backwards position 1
-                [//y up position 1
-                //x sideways axis position 1, of y up axis position 1, of z backwards axis position 1
-                "wool","wool","wool","wool","wool","wool","dirt","wool","wool",  
-                ],
-                //y up position 2  //x sideways axis position 1, of y up axis position 2, of z backwards axis position 1
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
+            //z backwards position 1//y up position 1
+            [//x sideways axis position 1, of y up axis position 1, of z backwards axis position 1       
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                 //y up position 2  //x sideways axis position 1, of y up axis position 2, of z backwards axis position 1
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
             ],
             [//z position 2
                 //y position 1
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
             ],
             [//z position 3//y position 1
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
             ],
             [//z position 4
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"]
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
             ],
             [//z position 5
-                //y position 1
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool"],
-                ["wool","wool","wool","wool","wool","dirt","wool","wool","wool"]
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+            ],
+            [//z position 6
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+            ],
+            [//z position 6
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+            ],
+            [//z position 6
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+            ],
+            [//z position 6
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+            ],
+            [//z position 6
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
             ]
-
         ];
         function LoadWorld(){
             var pageInnerHTML = "";
-            var threeDimentionalWorldValues = []; //another 3 dimentional array
-            for(z = playerPosition.z; z < playerPosition.z + 3; z++){//
+            var threeDimentionalWorldValues = [ //array scans a 10 x 10 x 10 box which the player can see
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]; //another 3 dimentional array
+            for(z = playerPosition.z; z < playerPosition.z + 10; z++){//
+                threeDimentionalWorldValues[z] = [[],[],[],[],[],[],[],[],[],[]]; //creates arrays for the y axis inside the z axis
                 for(y = playerPosition.y; y < playerPosition.y + 1; y++){//
-                    for(x = playerPosition.x - 2; x < playerPosition.x + 2;x++){//center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
-                        console.log("Stuff true");
+                    threeDimentionalWorldValues[z][y] = ["","","","","","","","","",""]; // the spaces for blocks inside the arays for the z and 
+                    for(x = playerPosition.x - 5; x < playerPosition.x + 5;x++) { // "playerPosition.x - 2" center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
                         if(worldData[z][y][x]=="wool"){
-                            pageInnerHTML +=
-                            "<div style='background-color:white; left:" + ((x * 10) - (playerPosition.x - 2)) + "%; position: fixed; width: 20%; height: 50%'>" +
-                                
-                            "</div>"
-                            //"<div style='background-color:white; left:" + ((x * 10) - (playerPosition.x - 2)) + "%; position: absolute; width: 20%; height: 50%'>" +
-                            //"</div>";
-                        }else if(worldData[z][y][x]=="dirt"){
-                            "<div style='background-color:brown; left:" + ((x * 10) - (playerPosition.x - 2)) + "%; position: fixed; width: 20%; height: 50%'>" +
-                                
-                            "</div>"
+                            threeDimentionalWorldValues[z][y][x]="wool"; //assigns values to blocks in the array of what player sees depending on what the  block is
+                        }else if(worldData[z][y][x]=="none"||worldData[z][y][x]==undefined){
+                            threeDimentionalWorldValues[z][y][x]="none";
                         }
                     }
                 }
             }
-            page.innerHTML = pageInnerHTML;
+            console.log(threeDimentionalWorldValues[3][0][0]);
+            //page.innerHTML = pageInnerHTML;
         }
     </script>
 </body>
