@@ -11,11 +11,11 @@
     <button></button>
     <script>
         var page = document.getElementById("entirePage");
-        var WorldShow = setInterval(LoadWorld, 20); //loads world graphics every 20 milliseconds
+        var WorldShow = setInterval(LoadWorld, 30); //loads world graphics every 20 milliseconds
         var playerPosition = {z:2, y:1, x: 7}; //x position sideways, y position upwards downwards, z position backwards forwards 
         var worldData = [
             //z backwards position 1//y up position 1
-            [//x sideways axis position 1, of y up axis position 1, of z backwards axis position 1       
+            [   //x sideways axis position 1, of y up axis position 1, of z backwards axis position 1       
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
                  //y up position 2  //x sideways axis position 1, of y up axis position 2, of z backwards axis position 1
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
@@ -61,9 +61,10 @@
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
             ],
+            //z 2, y 1, x 7
             [//z position 3//y position 1
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
-                ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
+                ["wool","wool","wood","wool","wool","wool","wool","wood","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
                 ["wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool","wool",],
@@ -328,7 +329,6 @@
             ]
         ];
         function LoadWorld(){
-            var pageInnerHTML = "";
             var threeDimentionalWorldValues = [[],[],[],[],[],[],[],[],[],[]]; //array scans a 10 x 10 x 10 box for the player to see //another 3 dimentional array
             for(z = playerPosition.z; z < playerPosition.z + 10; z++){//
                 threeDimentionalWorldValues[z - playerPosition.z] = [[],[],[],[],[],[],[],[],[],[]]; //creates arrays for the y axis inside the z axis
@@ -336,14 +336,31 @@
                     threeDimentionalWorldValues[z - playerPosition.z][y - playerPosition.y] = ["","","","","","","","","",""]; // the spaces for blocks inside the arays for the z and 
                     for(x = playerPosition.x - 5; x < playerPosition.x + 5;x++) { // "playerPosition.x - 2" center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
                         if(worldData[z][y][x]=="wool"){
-                            threeDimentionalWorldValues[z - playerPosition.z][y - playerPosition.y][(x - playerPosition.x) + 5]="wool"; //assigns values to blocks in the array of what player sees depending on what the  block is
+                            threeDimentionalWorldValues[z - playerPosition.z][y - playerPosition.y][(x - playerPosition.x) + 5] = "wool"; //assigns values to blocks in the array of what player sees depending on what the  block is
+                        }else if(worldData[z][y][x]=="wood"){
+                            threeDimentionalWorldValues[z - playerPosition.z][y - playerPosition.y][(x - playerPosition.x) + 5] = "wood";
                         }else if(worldData[z][y][x]=="none"||worldData[z][y][x]==undefined){
-                            threeDimentionalWorldValues[z][y][x]="none";
+                            threeDimentionalWorldValues[z - playerPosition.z][y - playerPosition.y][(x - playerPosition.x) + 5] = "none";
                         }
                     }
                 }
             }
-            console.log(threeDimentionalWorldValues[3][0][0]);
+            var pageInnerHTML = "";
+            var pageVeiwData = [[],[],[],[],[],[],[],[],[],[]]
+            for(z = 0; z < 10; z++){//how far in the block is
+                pageVeiwData[z] = [[],[],[],[],[],[],[],[],[],[]];
+                for(y = 0; y < 10; y++){
+                    pageVeiwData[z][y] = ["","","","","","","","","",""];
+                    for(x = 0; x < 10; x++){
+                        if(threeDimentionalWorldValues[z][y][x]=="wool"){
+                            
+                        }else if(threeDimentionalWorldValues[z][y][x]=="none"){
+
+                        }
+                    }
+                }
+            }
+            console.log(threeDimentionalWorldValues[0][0][0]);
             //page.innerHTML = pageInnerHTML;
         }
     </script>
