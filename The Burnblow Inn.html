@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Burnblow Inn</title>
+</head>
+<body>
+    <div id="entirePage" style="position:fixed;background-color: antiquewhite;top:0%;left: 0%; width: 100%; height: 100%;">
+    </div>
+    <h1 id="startingText" style="position: fixed; top:0px;">
+        Welcome to the Burnblow Inn, known for our soft large beds and lovely jovely wooden rooms, in south wales. It is the main Inn for the sailors, 
+        workers, and travlers who have a ten and a half silver pennies for the a stay. We invite you for a stay! 
+        Welcome to the year of 1750!
+    </h1>
+    <button onmousedown="down='yes';leftWays()" onmouseup="down='no';" id="buttonLeft" style="position: fixed; bottom:5%; right: 10%"><h1>Forward</h1></button>
+    <button onmousedown="down='yes';sideWaysLeft()" onmouseup="down='no';" id="buttonLeft" style="position: fixed; bottom:5%; right: 20%"><h1>Sideways left</h1></button>
+    <script>
+        var Page = document.getElementById("entirePage");
+        var loadPaging = setInterval(loadPage, 25); //loads page every few moments
+        var playerPosition = {y:9, x:9} //x and y positions
+        var View = 6; 
+        var threeDimentionalWorldValues;
+        var RayValues = {A:0, B:0, C:0, D:0, E:0, F:0, G:0, H:0, I:0, J:0, K:0, L:0, M:0, N:0, O:0, P:0, Q:0, R:0, S:0, T:0, U:0, V:0, W:0, X:0, Y:0, Z:0}
+        var BurnblowInnData = [
+            ["dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt"],
+            ["dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt"],
+            ["dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt"],
+            ["dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt"],
+            ["wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","wool","wool","wood","wool","wool","none","wood","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","wool","none","wood","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","wood","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+            ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
+        ];
+        function leftWays(){
+            playerPosition.x += 1;
+            if(down=="yes") setTimeout(leftWays, 25);
+        }
+        function sideWaysLeft(){
+            if(View<0) View = 47;
+            if(View>0) View -= 1;
+            if(down=="yes") setTimeout(sideWaysLeft, 25);
+        }
+        function loadPage(){
+            var PageInnerHTML = "";
+            threeDimentionalWorldValues = 
+            [[],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[]];
+            for(y = playerPosition.y - 5; y < playerPosition.y + 5; y += 0.1){
+                threeDimentionalWorldValues[((y - playerPosition.y) + 5) * 10] = 
+                ["","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","",""];
+                for(x = playerPosition.x - 5; x < playerPosition.x + 5; x += 0.1) { // "playerPosition.x - 5" center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
+                    threeDimentionalWorldValues[((y - playerPosition.y) + 5) * 10][((x - playerPosition.x) + 5) * 10] = 
+                        BurnblowInnData[Math.floor(playerPosition.y + 5)][Math.floor(playerPosition.x + 5)];
+                }
+            }
+            var middleView = rayCalculateChange(View);
+            //Page.innerHTML = PageInnerHTML;
+        }
+        function rayCalculate(veiwPoint){
+            if(veiwPoint >= 36){
+                return veiwPoint - 35;
+            }else if(veiwPoint >= 24){
+                return veiwPoint - 23;
+            }else if(veiwPoint >=12){
+                return veiwPoint - 11;
+            }else if(veiwPoint >= 1){
+                return veiwPoint;
+            }
+        }
+        function rayCalculateChange(veiw){
+
+        }
+    </script>
+</body>

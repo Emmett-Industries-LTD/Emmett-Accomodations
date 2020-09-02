@@ -83,7 +83,7 @@
                 + "Original speed was 32 lpm. Use the BYU online free course to help reading speed. Read from the Book of answers</li>"
                 + "<li>Sat test prep. With help from dad. Use tests</li>"
                 + "<li>finish reading, SAT, and other goals by august 31</li>";
-            var ChooseDay=65;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
+            var ChooseDay=72;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                     "sleep",
@@ -1845,9 +1845,193 @@
                     "piano",
                     "games with hewitt",
                     "dinner watch",
+                    "pipecleaners",
+                    "cultural jazz",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding",
+                    "reading",
+                    "acedemics with dad",
+                    "lunch",
+                    "tennis",
+                    "tennis",
+                    "tennis",
+                    "piano",
+                    "new buiscuits",
+                    "dinner watch",
+                    "project",
+                    "project with dad",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                //thursday aug 27 chooseday 68
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding",
+                    "reading",
+                    "acedemics with dad",
+                    "lunch",
+                    "tennis",
+                    "social camp",
+                    "tennis",
+                    "piano",
+                    "games with hewitt",
+                    "dinner watch",
                     "project",
                     "daddy time",
                     "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                //friday chooseday 69 august 28
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding",
+                    "reading",
+                    "acedemics with dad",
+                    "lunch",
+                    "tennis",
+                    "tennis",
+                    "tennis",
+                    "piano",
+                    "games with hewitt",
+                    "dinner watch",
+                    "movie",
+                    "movie",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "late breakfast watch",
+                    "mommy time",
+                    "reading",
+                    "lunch",
+                    "walk",
+                    "watch game with mom",
+                    "new camera",
+                    "outside",
+                    "games with hewitt",
+                    "dinner watch",
+                    "project",
+                    "read",
+                    "calm",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding",
+                    "skills",
+                    "lunch",
+                    "khan academy skills",
+                    "skills",
+                    "skills",
+                    "piano",
+                    "games with hewitt",
+                    "dinner watch",
+                    "project",
+                    "tennis",
+                    "walk",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "plan", 
+                    "skills",
+                    "skills",
+                    "lunch",
+                    "khan academy skills",
+                    "skills Reading",
+                    "skills Writing",
+                    "piano",
+                    "games with hewitt",
+                    "dinner watch",
+                    "project",
+                    "tennis",
+                    "walk",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "outside run",
+                    "breakfast",
+                    "coding", 
+                    "piano",
+                    "khan academy skills",
+                    "bike",
+                    "bike lunch",
+                    "bike",
+                    "skills Writing",
+                    "piano",
+                    "games with hewitt",
+                    "dinner watch",
+                    "project",
+                    "walk",
+                    "sleep",
                     "sleep",
                     "sleep",
                     "sleep" 
@@ -1944,8 +2128,8 @@
                     hotpink:0, orange:0, lightblue:0, lightgreen:0, teal:0, tan:0, whitesmoke:0}; //list of achievements
                 var ScheduledNameTags=["Biking", "Pipecleaners and legos","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social","Reading and Journal", "Test Prep, Acedemic And Skills",  
                     "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
-                var goals={brown:1, pink:"none", green:0.5, beige:0.75, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
-                    hotpink:1, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
+                var goals={brown:0.5, pink:"none", green:0.33, beige:0.75, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
+                    hotpink:1.5, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
                         scheduled[GetColorValues(stuff[i][x])]++;
@@ -1970,11 +2154,11 @@
                         }
                     }/**/
                     DivContainer+=
-                        "<div class='A'><div style='float:left;background-color:"+color+"; height:75px;width:"+(scheduled[color])*250/(ChooseDay+1)+"px;'></div> <h1 style='position:absolute;'><i>"+ScheduledNameTags[i]+" </i> "
-                        +scheduled[color]+" hours spent, Percent of grand plan: "+firstFew(Percent(scheduled[color]))+"%, or "
-                        +scheduled[color]+"/"+(24*(stuff.length-weekChoosen))+ ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))
-                        +S("hour", firstFew(scheduled[color]/(ChooseDay-1-weekChoosen)))+"per day</h1></div><br><br><br><br><br>";
-                    Chart+="<div style='float:left;background-color:"+color+"; height:75px;width:"+Percent(scheduled[color])+"%;font-size:7px; text-align:center;'><b>"+ScheduledNameTags[i]+"<b></div>";
+                        "<div class='A'><div style='float:left;background-color:" + color + "; height:75px;width:" + (scheduled[color]) * 250 / (ChooseDay + 1)+"px;'></div> <h1 style='position:absolute;'><i>" + ScheduledNameTags[i] + " </i> "
+                        + scheduled[color] + " hours spent, Percent of grand plan: " + firstFew(Percent(scheduled[color])) + "%, or "
+                        + scheduled[color] + "/" + (24 * (stuff.length-weekChoosen)) + ". "+firstFew(scheduled[color]/(ChooseDay-1-weekChoosen))
+                        + S("hour", firstFew(scheduled[color]/(ChooseDay-1-weekChoosen)))+"per day</h1></div><br><br><br><br><br>";
+                    Chart += "<div style='float:left;background-color:" + color + "; height:75px;width:" + Percent(scheduled[color]) + "%;font-size:7px; text-align:center;'><b>" + ScheduledNameTags[i] + "<b></div>";
                 }
                 document.getElementById("chart").innerHTML = "<br><h1>Activity distributation</h1><br>" + Chart;
                 document.getElementById("More").innerHTML = (DivContainer) + "<h1>" + (Achieved) + "/11 goals achieved " + otherGoals + "</h1>";
@@ -1987,9 +2171,9 @@
                 for(i=0; i<=stuff.length-1-weekChoosen; i++){
                     for(a=0; a<24; a++, b++){
                         Schedule+=
-                        "<span style='background-color:"+GetColorValues(stuff[i][a])+";'><b>"+stuff[i][a]+"</b></span> ";
+                        "<span style='background-color:" + GetColorValues(stuff[i][a])+";'><b>" + stuff[i][a] + "</b></span> ";
                         if(lineBrakes!=Math.floor(lineBrakes)){
-                            Schedule+="<br>"
+                            Schedule += "<br>"
                         }
                     }
                 }
@@ -2066,7 +2250,7 @@
                     return "purple";
                 }else if(b.search("NEW")>=0||b.search("CULTURAL")>=0){
                     return "violet";
-                }else if(b.search("MEET")>=0){
+                }else if(b.search("MEET")>=0||b.search("SOCICAL")>=0){
                     return "yellowgreen";
                 }else if(b.search("READ")>=0||b.search("JOURNAL")>=0){
                     return "turquoise";

@@ -12,9 +12,11 @@
         <h1 id="Reading"></h1>
         <h1>Other notes:</h1>
         <h1 id="other notes">
-            must practice finger reading for 5 days until wednesday aug 26. 
-            Check instructions in 'Emmett's lesson 2.2 on finger reading' link 
-            4 days left
+            There is now a timer for two minutes for timed reading.
+            To move on to lesson 
+            4, select a newspaper and read from it. 
+            There is some important information on the website: 
+            <a href="https://byuisfreecourses.agilixbuzz.com/student/140216005/activity/026755A6678F4565BEA2CDF0C32379E9">the activity</a>
         </h1>
     </div>
     <h1><u>reading goal:</u> 
@@ -26,6 +28,7 @@
     <h1>
         <li>finger reading info<a href="https://byuisfreecourses.agilixbuzz.com/student/140216005/activity/BFA05652DA4E46FB9CCD329FCD250EAD">Emmett's lesson 2.2 on finger reading</a></li>
         speed reading notes:
+        <li>Use the Timer at the bottom of this page for timed reading two minutes</li>
         <li>it is important to have good posture and a comfortable reading environment for reading so you can be more alert
         not to comfortable you fall asleep.</li>
        <li>finger tracking helps you read faster and stay on track without distractions</li> 
@@ -72,14 +75,67 @@
             Trying not to read <i>too</i> fast in order to keep a steady pace for now. 
             Got 45 pm again, but reading from The Book Of Bizzare Truths.
         </li>
+        <li>wednesday, practiced, then moved onto 3.1, 3.2
+            did exersise 2 and then stopped
+        </li>
+        <li>on thursday aug 27 finished exersise 2 3.1. did exersise 3 and self check in
+        </li>
+        <li>
+            Friday august 28 reading huckleberry finn. 3.4 visual reading. Must read newspaper.
+        </li>
+        <li>
+            Saturday, did not do session, just read Huckleberry finn
+        </li>
+        <li>
+            On sunday aug 30, did session reading national geographic magazine for moving onto session 4.
+            Fringer reading. I was and am a visual reader so visual reading the newspaper is not
+            hard. Added timer function to this site. It took a while, so I will finish reading again tommorrow
+        </li>
     </h1>
+    <h1>Reading Timer: </h1>
+    <button onclick="Timer();"><h1 id="buttonTimer">Set timer two minutes</h1></button>
+    <h1 id="TimerInfo"></h1>
     <script>
+        var Time;
+        var TimeYet = 0;
         var date = new Date();
         if(date.getHours()==10){
-            document.getElementById("Reading").innerHTML = "It is the reading class right now "
+            document.getElementById("Reading").innerHTML = "It is the reading class right now. "
             + (60 - date.getMinutes()) + " minutes left";
         }else{
-            document.getElementById("Reading").innerHTML = "It is not the reading class right now";
+            document.getElementById("Reading").innerHTML = "It is not the reading class right now. ";
+        }
+        function Timer(){
+            if(TimeYet == 1){
+                document.getElementById("TimerInfo").innerHTML = "Timer Reset"
+                clearTimeout(Time);
+                TimeYet = 0;
+                document.getElementById("buttonTimer").innerHTML = "Set Another Reading Timer for two minutes"
+                if(date.getHours()==10){
+                    document.getElementById("Reading").innerHTML = "It is the reading class right now "
+                    + (60 - date.getMinutes()) + " minutes left";
+                }else{
+                    document.getElementById("Reading").innerHTML = "It is not the reading class right now";
+                }
+            }else{
+                TimeYet = 1;
+                Time = setTimeout(EndTimer, 120000);
+                document.getElementById("Reading").innerHTML += "timer set at the timer at the bottom of the page for two minutes. Read."
+                document.getElementById("TimerInfo").innerHTML = "Timer set fot Two Minutes. <br> Read";
+                document.getElementById("buttonTimer").innerHTML = "reset timer"
+            }
+        }
+        function EndTimer(){
+            confirm("timer Finished");
+            TimeYet = 0;
+            document.getElementById("buttonTimer").innerHTML = "Set another reading timer for two minutes"
+            document.getElementById("TimerInfo").innerHTML = "Timer Finished. How was your read?";
+            if(date.getHours()==10){
+                document.getElementById("Reading").innerHTML = "It is the reading class right now "
+                + (60 - date.getMinutes()) + " minutes left";
+            }else{
+                document.getElementById("Reading").innerHTML = "It is not the reading class right now";
+            }
         }
     </script>
 </body>
