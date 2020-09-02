@@ -19,7 +19,7 @@
         var Page = document.getElementById("entirePage");
         var loadPaging = setInterval(loadPage, 25); //loads page every few moments
         var playerPosition = {y:9, x:9} //x and y positions
-        var View = 6; 
+        var View = 1; 
         var threeDimentionalWorldValues;
         var RayValues = {A:0, B:0, C:0, D:0, E:0, F:0, G:0, H:0, I:0, J:0, K:0, L:0, M:0, N:0, O:0, P:0, Q:0, R:0, S:0, T:0, U:0, V:0, W:0, X:0, Y:0, Z:0}
         var BurnblowInnData = [
@@ -43,19 +43,19 @@
             ["wood","wood","wood","wood","wood","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","wood","wood","wood","wood","wood"],
         ];
         function leftWays(){
-            playerPosition.x += 1;
+            playerPosition.x += 0.1;
             if(down=="yes") setTimeout(leftWays, 25);
         }
         function sideWaysLeft(){
             if(View<0) View = 47;
-            if(View>0) View -= 1;
-            if(down=="yes") setTimeout(sideWaysLeft, 25);
+            if(View>0) View += 1;
+            if(down=='yes') setTimeout(sideWaysLeft, 25);
         }
         function loadPage(){
             var PageInnerHTML = "";
             threeDimentionalWorldValues = 
             [[],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[], [],[],[],[],[],[],[],[],[],[]];
-            for(y = playerPosition.y - 5; y < playerPosition.y + 5; y += 0.1){
+            for(y = playerPosition.y - 5; y < playerPosition.y + 5; y += 0.1){ //there are 10 times more values than with the original BurnblowInnData
                 threeDimentionalWorldValues[((y - playerPosition.y) + 5) * 10] = 
                 ["","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","","", "","","","","","","","","",""];
                 for(x = playerPosition.x - 5; x < playerPosition.x + 5; x += 0.1) { // "playerPosition.x - 5" center of page from left to right is the x position of player, to the left is the less than the x position of player, and to the right is more 
@@ -63,22 +63,30 @@
                         BurnblowInnData[Math.floor(playerPosition.y + 5)][Math.floor(playerPosition.x + 5)];
                 }
             }
-            var middleView = rayCalculateChange(View);
+            var middleView = rayCalculate(View, "side");
+            console.log(middleView)
             //Page.innerHTML = PageInnerHTML;
         }
-        function rayCalculate(veiwPoint){
-            if(veiwPoint >= 36){
-                return veiwPoint - 35;
+        function rayCalculate(veiwPoint, axis){
+            var ViewModified;
+            if(veiwPoint >= 36){ // return angle of of what side the direction is pointing
+                ViewModified = veiwPoint - 35;
             }else if(veiwPoint >= 24){
-                return veiwPoint - 23;
+                ViewModified = veiwPoint - 23;
             }else if(veiwPoint >=12){
-                return veiwPoint - 11;
+                ViewModified = veiwPoint - 11;
             }else if(veiwPoint >= 1){
-                return veiwPoint;
+                ViewModified = veiwPoint;
             }
-        }
-        function rayCalculateChange(veiw){
+            if(axis == "side"){ // if ray is to the side, then the x axis ray is being determined
+                if(veiwPoint >= 24 || veiwPoint >= 1){ // the ray direction is sideways, so it is the y axis direction that changes
+                    return (ViewModified - 6) / 6;
+                }else if(veiwPoint >= 12 || veiwPoint >= 36){ // the ray direction is sideways, so it is the y axis direction that changes
+                    return 1;
+                }
+            }else if(axis == "up"){ // if ray is upwards, then the x axis ray is being determined
 
+            }
         }
     </script>
 </body>
