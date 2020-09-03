@@ -47,8 +47,8 @@
             if(down=="yes") setTimeout(leftWays, 25);
         }
         function sideWaysLeft(){
-            if(View<0) View = 47;
-            if(View>0) View += 1;
+            if(View>46) View = 1;
+            else if(View<=46) View += 1;
             if(down=='yes') setTimeout(sideWaysLeft, 25);
         }
         function loadPage(){
@@ -63,8 +63,10 @@
                         BurnblowInnData[Math.floor(playerPosition.y + 5)][Math.floor(playerPosition.x + 5)];
                 }
             }
-            var middleView = rayCalculate(View, "side");
-            console.log(middleView)
+            var middleView = [rayCalculate((View+11), "side"), rayCalculate((View+11), "up")];
+            console.log(middleView +" veiw "+ View);
+            middleView = [rayCalculate((View), "side"), rayCalculate(View, "up")];
+            console.log(middleView +" veiw "+ View);
             //Page.innerHTML = PageInnerHTML;
         }
         function rayCalculate(veiwPoint, axis){
@@ -78,14 +80,28 @@
             }else if(veiwPoint >= 1){
                 ViewModified = veiwPoint;
             }
+            //sides are numbered highest to greatest in counterclockwise, 11 on each side
+            //refer to: 1-11 up (+y), 12-23 left (-x), 24-35, down (-y), 36-47, right(+x)
             if(axis == "side"){ // if ray is to the side, then the x axis ray is being determined
-                if(veiwPoint >= 24 || veiwPoint >= 1){ // the ray direction is sideways, so it is the y axis direction that changes
-                    return (ViewModified - 6) / 6;
-                }else if(veiwPoint >= 12 || veiwPoint >= 36){ // the ray direction is sideways, so it is the y axis direction that changes
+                if(veiwPoint >= 36){ // the ray direction is sideways, so it is the y axis direction that changes and the x axis just changesby one
                     return 1;
+                }else if(veiwPoint >= 24){ // the ray direction is sideways, so it is the y axis direction that changes
+                    return -(ViewModified - 6) / 6; //negative, -(-5) = +5
+                }else if(veiwPoint >= 12){
+                    return -1;
+                }else if(veiwPoint >= 1){
+                    return (ViewModified - 6) / 6; //positive, opposite to the other side
                 }
-            }else if(axis == "up"){ // if ray is upwards, then the x axis ray is being determined
-
+            }else if(axis == "up"){ // if ray is upwards, then the y axis ray is being determined
+                if(veiwPoint >= 36){
+                    return (ViewModified - 6) / 6;
+                }else if(veiwPoint >= 24){ // the ray direction is sideways, so it is the y axis direction that changes
+                    return -1; //negative
+                }else if(veiwPoint >= 12){
+                    return -(ViewModified - 6) / 6;
+                }else if(veiwPoint >= 1){
+                    return 1; //positive, opposite to the bottom
+                }
             }
         }
     </script>
