@@ -18,10 +18,10 @@
     <script>
         var Page = document.getElementById("entirePage");
         var loadPaging = setInterval(loadPage, 25); //loads page every few moments
-        var playerPosition = {y:9, x:9} //x and y positions
+        var playerPosition = {y:12, x:9} //x and y positions
         var View = 1; 
         var threeDimentionalWorldValues;
-        var RayValues = {A:0, B:0, C:0, D:0, E:0, F:0, G:0, H:0, I:0, J:0, K:0, L:0, M:0, N:0, O:0, P:0, Q:0, R:0, S:0, T:0, U:0, V:0, W:0, X:0, Y:0, Z:0}
+        var RayValues = [0,0,0,0,0,0,0,0,0,0,0]
         var BurnblowInnData = [
             ["dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt"],
             ["dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt","dirt"],
@@ -63,10 +63,15 @@
                         BurnblowInnData[Math.floor(playerPosition.y + 5)][Math.floor(playerPosition.x + 5)];
                 }
             }
-            var middleView = [rayCalculate((View+11), "side"), rayCalculate((View+11), "up")];
-            console.log(middleView +" veiw "+ View);
             middleView = [rayCalculate((View), "side"), rayCalculate(View, "up")];
             console.log(middleView +" veiw "+ View);
+            var rayDistancePosition = {x:50,y:50};
+            for(ModifiedView = -5; ModifiedView <= 5; ModifiedView += 1){
+                //while(RayValues[ModifiedView + 5]==0){
+                  //  rayDistancePosition.x = rayDistancePosition + (veiwPoint);
+
+                //} 
+            }
             //Page.innerHTML = PageInnerHTML;
         }
         function rayCalculate(veiwPoint, axis){
@@ -102,6 +107,14 @@
                 }else if(veiwPoint >= 1){
                     return 1; //positive, opposite to the bottom
                 }
+            }
+        }
+        function backToOne(number){
+            if(number>47){
+                return 1;
+            }
+            if(number<1){
+                return 47;
             }
         }
     </script>
