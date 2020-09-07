@@ -66,11 +66,22 @@
             middleView = [rayCalculate((View), "side"), rayCalculate(View, "up")];
             console.log(middleView +" veiw "+ View);
             var rayDistancePosition = {x:50,y:50};
-            for(ModifiedView = -5; ModifiedView <= 5; ModifiedView += 1){
-                //while(RayValues[ModifiedView + 5]==0){
-                  //  rayDistancePosition.x = rayDistancePosition + (veiwPoint);
-
-                //} 
+            for(ModifiedView = 0; ModifiedView <= 10; ModifiedView += 0.1){
+                while(RayValues[ModifiedView] == 0){
+                    rayDistancePosition.x = 
+                        rayDistancePosition.x + 
+                        rayCalculate(backToOne(View + ((ModifiedView - 5) * 10)), "side"); // the side position of the rays beside to the middle view ray
+                    rayDistancePosition.y = 
+                        rayDistancePosition.x + 
+                        rayCalculate(backToOne(View + ((ModifiedView - 5) * 10)), "up"); // the up position of the rays beside to the middle view ray;
+                    if(
+                        threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)] !=
+                        "none"
+                    ){
+                        RayValues[ModifiedView][0] = 
+                            threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)] 
+                    }
+                } 
             }
             //Page.innerHTML = PageInnerHTML;
         }

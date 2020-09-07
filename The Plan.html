@@ -56,22 +56,9 @@
             <p>Want your own Accomodations plan? call Emmett Accomodations!<button onclick="location.reload();">refresh</button></p>
         </footer>
         <script>
+            var ChooseDay=77;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var weekChoosen=0;
             var ChartOne;
-            /*var reload = setInterval(() => {
-                dateN();
-                if(functionName=="Y"){
-                    dateY();
-                }else if(functionName=="T"){
-                    dateT();
-                }else if(functionName=="M"){
-                    dateM();
-                }else if(functionName=="A"){
-                    dateA();
-                }else if(functionName=="F"){
-                    Scheduled();
-                } 
-            }, 15); //*/
             var functionName="N";
             var d=new Date();
             var lineBrakes=0;
@@ -81,7 +68,6 @@
                 + "Original speed was 32 lpm. Use the BYU online free course to help reading speed. Read from the Book of answers</li>"
                 + "<li>Sat test prep. With help from dad. Use tests</li>"
                 + "<li>finish reading, SAT, and other goals by august 31</li>";
-            var ChooseDay=74;//change this "ChooseDay" by 1 every day. It should be the amount of days since June 22, 2020 minus one.
             var stuff=[
                 ["sleep", "sleep",
                     "sleep",
@@ -2060,7 +2046,7 @@
                     "sleep",
                     "sleep" 
                 ],
-                //chooseday 74 on sep 3 tuesday
+                //chooseday 74 on sep 3 thursday
                 [
                     "sleep",
                     "sleep",
@@ -2083,6 +2069,111 @@
                     "walk",
                     "sleep",
                     "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding", 
+                    "reading",
+                    "adventure with mom",
+                    "lunch",
+                    "adventure outside",
+                    "adventure with mom",
+                    "adventure outside",
+                    "pipecleaners",
+                    "journal",
+                    "dinner",
+                    "watch",
+                    "watch movie",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "walk",
+                    "breakfast",
+                    "movie", 
+                    "new movie",
+                    "reading",
+                    "lunch",
+                    "outside",
+                    "outside",
+                    "outside",
+                    "read outside",
+                    "reading",
+                    "dinner",
+                    "journal",
+                    "read",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                //chooseday 77 sep 6 sunday
+                [
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast",
+                    "coding", 
+                    "reading",
+                    "reading",
+                    "lunch",
+                    "outside",
+                    "outside",
+                    "outside",
+                    "walk",
+                    "meet, minecraft",
+                    "dinner",
+                    "walk",
+                    "outside jazz",
+                    "outside jazz",
+                    "sleep",
+                    "sleep",
+                    "sleep" 
+                ],
+                [
+                "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "sleep",
+                    "breakfast", 
+                    "mommy time",
+                    "coding",
+                    "lunch",
+                    "reading",
+                    "outside",
+                    "outside",
+                    "walk",
+                    "meet, minecraft",
+                    "dinner",
+                    "walk",
+                    "outside jazz",
+                    "outside jazz",
                     "sleep",
                     "sleep",
                     "sleep" 
@@ -2180,7 +2271,7 @@
                 var ScheduledNameTags=["Biking", "Pipecleaners and legos","Tennis", "Coding", "Daddy time,","Mommy Time", "Something New And 'Cultural'", "Meet; Social","Reading and Journal", "Test Prep, Acedemic And Skills",  
                     "Walk ", "Sleep", "Outside", "Hewitt, Games, and Movie ", "Meals and eating ", "Other"];
                 var goals={brown:0.5, pink:"none", green:0.33, beige:0.75, gold:0.5, purple:0.5, violet:0.5, yellowgreen:0.33, turquoise:1.5,
-                    hotpink:1.5, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
+                    hotpink:1.33, orange:0.5, lightblue:"none", lightgreen:1, teal:"none", tan:"none", whitesmoke:"none"}
                 for(i=0; i<=((stuff.length-1) - weekChoosen); i++){
                     for(x=0;x<24; x++){
                         scheduled[GetColorValues(stuff[i][x])]++;
