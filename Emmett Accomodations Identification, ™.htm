@@ -1,0 +1,128 @@
+<!--<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Search Engine</title>
+    </head>
+    <body>
+        <textarea id = "Paper" name = "message" style = "height:100px;width:1000px;font-family:serif, Times, serif;font-size: 50;">
+        </textarea>
+        <button onclick="Search();"><h1>Search</h1></button>
+        <script>
+            var Paper = document.getElementById("Paper");
+            function Search(){
+                alert(Paper.innerHTML)
+                if(Paper.innerHTML == "hello"){
+                    alert("hello Emmett")
+                }
+            }
+        </script>
+    </body>
+    </html>--
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <script>
+    function clickCounter() {
+    alert(localStorage.clickcount)
+    if (typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+        localStorage.clickcount = localStorage.clickcount + "hello";
+        } else {
+        localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+    }
+    </script>
+    </head>
+    <body>
+
+    <p><button onclick="clickCounter()" type="button">Click me!</button></p>
+    <div id="result"></div>
+    <p>Click the button to see the counter increase.</p>
+    <p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+
+    </body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmett Accomodations Identification</title>
+</head>
+<body>
+    <h1>welcome to Emmett Accomodations Identification test!</h1>
+    <div id = "preIdentification">
+        <h1>Find your Identification...</h1>
+        <div style="background-color: brown;">
+            <h1>Enter your signature...</h1>   
+        </div>
+        <button onclick="buttonLetter = 'A'; Namewrite();"><h1>A</h1></button>
+        <button onclick="buttonLetter = 'B'; Namewrite();"><h1>B</h1></button>
+        <button onclick="buttonLetter = 'C'; Namewrite();"><h1>C</h1></button>
+        <button onclick="buttonLetter = 'D'; Namewrite();"><h1>D</h1></button>
+        <button onclick="buttonLetter = 'E'; Namewrite();"><h1>E</h1></button>
+        <button onclick="buttonLetter = 'F'; Namewrite();"><h1>F</h1></button>
+        <button onclick="buttonLetter = 'G'; Namewrite();"><h1>G</h1></button>
+        <button onclick="buttonLetter = 'H'; Namewrite();"><h1>H</h1></button>
+        <button onclick="buttonLetter = 'I'; Namewrite();"><h1>I</h1></button>
+        <button onclick="buttonLetter = 'J'; Namewrite();"><h1>J</h1></button>
+        <button onclick="buttonLetter = 'K'; Namewrite();"><h1>K</h1></button>
+        <button onclick="buttonLetter = 'L'; Namewrite();"><h1>L</h1></button>
+        <button onclick="buttonLetter = 'M'; Namewrite();"><h1>M</h1></button>
+        <button onclick="buttonLetter = 'N'; Namewrite();"><h1>N</h1></button>
+        <button onclick="buttonLetter = 'O'; Namewrite();"><h1>O</h1></button>
+        <button onclick="buttonLetter = 'P'; Namewrite();"><h1>P</h1></button>
+        <button onclick="buttonLetter = 'Q'; Namewrite();"><h1>Q</h1></button>
+        <button onclick="buttonLetter = 'R'; Namewrite();"><h1>R</h1></button>
+        <button onclick="buttonLetter = 'S'; Namewrite();"><h1>S</h1></button>
+        <button onclick="buttonLetter = 'T'; Namewrite();"><h1>T</h1></button>
+        <button onclick="buttonLetter = 'U'; Namewrite();"><h1>U</h1></button>
+        <button onclick="buttonLetter = 'V'; Namewrite();"><h1>V</h1></button>
+        <button onclick="buttonLetter = 'W'; Namewrite();"><h1>W</h1></button>
+        <button onclick="buttonLetter = 'X'; Namewrite();"><h1>X</h1></button>
+        <button onclick="buttonLetter = 'Y'; Namewrite();"><h1>Y</h1></button>
+        <button onclick="buttonLetter = 'Z'; Namewrite();"><h1>Z</h1></button>
+        <button onclick="buttonLetter = 'erase'; Namewrite();"><h1>Erase print</h1></button>
+        <button onclick="Submit();"><h1>Release pen</h1></button>
+    <h1 id="Name" style="font-family: serif;"></h1>
+    </div>
+    <div id="Profile">
+    </div>
+    <script>
+        var buttonLetter;
+        var Name = "";
+        var namer = document.getElementById("Name");
+        function Namewrite(){
+            namer.style.fontFamily = "cursive"
+            if(buttonLetter == "erase"){
+                Name = "";
+                namer.style.fontFamily = "serif"
+                namer.innerHTML = "<i>[smudged pen ink]</i>";
+            }else{
+                Name += buttonLetter;
+                Name = Name.toLowerCase();
+                namer.innerHTML = Name;
+            }
+        }
+        function Submit(){
+            var Profile;
+            document.getElementById("preIdentification").style.display = "none";
+            if(typeof(localStorage[Name]) !== "undefined"){
+                alert("welcome back," + localStorage[Name]);
+            }else{
+                localStorage[Name] = {
+                    Name:Name, 
+                    Notes:"none",
+                    DateSince: new Date()
+                };
+            }
+        }
+    </script>
+</body>
+</html>

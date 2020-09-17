@@ -20,6 +20,7 @@
         var loadPaging = setInterval(loadPage, 25); //loads page every few moments
         var playerPosition = {y:12, x:9} //x and y positions
         var View = 1; 
+        var rayDistancePosition;
         var threeDimentionalWorldValues;
         var RayValues = [0,0,0,0,0,0,0,0,0,0,0]
         var BurnblowInnData = [
@@ -63,23 +64,24 @@
                         BurnblowInnData[Math.floor(playerPosition.y + 5)][Math.floor(playerPosition.x + 5)];
                 }
             }
-            middleView = [rayCalculate((View), "side"), rayCalculate(View, "up")];
+            middleView = [rayCalculate(View, "side"), rayCalculate(View, "up")];
             console.log(middleView +" veiw "+ View);
-            var rayDistancePosition = {x:50,y:50};
-            for(ModifiedView = 0; ModifiedView <= 10; ModifiedView += 0.1){
-                while(RayValues[ModifiedView] == 0){
+            rayDistancePosition = {x:50,y:50};
+            console.log(rayDistancePosition.y, rayDistancePosition.x)
+            for(ModifiedView = 0; ModifiedView < 10; ModifiedView += 1){
+                while(RayValues[ModifiedView] == 0){ // while ray is unchanged
                     rayDistancePosition.x = 
                         rayDistancePosition.x + 
-                        rayCalculate(backToOne(View + ((ModifiedView - 5) * 10)), "side"); // the side position of the rays beside to the middle view ray
+                        rayCalculate(backToOne(View + (ModifiedView - 5)), "side"); // the side position of the rays beside to the middle view ray
                     rayDistancePosition.y = 
-                        rayDistancePosition.x + 
-                        rayCalculate(backToOne(View + ((ModifiedView - 5) * 10)), "up"); // the up position of the rays beside to the middle view ray;
-                    if(
-                        threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)] !=
+                        rayDistancePosition.y + 
+                        rayCalculate(backToOne(View + (ModifiedView - 5)), "up"); // the up position of the rays beside to the middle view ray;
+                    console.log("rayDistancePosition.y, rayDistancePosition.x")
+                    if( //problem every time
+                        threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)] != //
                         "none"
                     ){
-                        RayValues[ModifiedView][0] = 
-                            threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)] 
+                        RayValues[(ModifiedView)] = threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)];
                     }
                 } 
             }
