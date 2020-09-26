@@ -66,21 +66,18 @@
             }
             middleView = [rayCalculate(View, "side"), rayCalculate(View, "up")];
             console.log(middleView +" veiw "+ View);
-            rayDistancePosition = {x:50,y:50};
-            console.log(rayDistancePosition.y, rayDistancePosition.x)
-            for(ModifiedView = 0; ModifiedView < 10; ModifiedView += 1){
+            rayDistancePosition = {x:50, y:50};
+            console.log(rayDistancePosition.x)
+            for(ModifiedView = 0; ModifiedView <= 10; ModifiedView += 1){
                 while(RayValues[ModifiedView] == 0){ // while ray is unchanged
-                    rayDistancePosition.x = 
-                        rayDistancePosition.x + 
-                        rayCalculate(backToOne(View + (ModifiedView - 5)), "side"); // the side position of the rays beside to the middle view ray
+                    rayDistancePosition.x =
+                        rayDistancePosition.x +
+                        rayCalculate((backToOne(View) + (ModifiedView - 5)), "side"); // the side position of the rays beside to the middle view ray
                     rayDistancePosition.y = 
-                        rayDistancePosition.y + 
-                        rayCalculate(backToOne(View + (ModifiedView - 5)), "up"); // the up position of the rays beside to the middle view ray;
-                    console.log("rayDistancePosition.y, rayDistancePosition.x")
-                    if( //problem every time
-                        threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)] != //
-                        "none"
-                    ){
+                        rayDistancePosition.y +
+                        rayCalculate((backToOne(View) + (ModifiedView - 5)), "up"); // the up position of the rays beside to the middle view ray;
+                    console.log(rayDistancePosition.y);
+                    if(threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)] != "none"){
                         RayValues[(ModifiedView)] = threeDimentionalWorldValues[Math.floor(rayDistancePosition.y)][Math.floor(rayDistancePosition.x)];
                     }
                 } 
