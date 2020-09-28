@@ -456,8 +456,8 @@
             function PlannedToday(){
                 document.getElementById("dayTOdo").innerHTML="To-do today";
                 document.getElementById("dayFinished").innerHTML="I have finished: ";
-                Display.innerHTML = Plan.planned[chooseDay];
-                document.getElementById("Finished").innerHTML = Plan.finished[chooseDay];
+                Display.innerHTML = lineBreaks(Plan.planned[chooseDay]);
+                document.getElementById("Finished").innerHTML = lineBreaks(Plan.finished[chooseDay]);
                 document.getElementById("finishedCount").innerHTML = 
                     Plan.finished[chooseDay].length + "/" + Plan.planned[chooseDay].length +
                     " finished plans Today";
@@ -465,8 +465,8 @@
             function dateY(){
                 document.getElementById("dayFinished").innerHTML="Yesterday I have finished: ";
                 document.getElementById("dayTOdo").innerHTML="To-do yesterday";
-                Display.innerHTML = Plan.planned[chooseDay-1];
-                document.getElementById("Finished").innerHTML = Plan.finished[chooseDay-1];
+                Display.innerHTML = lineBreaks(Plan.planned[chooseDay-1]);
+                document.getElementById("Finished").innerHTML = lineBreaks(Plan.finished[chooseDay-1]);
                 document.getElementById("finishedCount").innerHTML = 
                     Plan.finished[chooseDay-1].length + "/" + Plan.planned[chooseDay-1].length +
                     " finished plans Yesterday"
@@ -474,8 +474,8 @@
             function dateM(){
                 document.getElementById("dayFinished").innerHTML="What will I finish?";
                 document.getElementById("dayTOdo").innerHTML="To-do Tommorrow";
-                Display.innerHTML = Plan.planned[chooseDay+1];
-                document.getElementById("Finished").innerHTML = Plan.finished[chooseDay+1];
+                Display.innerHTML = lineBreaks(Plan.planned[chooseDay+1]);
+                document.getElementById("Finished").innerHTML = lineBreaks(Plan.finished[chooseDay+1]);
                 document.getElementById("finishedCount").innerHTML = "";
             }
             function dateA(){
@@ -495,6 +495,13 @@
             function GetTheday(day){
                 var Days = ["Weekend", "Monday", "Taco Tuesday", "Wednesday", "Thurday", "Lovely Friday", "Weekend"];
                 return Days[day];
+            };
+            function lineBreaks(textArray){
+                var textArrayLineBreaks = "";
+                for(i = 0; i < textArray.length; i+=1){
+                    textArrayLineBreaks += textArray[i] + "<br>";
+                }
+                return textArrayLineBreaks;
             }
         </script>
     </body>
