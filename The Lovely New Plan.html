@@ -11,22 +11,23 @@
         <h1 style="background-color:none">And always obey the Plan</h1>
         <h1 id="finishedCount"></h1>
         <button onclick="PlannedToday()"><h1>Today</h1></button>
-        <button onclick="dateY()"><h1>Yesterday</h1></button>
-        <button onclick="dateM()"><h1>tommorrow</h1></button>
-        <button onclick="dateA()"><h1>All</h1></button>
+        <button onclick="dateY();"><h1>Yesterday</h1></button>
+        <button onclick="dateM();"><h1>tommorrow</h1></button>
+        <button onclick="dateA();"><h1>All</h1></button>
         <div style="background-color: brown;">
-            <h1 id="dayTOdo">To-do today:</h1>
-            <h1 id = "planned"></h1>
+            <h1 id="dayPlanned">to do and not done</h1>
+            <h1 id="plannedToDo"></h1>
             <h1>planbar:</h1>
             <h1>
                 <li>song 25 on trombone sheet practice.</li>
             </h1> 
         </div>
-        <h1 id="dayPlanned">I have to do:</h1>
-        <h1 id="plannedToDo"></h1>
+        <h1 id="dayTOdo">To-do today:</h1>
+        <h1 id = "planned"></h1>
         <h1 id="dayFinished">I have finished: </h1>
         <h1 id="Finished"></h1>
-        <h1>This is the lovely new plan. Version 2.2.3 of the plan.</h1>
+        <br>
+        <h1>This is the lovely new plan. Version 2.2.4 of the plan.</h1>
         <h1>
             The Plan primary goal:
             <li>create an organized plan to follow and be productive</li>
@@ -92,12 +93,23 @@
                 Friday oct 2: went to yi yi and ni ni ate noodle meal, went to mall, for glasses and then get beef patty snack, then came home and played with Elijah
                 Roblox, and then watched movie but no i and s homework.
             </li>
+            <li>
+                sat: did a lot of homework for i and s. Then watched movie.
+            </li>
+            <li>
+                sun: went to tryout, then did some homework, then chinese lesson. Then trombone lesson, then movie
+            </li>
+            <li>
+                mon: first did some homework, then play with elijah. Then dinner, watch jazz appreciation. Then later at night did the ultimate new plan version 2.2.3, 
+                so now there is what i still have to do and made the code and making new tasks much easier.
+            </li>
         </h1>
         <!--<footer style="position: fixed; bottom: 0%;">Want your own Accomodations plan? call Emmett Accomodations!</footer> <!---->
         <script>
             var d=new Date();
             //var ChooseDay=5;
             var chooseday = 0; //days since fri sept 18 2020, plan date
+            var plannedunPlanned;
             var Calendarstuff=[
                 [
                     "sleep",
@@ -290,7 +302,7 @@
                 ],
             ];
             var Display = document.getElementById("planned");
-            /*var Plan = {
+            var Plan = {
                 planned: [//date reminder comments are placed before days
                     //first day of new modified plan fri sept 18 2020, 
                     [
@@ -525,9 +537,13 @@
                         "play with elijah"
                     ]
                 ]
-            };*/
+            };
             var plan = {
                 Planned: [
+                    [
+                        "jazz",
+                        "finish up the new plan update"
+                    ],
                     [
                         "finish fast draft",
                         "play with elijah (until 5:30)",
@@ -536,7 +552,11 @@
                         "sleep"
                     ]
                 ],
-                Finished: [
+                Finished: [ //add empty array even for future days
+                    [
+                        2,
+                        1
+                    ],
                     [
                         1,
                         3,
@@ -548,61 +568,42 @@
             };
             PlannedToday();
             function PlannedToday(){
-                var plannedunPlanned = {
-                    inArray: "no",
-                    planned: "",
-                    finished: ""
-                }
-                for(i = 0; i < plan.Finished[chooseday].length; i+=1){
-                    plannedunPlanned.finished += plan.Planned[chooseday][plan.Finished[chooseday][i] - 1] + "<br>";
-                }
-                for(i = 0; i < plan.Planned[chooseday].length; i+=1){ 
-                    for(a = 0; a < plan.Finished[chooseday].length; a+=1){
-                        if(plan.Planned[chooseday][plan.Finished[chooseday][a] - 1]==plan.Planned[chooseday][i]){
-                            plannedunPlanned.inArray="yes";
-                        }
-                    }
-                    if(plannedunPlanned.inArray=="no"){
-                        plannedunPlanned.planned+=plan.Planned[chooseday][i] + "<br>";
-                    }
-                    plannedunPlanned.inArray = "no"
-                }
-                if(plannedunPlanned.planned==""){
-                    plannedunPlanned.planned="All finished!"
-                }
-
-                if(plannedunPlanned.finished==""){
-                    plannedunPlanned.finished="All finished!"
-                }
+                FinishedUnFinished(0);
                 document.getElementById("dayTOdo").innerHTML="To-do today";
                 document.getElementById("dayFinished").innerHTML="I have finished: ";
-                document.getElementById("dayPlanned").innerHTML="Still have to do:";
+                document.getElementById("dayPlanned").innerHTML="Still to-do:";
                 document.getElementById("planned").innerHTML=lineBreaking(plan.Planned[chooseday]);
                 document.getElementById("plannedToDo").innerHTML = plannedunPlanned.planned;
                 document.getElementById("Finished").innerHTML = plannedunPlanned.finished;
             }
             function dateY(){
-                document.getElementById("dayFinished").innerHTML="Yesterday I have finished: ";
+                FinishedUnFinished(1);
                 document.getElementById("dayTOdo").innerHTML="To-do yesterday";
-                Display.innerHTML = lineBreaking(Plan.planned[chooseDay-1]);
-                document.getElementById("Finished").innerHTML = lineBreaking(Plan.finished[chooseDay-1]);
-                document.getElementById("finishedCount").innerHTML = 
-                    Plan.finished[chooseDay-1].length + "/" + Plan.planned[chooseDay-1].length +
-                    " finished plans Yesterday"
+                document.getElementById("dayFinished").innerHTML="I have finished: ";
+                document.getElementById("dayPlanned").innerHTML="Still had to do:";
+                document.getElementById("planned").innerHTML=lineBreaking(plan.Planned[chooseday+1]);
+                document.getElementById("plannedToDo").innerHTML = plannedunPlanned.planned;
+                document.getElementById("Finished").innerHTML = plannedunPlanned.finished;
             }
             function dateM(){
+                FinishedUnFinished(-1);
+                document.getElementById("dayTOdo").innerHTML="To-do tommorrow";
                 document.getElementById("dayFinished").innerHTML="What will I finish?";
-                document.getElementById("dayTOdo").innerHTML="To-do Tommorrow";
-                Display.innerHTML = lineBreaking(Plan.planned[chooseDay+1]);
-                document.getElementById("Finished").innerHTML = lineBreaking(Plan.finished[chooseDay+1]);
-                document.getElementById("finishedCount").innerHTML = "";
+                document.getElementById("dayPlanned").innerHTML="What will I not finish?";
+                if(chooseday>0){
+                    document.getElementById("planned").innerHTML=lineBreaking(plan.Planned[chooseday-1]);
+                }else{
+                    document.getElementById("planned").innerHTML="it is undefined";
+                }
+                document.getElementById("plannedToDo").innerHTML = plannedunPlanned.planned;
+                document.getElementById("Finished").innerHTML = plannedunPlanned.finished;
             }
             function dateA(){
                 var All = "";
                 var allFinished = "";
                 document.getElementById("dayFinished").innerHTML="Everything I have finished: ";
                 document.getElementById("dayTOdo").innerHTML="Everything In plan";
-                for(i=0; i<Plan.planned.length; i++){
+                for(i=0; i<plan.Planned.length; i++){
                     All += plan.Planned[(Plan.planned.length-1)-i] + " | " + "<br>";
                 }
                 for(i=0; i<Plan.finished.length; i++){
@@ -610,6 +611,47 @@
                 }
                 document.getElementById("Finished").innerHTML = allFinished;
                 Display.innerHTML = All;
+            }
+            function FinishedUnFinished(plus){
+                choosedayPlus = chooseday + (plus);
+                plannedunPlanned = {
+                    inArray: "no",
+                    planned: "",
+                    finished: ""
+                }
+                if(plus>=0){
+                    for(i = 0; i < plan.Finished[choosedayPlus].length; i+=1){
+                        plannedunPlanned.finished += plan.Planned[choosedayPlus][plan.Finished[choosedayPlus][i] - 1] + "<br>";
+                    }
+                }
+                if(choosedayPlus < 0){
+                    plannedunPlanned.planned = "It is undefined";
+                    plannedunPlanned.finished = "It is undefnined";
+                }else{
+                    for(i = 0; i < plan.Planned[choosedayPlus].length; i+=1){ 
+                        for(a = 0; a < plan.Finished[choosedayPlus].length; a+=1){
+                            if(plan.Planned[choosedayPlus][plan.Finished[choosedayPlus][a] - 1]==plan.Planned[choosedayPlus][i]){
+                                plannedunPlanned.inArray="yes";
+                            }
+                        }
+                        if(plannedunPlanned.inArray=="no"){
+                            plannedunPlanned.planned+=plan.Planned[choosedayPlus][i] + "<br>";
+                        }
+                        plannedunPlanned.inArray = "no";
+                    }
+                    if(plannedunPlanned.planned==""){
+                        plannedunPlanned.planned="All finished!";
+                        if(plus<0){
+                            plannedunPlanned.finished = "It is undefined";
+                        }
+                    }
+                    if(plannedunPlanned.finished==""){
+                        plannedunPlanned.finished = "Nothing has been finished for today";
+                        if(plus<0){
+                            plannedunPlanned.finished = "It is undefined";
+                        }
+                    }
+                }
             }
             function lineBreaking(textArray) {
                 var returnText = "";
