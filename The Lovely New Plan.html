@@ -20,6 +20,7 @@
             <h1>planbar:</h1>
             <h1>
                 <li>song 25 on trombone sheet practice.</li>
+                <div id="AdditionalBar"></div>
             </h1> 
         </div>
         <h1 id="dayTOdo">To-do today:</h1>
@@ -108,7 +109,7 @@
         <script>
             var d=new Date();
             //var ChooseDay=5;
-            var chooseday = 0; //days since fri sept 18 2020, plan date
+            var chooseday = 1; //days since fri sept 18 2020, plan date
             var plannedunPlanned;
             var Calendarstuff=[
                 [
@@ -541,9 +542,16 @@
             var plan = {
                 Planned: [
                     [
+                        "get new glove",
+                        "design homework",
+                        "science homework"
+                    ],
+                    [
                         "movie",
                         "finish plan update",
-                        "play with elijah"
+                        "play with elijah",
+                        "ixl math 3 tests",
+                        "ixl english 3 tests"
                     ],
                     [
                         "art class",
@@ -565,6 +573,9 @@
                 ],
                 Finished: [ //add empty array even for future days
                     [
+
+                    ],
+                    [
                         1
                     ],
                     [
@@ -585,6 +596,9 @@
                     ]
                 ]
             };
+            if(plan.Finished.length!=plan.Planned.length){
+                document.getElementById("AdditionalBar").innerHTML = "<li>System error:undefined plan</li>"
+            }
             PlannedToday();
             function PlannedToday(){
                 FinishedUnFinished(0, ",<br>");
@@ -628,15 +642,15 @@
                 for(i=0; i<plan.Planned.length; i++){
                     All += plan.Planned[i] + ",<br>";
                 }
-                for(aa=0; aa<plan.Planned.length; aa++){
-                    FinishedUnFinished(aa, ", ");
+                for(x=-chooseday; x<plan.Planned.length-chooseday; x++){
+                    FinishedUnFinished(x, ", ");
                     allToDo += plannedunPlanned.planned + "<br>";
                 }
-                for(b=0; b<plan.Planned.length; b++){
+                for(b=-chooseday; b<plan.Planned.length-chooseday; b++){
                     FinishedUnFinished(b, ", ");
                     allFinished += plannedunPlanned.finished + "<br>";
                 }
-                document.getElementById("dayPlanned").innerHTML = allToDo;
+                document.getElementById("plannedToDo").innerHTML = allToDo;
                 document.getElementById("Finished").innerHTML = allFinished;
                 Display.innerHTML = All;
             }
