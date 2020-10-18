@@ -10,6 +10,7 @@
         <h1>Welcome to the new Plan! The <button onclick="window.print()"><h1>scan!</h1></button></h1>
         <h1 style="background-color:none">And always obey the Plan</h1>
         <h1 id="finishedCount"></h1>
+        <h1 id="finishedCountWeek"></h1>
         <button onclick="PlannedToday()"><h1>Today</h1></button>
         <button onclick="dateY();"><h1>Yesterday</h1></button>
         <button onclick="dateM();"><h1>tommorrow</h1></button>
@@ -20,6 +21,9 @@
             <h1>planbar:</h1>
             <h1>
                 <li>song 25 on trombone sheet practice.</li>
+                <li>Important to study for science, math tests.</li>
+                <li>Work on science summative one day, then next study for test. follow pattern until test</li>
+                <li>work on sylophone form do the rolling practice every other day 15 minutes</li>
                 <div id="AdditionalBar"></div>
             </h1> 
         </div>
@@ -104,6 +108,16 @@
                 mon: first did some homework, then play with elijah. Then dinner, watch jazz appreciation. Then later at night did the ultimate new plan version 2.2.3, 
                 so now there is what i still have to do and made the code and making new tasks much easier.
             </li> 
+            <li>
+                Wednesday october 14: went to Marty's, did organize bookmarks, did do some work on the movie before dinner. after organizing bookmarks on teh school computer, 
+                did some studying on the science test only 3 questions. Maybe should set more easy goals. Still better than nothing. I really wanted to go for walk with mom and see Mars.
+            </li>
+            <li>
+                Thursday: did snack after coming home, then i and s homework. Then play with Anthony because I promised, the dinner and me and dad watched jazz appriciation.
+                Then did xylophone practice sticking and trying to roll the notes, then got curious abour volcanoes. Then Did trombone, then was 9:00 so I could either do read 
+                or I could do movie. But I did movie because I can only do it for like a week and then I will get bored and probably stop making it so it was higher priority to do the 
+                time limited movie.
+            </li>
         </h1>
         <!--<footer style="position: fixed; bottom: 0%;">Want your own Accomodations plan? call Emmett Accomodations!</footer> <!---->
         <script>
@@ -542,9 +556,85 @@
             var plan = {
                 Planned: [
                     [
+                        "science test work",
+                        "science summative work 1 more section",
+                        "i and s homework",
+                        "trombone"
+                    ],
+                    [
+                        "do science summative 1 section",
+                        "do science test study",
+                        "work on movie until end of chef scene",
+                        "finish new coding project",
+                        "read",
+                        "practice trombone",
+                        "work on music form"
+                    ],
+                    [
+                        "jazz appriciation",
+                        "science test practice finish first study",
+                        "science summative work",
+                        "practice music form",
+                        "finish until at least chef part of movie",
+                        "try to read for 'pleasure'"
+                    ],
+                    [
+                        "jazz appriciation",
+                        "work on movie 8:45",
+                        "trombone",
+                        "i and s homework that is due tommorrow",
+                        "science summative work do before anthony",
+                        "play with anthony 5:30",
+                        "practice xylophone form",
+                        "must read 9:00"
+                    ],
+                    //wednesday oct 14 2020
+                    [
+                        "marty's art class",
+                        "work on movie",
+                        "study for science test to 5 sections practice",
+                        "walk with mommy",
+                        "work on bookmarks organizing"
+                    ],
+                    [
+                        "science homework 4:00 do three questions",
+                        "english homework",
+                        "math homework",
+                        "read",
+                        "work on movie after homework",
+                        "practice trombone 7:30"
+                    ],
+                    [
+                        "3d app morning",
+                        "science homework and other homework 1:00 *finish notes: finished french; no science",
+                        "go to park 2:00",
+                        "run 2:45",
+                        "do ceasars palace at Marty's 4-6pm",
+                        "Tennis public hours be early",
+                        "journal"
+                    ],
+                    [
+                        "get new glove 1:00",
+                        "work on movie morning",
+                        "science homework after",
+                        "play with elijah as promised 5:00",
+                        "journal",
+                        "tennis go early for public hours"
+                    ],
+                    //sat oct ten 2020
+                    [
+                        "baseball practice",
+                        "baseball tryout",
+                        "3d apps",
+                        "play with Elijah",
+                        "movie"
+                    ],
+                    [
                         "get new glove",
                         "design homework",
-                        "science homework"
+                        "new cool apps",
+                        "science homework",
+                        "i and s homework"
                     ],
                     [
                         "movie",
@@ -576,7 +666,39 @@
 
                     ],
                     [
-                        1
+                        6
+                    ],
+                    [
+                        4
+                    ],
+                    [
+                        4,1,6,7,3,2
+                    ],
+                    [
+                        1,2,5,3,4
+                    ],
+                    [
+                        2,1,3,5,6
+                    ],
+                    [
+                        1,3,2,5
+                    ],
+                    [
+                        1,
+                        2,
+
+                    ],
+                    [
+                        3,
+                        2,
+                        1,
+                        5
+                    ],
+                    [
+                        3,2,5
+                    ],
+                    [
+                        2,4
                     ],
                     [
                         1,
@@ -597,7 +719,7 @@
                 ]
             };
             if(plan.Finished.length!=plan.Planned.length){
-                document.getElementById("AdditionalBar").innerHTML = "<li>System error:undefined plan</li>"
+                document.getElementById("AdditionalBar").innerHTML = "<li>System error:undefined plan</li>";
             }
             PlannedToday();
             function PlannedToday(){
@@ -636,11 +758,23 @@
                 var All = "";
                 var allFinished = "";
                 var allToDo = "";
+                var HowMuchFinished = {
+                    week:{
+                        finished:0, All:0
+                    },
+                    all:{
+                        finished:0, All:0
+                    }
+                };
                 document.getElementById("dayFinished").innerHTML="Everything I have finished: ";
                 document.getElementById("dayTOdo").innerHTML="Everything In plan";
                 document.getElementById("dayPlanned").innerHTML="Everything unfinished:";
                 for(i=0; i<plan.Planned.length; i++){
                     All += plan.Planned[i] + ",<br>";
+                    if(i<=7){
+                        HowMuchFinished.week.All += plan.Planned[i].length;
+                    }
+                    HowMuchFinished.all.All += plan.Planned[i].length;
                 }
                 for(x=-chooseday; x<plan.Planned.length-chooseday; x++){
                     FinishedUnFinished(x, ", ");
@@ -649,20 +783,33 @@
                 for(b=-chooseday; b<plan.Planned.length-chooseday; b++){
                     FinishedUnFinished(b, ", ");
                     allFinished += plannedunPlanned.finished + "<br>";
+                    if(b<7 && b>=0){
+                        HowMuchFinished.week.finished += plannedunPlanned.finishedLength;
+                    }
+                    HowMuchFinished.all.finished += plannedunPlanned.finishedLength;
                 }
                 document.getElementById("plannedToDo").innerHTML = allToDo;
                 document.getElementById("Finished").innerHTML = allFinished;
                 Display.innerHTML = All;
+                document.getElementById("finishedCount").innerHTML = HowMuchFinished.all.finished + "/" + HowMuchFinished.all.All + " of planned is completed" 
+                    + "<br>" + Math.round(Percent(HowMuchFinished.all.finished, HowMuchFinished.all.All)) + "% total completion rate";
+                document.getElementById("finishedCountWeek").innerHTML = HowMuchFinished.week.finished + "/" + HowMuchFinished.week.All + " of planned is completed in the last 7 days" 
+                    + "<br>" + Math.round(Percent(HowMuchFinished.week.finished, HowMuchFinished.week.All)) + "% completion rate in the last 7 days";
+                
+            }
+            function Percent(a,b){ //function for calculating percentages of variable 'stuff'
+                return (100/(b/a));
             }
             function FinishedUnFinished(plus, br){
                 choosedayPlus = chooseday + (plus);
                 plannedunPlanned = {
                     inArray: "no",
+                    finishedLength: 0,
                     planned: "",
                     finished: ""
                 }
                 if(plus>=0){
-                    for(i = 0; i < plan.Finished[choosedayPlus].length; i+=1){
+                    for(i = 0; i < plan.Finished[choosedayPlus].length; i+=1, plannedunPlanned.finishedLength ++){
                         plannedunPlanned.finished += plan.Planned[choosedayPlus][plan.Finished[choosedayPlus][i] - 1] + br;
                     }
                 }
@@ -682,16 +829,16 @@
                         plannedunPlanned.inArray = "no";
                     }
                     if(plannedunPlanned.planned==""){
-                        plannedunPlanned.planned="All finished!";
-                        if(plus<0){
-                            plannedunPlanned.finished = "It is undefined";
-                        }
+                        plannedunPlanned.planned="All finished!" + br;
                     }
                     if(plannedunPlanned.finished==""){
-                        plannedunPlanned.finished = "Nothing has been finished";
+                        plannedunPlanned.finished = "Nothing has been finished" + br;
                         if(plus<0){
-                            plannedunPlanned.finished = "It is undefined";
+                            plannedunPlanned.finished = "It is undefined" + br;
                         }
+                    }
+                    if(plus<0){
+                        plannedunPlanned.planned = "It is undefined" + br;
                     }
                 }
             }

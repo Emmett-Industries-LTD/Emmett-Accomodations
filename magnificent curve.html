@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glorious Curve</title>
+</head>
+<body>
+    <h1>Brilliant Curve!</h1>
+    <div style="background-color: brown; ">
+        <h1>This is a Magnificent Curve</h1>
+    </div>
+    <h1>
+        Make your own curve! Here is my defult curve!
+    </h1>
+    <div id="Curver">
+        <h1>
+            Curve maker
+            <br>
+            Enter the curve you would like to make with a curve function.
+            <br>
+            Make sure to not enter an error or false equasion.
+        </h1>
+        <h1>y-axis = </h1>
+        <h1 id="inputer">enter Here</h1>
+        <button onclick="inputFunction('times')"><h1>* times (times)</h1></button>
+        <button onclick="inputFunction('div')"><h1>/ divided by (div)</h1></button>
+        <button onclick="inputFunction('plus')"><h1>+ plus (plus)</h1></button>
+        <button onclick="inputFunction('min')"><h1>- minus (min)</h1></button>
+        <button onclick="inputFunction('ex')"><h1>exponents to the power of (ex)</h1></button>
+        <button onclick="inputFunction('x')"><h1>x-value (x)</h1></button>
+        <button onclick="inputFunction('(')"><h1>( bracket</h1></button>
+        <button onclick="inputFunction(')')"><h1>) bracket</h1></button>
+        <button onclick="inputFunction(1)"><h1>1</h1></button>
+        <button onclick="inputFunction(2)"><h1>2</h1></button>
+        <button onclick="inputFunction(3)"><h1>3</h1></button>
+        <button onclick="inputFunction(4)"><h1>4</h1></button>
+        <button onclick="inputFunction(5)"><h1>5</h1></button>
+        <button onclick="inputFunction(6)"><h1>6</h1></button>
+        <button onclick="inputFunction(7)"><h1>7</h1></button>
+        <button onclick="inputFunction(8)"><h1>8</h1></button>
+        <button onclick="inputFunction(9)"><h1>9</h1></button>
+        <button onclick="inputFunction(0)"><h1>0</h1></button>
+        <br>
+        <button onclick="inputFunction('doFunction')"><h1>Enter Curve</h1></button>
+        <button onclick="inputFunction('clear')"><h1>clear</h1></button>
+    </div>
+    <div id="Curve-Container" style="border:solid 1px black;position: relative;top:40px;left:50%">
+    </div>
+    <script>
+        doFunction(["x","times","x"]);
+        var equasionString = [];
+        var currentNumber = [];
+        function inputFunction(input){
+            var leng=equasionString.length;
+            if(input=='clear'){
+                equasionString = [];
+            }else if(typeof(input)=="number"){ //imput is number
+                currentNumber[currentNumber.length]=input;
+                if(typeof(equasionString[leng-1])=="number"){ //no number yet
+                    equasionString[leng-1] += currentNumber[currentNumber.length-1]*(10**(currentNumber.length-1)); //place value
+                }else{
+                    equasionString[leng] = currentNumber[0];
+                }
+            }else{
+                currentNumber=[];
+                equasionString[leng]=input;//add function to input
+            };
+            if(input=="doFunction"){
+                doFunction(equasionString);
+            }
+            document.getElementById("inputer").innerHTML=equasionString;
+        }
+        function doFunction(equasion){
+            var Curve = "";
+            var density=2;
+            for(x=-50; x<=50; x+=1/(10**density)){
+                var line = Math.round((x**2) * 10);
+                var width = Math.round(x * 10);
+                Curve += 
+                    "<div style = 'position:absolute; top:" + line + "px; left:" + width + "px;width:1px;height:1px;border-radius:1px;background-color:black'></div>";
+            }
+            document.getElementById("Curve-Container").innerHTML = Curve;
+        }
+    </script>
+</body>
+</html>
