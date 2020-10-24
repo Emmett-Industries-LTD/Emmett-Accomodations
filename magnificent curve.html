@@ -7,13 +7,13 @@
 </head>
 <body>
     <h1>Brilliant Curve!</h1>
-    <div style="background-color: brown; ">
+    <div style="background-color: none;">
         <h1>This is a Magnificent Curve</h1>
     </div>
     <h1>
         Make your own curve! Here is my defult curve!
     </h1>
-    <div id="Curver">
+    <div id="Curver" style="background-color: brown;">
         <h1>
             Curve maker
             <br>
@@ -22,7 +22,10 @@
             Make sure to not enter an error or false equasion.
         </h1>
         <h1>y-axis = </h1>
-        <h1 id="inputer">enter Here</h1>
+        <h1 id="inputer">x, ex, 2</h1>
+    </div>
+    <h1 id="density"></h1>
+    <div>
         <button onclick="inputFunction('times')"><h1>* times (times)</h1></button>
         <button onclick="inputFunction('div')"><h1>/ divided by (div)</h1></button>
         <button onclick="inputFunction('plus')"><h1>+ plus (plus)</h1></button>
@@ -45,17 +48,36 @@
         <br>
         <button onclick="inputFunction('doFunction')"><h1>Enter Curve</h1></button>
         <button onclick="inputFunction('clear')"><h1>clear</h1></button>
+        <button onclick="dense+=0.2;Enter(equasionString, dense);denseness();"><h1>density++</h1></button>
+        <button onclick="dense-=0.2;Enter(equasionString, dense);denseness();"><h1>density--</h1></button>
     </div>
     <div id="Curve-Container" style="border:solid 1px black;position: relative;top:40px;left:50%">
     </div>
     <script>
-        doFunction(["x","times","x"]);
-        var equasionString = [];
+        Enter(["x","ex", 2],0.6);
+        var equasionString = ["x", "ex", 2];
         var currentNumber = [];
+        var beginning = "yes";
+        var dense=0.6;
+        var densenessInterval = setInterval(denseness(),20);
+        function denseness(){
+            document.getElementById("density").innerHTML = "density:" + Math.round(dense*5);
+            if(dense*5>=9){
+                alert("density reaching dangerous levels")
+            }
+        }
         function inputFunction(input){
-            var leng=equasionString.length;
-            if(input=='clear'){
+            if(beginning=="yes"){
                 equasionString = [];
+                currentNumber=[];
+                beginning="no";
+            }
+            var leng=equasionString.length;
+            if(input=="doFunction"){
+                Enter(equasionString, dense);
+            }else if(input=='clear'){
+                equasionString = [];
+                currentNumber=[];
             }else if(typeof(input)=="number"||input=="negnum"){ //input is number
                 if (input=="negnum") {
                     equasionString[equasionString.length-1]=(0-(equasionString[equasionString.length-1]+currentNumber[currentNumber.length-1]*(10**(currentNumber.length-1))));
@@ -71,36 +93,59 @@
                 currentNumber=[];
                 equasionString[leng]=input;//add function to input
             };
-            if(input=="doFunction"){
-                doFunction(equasionString);
-            }
             document.getElementById("inputer").innerHTML=equasionString;
         }
-        function doFunction(equasion){
+        function Enter(equasionInput,density){
             var Curve = "";
-            var density = 1.5;
-            for(x=-50; x<=50; x+=1/(10**density)){//repeat loop
-                var line = 0;
-                var width = Math.round(x*10)
-                equasion.unshift("plus");
-                equasion.unshift(0);
-                for(i=0;i<equasion.length;i++){//check equasion
-                    if(equasion[i+2]=="x") equasion[i+1] = x;
-                    if(equasion[i]=="times"){
-                        line *= equasion[i+1];
+            var equasionConst=equasionInput
+            equasionConst.unshift("plus");
+            equasionConst.unshift(0);
+            var line;
+            var width;
+            var equasion=equasionConst;
+            for(xx=-50; xx<=50; xx+=1/(10**density)){//repeat loop
+                line = 0//Math.sqrt(x*10);
+                width = Math.round(xx*10);
+                for(i=1;i<equasion.length;i++){//check equasion
+                    if(equasion[i]=="times"){;
+                        if(equasion[i+1]=="x"){
+                            line *= xx
+                        }else{
+                            line *= equasion[i+1]
+                        }
                     }else if(equasion[i]=="plus"){
-                        line += equasion[i+1];
+                        if(equasion[i+1]=="x"){
+                            line += xx
+                        }else{
+                            line += equasion[i+1]
+                        }
                     }else if(equasion[i]=="div"){
-                        line /= equasion[i+1];
+                        if(equasion[i+1]=="x"){
+                            line /= xx
+                        }else{
+                            line /= equasion[i+1]
+                        }
                     }else if(equasion[i]=="min"){
-                        line -= equasion[i+1];
+                        if(equasion[i+1]=="x"){
+                            line -= xx
+                        }else{
+                            line -= equasion[i+1]
+                        }
                     }else if(equasion[i]=="ex"){
-                        line **= equasion[i+1];
+                        if(equasion[i+1]=="x"){
+                            line **= xx
+                        }else{
+                            line **= equasion[i+1]
+                        }
                     }
-                    i++
+                    i++;
+                    if(equasion[i+1]=="x"){
+                        console.log("it is true")
+                        equasion[i+1] = Math.floor(xx); //change
+                    }
                 }
                 Curve += 
-                    "<div style = 'position:absolute; top:" + line + "px; left:" + width + "px;width:1px;height:1px;border-radius:1px;background-color:black'></div>";
+                    "<div style = 'position:absolute; top:" + (line * 10) + "px; left:" + width + "px;width:1px;height:1px;border-radius:1px;background-color:black'></div>";
             }
             document.getElementById("Curve-Container").innerHTML = Curve;
         }

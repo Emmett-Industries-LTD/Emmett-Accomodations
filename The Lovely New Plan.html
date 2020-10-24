@@ -20,9 +20,7 @@
             <h1 id="plannedToDo"></h1>
             <h1>planbar:</h1>
             <h1>
-                <li>song 25 on trombone sheet practice.</li>
-                <li>Important to study for science, math tests.</li>
-                <li>Work on science summative one day, then next study for test. follow pattern until test</li>
+                <li>go to <a href="https://mail.google.com/mail/u/1/#inbox">taskbar</a> and go to the UCC account to get homework</li>
                 <li>work on sylophone form do the rolling practice every other day 15 minutes</li>
                 <div id="AdditionalBar"></div>
             </h1> 
@@ -566,9 +564,30 @@
             var plan = {
                 Planned: [
                     [
+                        "finish i and s homework good copy 11:00-2:00",
+                        "music technique practice",
+                        "gravit scavenger hunt",
+                        "trombone do homework",
+                        "finish making to new scene in movie",
+                        "new camera",
+                        "finish making curve"
+                    ],
+                    [
+                        "movie"
+                    ],
+                    [
+                        "finish on Born of Fire homework 4:00 and study hall at school",
+                        "watch debate"
+                    ],
+                    [
+                        "art class",
+                        "work on Born of Fire homework 8:00"
+                    ],
+                    [
                         "finish science homework",
-                        "lang homework only if science finished",
                         "design homework",
+                        "french homework",
+                        "lang homework only if science finished",
                         "remember to bring math workbook back to school"
                     ],
                     [
@@ -687,6 +706,18 @@
                 Finished: [ //add empty array even for future days
                     [
 
+                    ],
+                    [
+                        1
+                    ],
+                    [
+                        1,2
+                    ],
+                    [
+                        1,2
+                    ],
+                    [
+                        1,3,2,4
                     ],
                     [
                         1,2
@@ -825,7 +856,8 @@
                 document.getElementById("Finished").innerHTML = allFinished;
                 Display.innerHTML = All;
                 document.getElementById("finishedCount").innerHTML = HowMuchFinished.all.finished + "/" + HowMuchFinished.all.All + " of planned is completed" 
-                    + "<br>" + Math.round(Percent(HowMuchFinished.all.finished, HowMuchFinished.all.All)) + "% total completion rate";
+                    + "<br>" + Math.round(Percent(HowMuchFinished.all.finished, HowMuchFinished.all.All)) + "% total completion rate" +
+                    " over " + plan.Planned.length + " days total";
                 document.getElementById("finishedCountWeek").innerHTML = HowMuchFinished.week.finished + "/" + HowMuchFinished.week.All + " of planned is completed in the last 7 days" 
                     + "<br>" + Math.round(Percent(HowMuchFinished.week.finished, HowMuchFinished.week.All)) + "% completion rate in the last 7 days";
                 
