@@ -64,6 +64,10 @@
             document.getElementById("density").innerHTML = "density:" + Math.round(dense*5);
             if(dense*5>=9){
                 alert("density reaching dangerous levels")
+                if(dense*5>=11){
+                    alert("system error")
+                    location.reload();
+                }
             }
         }
         function inputFunction(input){
@@ -95,9 +99,8 @@
             };
             document.getElementById("inputer").innerHTML=equasionString;
         }
-        function Enter(equasionInput,density){
+        function Enter(equasionConst,density){
             var Curve = "";
-            var equasionConst=equasionInput
             equasionConst.unshift("plus");
             equasionConst.unshift(0);
             var line;
@@ -147,6 +150,8 @@
                 Curve += 
                     "<div style = 'position:absolute; top:" + (line * 10) + "px; left:" + width + "px;width:1px;height:1px;border-radius:1px;background-color:black'></div>";
             }
+            equasionConst.shift();
+            equasionConst.shift();
             document.getElementById("Curve-Container").innerHTML = Curve;
         }
     </script>

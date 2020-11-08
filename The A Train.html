@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Take the A train</title>
+    </head>
+    <body>
+        <div id="screen"></div>
+        <script>
+            var n = "nothing";
+            var w = "wool";
+            var data = [
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w]
+            ];
+            var pos = {x:16,y:4};
+            var rays = [];
+            for(y=-3;y<=3; y++){
+                for(x=-3;x<=3;x++){
+
+                    if(data[pos.y+(y)][pos.x + (x)]!=n){ // Works!!!
+                        document.getElementById("screen").innerHTML += ([pos.y+(y)] + "   "+[pos.x + (x)]+"             <br>")
+                        rays[rays.length] = Math.sqrt((Size(pos.y,y)**2) + (Size(pos.y,y)**2)); //distance calculation 
+                    }
+                }
+            }
+            document.getElementById("screen").innerHTML += ("<br><br><br><br>"+ rays);
+            function Size(xx, yy){
+                if(xx>yy){
+                    return xx+(yy);
+                }else if(yy>xx){
+                    return yy+(xx);
+                }
+            }
+        </script>        
+    </body>
+</html>
