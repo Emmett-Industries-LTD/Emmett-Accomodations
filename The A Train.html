@@ -6,38 +6,39 @@
         <title>Take the A train</title>
     </head>
     <body>
-        <div id="screen"></div>
+        <h1>Welcome to harlem!</h1>
+        <h1 id="commentary"></h1>
+        <h1>In your hand:</h1>
+        <h1 id="hand">coffee</h1>
+        <button onclick="North()"><h1>North</h1></button>
+        <button onclick="West()"><h1>West</h1></button>
+        <button onclick="South()"><h1>South</h1></button>
+        <button onclick="East()"><h1>East</h1></button>
+        <button onclick="Tool()"><h1>Use hand</h1></button>
         <script>
-            var n = "nothing";
-            var w = "wool";
-            var data = [
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w]
-            ];
-            var pos = {x:16,y:4};
-            var rays = [];
-            for(y=-3;y<=3; y++){
-                for(x=-3;x<=3;x++){
-
-                    if(data[pos.y+(y)][pos.x + (x)]!=n){ // Works!!!
-                        document.getElementById("screen").innerHTML += ([pos.y+(y)] + "   "+[pos.x + (x)]+"             <br>")
-                        rays[rays.length] = Math.sqrt((Size(pos.y,y)**2) + (Size(pos.y,y)**2)); //distance calculation 
-                    }
-                }
+            var position={NS:4,EW:4};
+            setInterval(Commentary,20)
+            var Streets={
+                NS:["145 street","155 street", "156 street", "156 street", "157 street"],
+                EW:["Amsterdam Ave", "Broadway", "third Avenue", "fourth Avenue", "park Avenue"]
+            };
+            function North(){
+                position.NS+=1;
             }
-            document.getElementById("screen").innerHTML += ("<br><br><br><br>"+ rays);
-            function Size(xx, yy){
-                if(xx>yy){
-                    return xx+(yy);
-                }else if(yy>xx){
-                    return yy+(xx);
-                }
+            function South(){
+                position.NS-=1;
+            }
+            function West(){
+                position.EW+=1;
+            }
+            function East(){
+                position.EW-=1;
+            }
+            function Commentary(){
+                document.getElementById("commentary").innerHTML = Returner(position.NS,position.EW);
+            }
+            function Returner(a,b){
+                return "you are at: "+(Streets.NS[a]) + ", and you are also at: "+(Streets.EW[b]);
             }
         </script>        
     </body>
