@@ -44,6 +44,7 @@
             <li>don't be afraid to make tasks very long and detailed, or add small tasks such as "eggs for breakfast"</li>
             <li>put tasks in order of importance or what I will do first</li>    
             <li>put finished plans in order of completion</li>
+            <li>New rule on November 13 states that finished plans do not have to be in order if they are all declared all at once the day afterward</li>
             <li>the Planbar is where I can store tasks on the plan that are just reminders that stay until it is decided 
                 it is done, and completed. It is not stored as some other plans are, adn only saves when put in the log.
             </li>
@@ -130,7 +131,7 @@
         <script>
             var d=new Date();
             //var ChooseDay=5;
-            var chooseday = 1; //days since fri sept 18 2020, plan date
+            var chooseday = 0; //days since fri sept 18 2020, plan date
             var plannedunPlanned;
             var Calendarstuff=[
                 [
@@ -563,7 +564,20 @@
             var plan = {
                 Planned: [
                     [
-                        "i and s work finish section 5a, 5c"
+                        "breakfast",
+                        "run afternoon",
+                        "adventure 5:00",
+                        "coding morning",
+                        "work on 3d project afternoon"
+                    ],
+                    [
+                        "work on project",
+                        "adventure",
+                        "camera",
+                        "movie"
+                    ],
+                    [
+                        "play with Elijah"
                     ],
                     [
                         "finish story homework first draft",
@@ -809,8 +823,15 @@
                     [
 
                     ],
+                    //november 13 Friday
                     [
-
+                        1,2,3,4
+                    ],
+                    [
+                        1
+                    ],
+                    [
+                        1,2,3,4
                     ],
                     [
                         1,3
