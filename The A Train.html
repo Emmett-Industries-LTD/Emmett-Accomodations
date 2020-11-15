@@ -8,48 +8,95 @@
     <body>
         <h1>Welcome to harlem!</h1>
         <h1>All aboard the A train!</h1>
-        <div style="width: 100%; height: 100%; position: fixed; top:0px; right: 0px;" id="screen">
+        <h1 id="commentary"></h1>
+        <div style="width: 100%; height: 50%; position: fixed; top:0px; right: 0px; margin-top:0px;" id="screen">
+            
         </div>
+        <div style="width: 100%; height: 50%; position: fixed; top:50%; right: 0px; margin-bottom:0px;" id="screenBottom">
+            
+        </div>
+        <button style="position: fixed; top: 120px;" onclick="forWards()"><h1>forwards</h1></button>
+        <button style="position: fixed; top: 200px;" onclick="backWards()"><h1>backwards</h1></button>
+        <button style="position: fixed; top: 420px;" onclick="lookRight()"><h1>look right</h1></button>
+        <button style="position: fixed; top: 500px;" onclick="lookLeft()"><h1>look left</h1></button>
         <script>
             var n = "nothing";
             var w = "wool";
-            setInterval(loadpage, 200);
             var data = [
+                // 2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9
                 [n,n,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,w,w,n,n,n,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,w,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
                 [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w]
             ];
-            var pos = {x:16,y:5};
+            var pos = {x:16,y:4};
             var view = 1;
-            function loadpage(){
+            var commentary = document.getElementById("commentary");
+            loadPage();
+            function lookRight(){
+                view = CheckView(view + 1)
+                console.log(view)
+            }
+            function lookLeft(){
+                view = CheckView(view - 1)
+                console.log(view)
+            }
+            function forWards(){
+                pos.x -= getSideValues(CheckView(view))[0]; //ray x value
+                pos.y -= getSideValues(CheckView(view))[1]; //ray y value
+            }
+            function backWards(){
+                pos.x += getSideValues(CheckView(view))[0]; //ray x value
+                pos.y += getSideValues(CheckView(view))[1]; //ray y value
+            }
+            function loadPage(){
                 var rays = [];
+                var rays2 = [];
                 var x, y, xyplus, yadjust, xadjust;
-                view = CheckView(view+1);
                 for(Viewside=-4,i=0;Viewside<=4; Viewside+=1, i+=1){
-                    x = pos.x;
-                    y = pos.y;
+                    x = Math.round(pos.x);
+                    y = Math.round(pos.y);
                     yadjust = 0;//distance of y traveled
                     xadjust = 1;//distance of x traveled
                     xyplus = getSideValues(CheckView(view + (Viewside))); //the ray value
-                    console.log(xyplus)
-                    while(data[Math.round(y)][Math.round(x)]==n){
+                    while(data[Math.round(y)][Math.round(x)]=="nothing"){
                         x += Addeven(xyplus[0]); //ray x value
                         y += Addeven(xyplus[1]); //ray y value
                         xadjust += Addeven(xyplus[0])
                         yadjust += Addeven(xyplus[1])
                     }
-                    rays[i] = "<div style='position:fixed; width: "+100/9+"%; left:" + ((100/9)*i) + "%; border: solid white 1px; top:20%; height: " 
-                    + (Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*100) + 
+                    rays[i] = "<div style='position:absolute; width: "+100/9+"%; left:" + ((100/9)*i) + "%; border: none; bottom:0px; height: " 
+                    + (Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*50) + 
                     "px; background-color: brown'></div> " 
+                    rays2[i] = "<div style='position:absolute; width: "+100/9+"%; left:" + ((100/9)*i) + "%; border: none; top:0px; height: " 
+                    + (Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*50) + 
+                    "px; background-color: brown'></div> ";
                     // console.log(x + ",  " + y)
                 }
                 document.getElementById("screen").innerHTML = rays;
+                document.getElementById("screenBottom").innerHTML = rays2;
+                if(pos.x>=12&&pos.x<16){commentary.innerHTML = "you are in the A train tunnels in Harlem"}
+                else{commentary.innerHTML = ""}
+                setTimeout(loadPage,20)
             }
             function Plus(numb){
                 if(numb<0){
@@ -97,7 +144,6 @@
                 else if(side==8){
                     number = [1, 0.8];
                 }
-
                 else if(side==9){
                     number = [0.8, 1];
                 }
