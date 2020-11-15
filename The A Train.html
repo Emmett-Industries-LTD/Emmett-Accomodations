@@ -15,14 +15,14 @@
         <div style="width: 100%; height: 50%; position: fixed; top:50%; right: 0px; margin-bottom:0px;" id="screenBottom">
             
         </div>
-        <button style="position: fixed; top: 120px;" onclick="forWards()"><h1>forwards</h1></button>
-        <button style="position: fixed; top: 200px;" onclick="backWards()"><h1>backwards</h1></button>
-        <button style="position: fixed; top: 420px;" onclick="lookRight()"><h1>look right</h1></button>
-        <button style="position: fixed; top: 500px;" onclick="lookLeft()"><h1>look left</h1></button>
+        <button style="position: fixed; bottom: 10px;left:10px" onclick="forWards()"><h1>forwards</h1></button>
+        <button style="position: fixed; bottom: 10px;left:150px" onclick="backWards()"><h1>backwards</h1></button>
+        <button style="position: fixed; bottom: 10px;left:290px;" onclick="lookLeft()"><h1>look left</h1></button>
+        <button style="position: fixed; bottom: 10px;left:430px;" onclick="lookRight()"><h1>look right</h1></button>
         <script>
             var n = "nothing";
             var w = "wool";
-            var data = [
+            var Rawdata = [
                 // 2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9
                 [n,n,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
@@ -51,6 +51,19 @@
             var pos = {x:16,y:4};
             var view = 1;
             var commentary = document.getElementById("commentary");
+            var data = Rawdata
+            /* //doesn't work
+            for(i=0;i<Rawdata.length; i++){//y
+                for(a=0;a<Rawdata[i].length; a++){//x
+                    data[i]=[];
+                    for(b=0; b<10; b++){//repeat x
+                        data[data.length][data[a].length]=Rawdata[i][a];
+                    }
+                }
+                for(b=0; b<10; b++){//repeat y
+                    data[data.length]=data[i];
+                }
+            }*/
             loadPage();
             function lookRight(){
                 view = CheckView(view + 1)
@@ -61,34 +74,35 @@
                 console.log(view)
             }
             function forWards(){
-                pos.x -= getSideValues(CheckView(view))[0]; //ray x value
-                pos.y -= getSideValues(CheckView(view))[1]; //ray y value
+                pos.x += getSideValues(CheckView(view)).x; //ray x value
+                pos.y += getSideValues(CheckView(view)).y; //ray y value
             }
             function backWards(){
-                pos.x += getSideValues(CheckView(view))[0]; //ray x value
-                pos.y += getSideValues(CheckView(view))[1]; //ray y value
+                pos.x -= getSideValues(CheckView(view)).x; //ray x value
+                pos.y -= getSideValues(CheckView(view)).y; //ray y value
             }
             function loadPage(){
-                var rays = [];
-                var rays2 = [];
+                var rays = "";
+                var rays2 = "";
                 var x, y, xyplus, yadjust, xadjust;
-                for(Viewside=-4,i=0;Viewside<=4; Viewside+=1, i+=1){
-                    x = Math.round(pos.x);
-                    y = Math.round(pos.y);
+                for(Viewside=-14,i=0;Viewside<=14; Viewside+=1, i+=1){
+                    x = pos.x;
+                    y = pos.y;
                     yadjust = 0;//distance of y traveled
-                    xadjust = 1;//distance of x traveled
+                    xadjust = 0;//distance of x traveled
                     xyplus = getSideValues(CheckView(view + (Viewside))); //the ray value
                     while(data[Math.round(y)][Math.round(x)]=="nothing"){
-                        x += Addeven(xyplus[0]); //ray x value
-                        y += Addeven(xyplus[1]); //ray y value
-                        xadjust += Addeven(xyplus[0])
-                        yadjust += Addeven(xyplus[1])
+                        x += Addeven(xyplus.x); //ray x value
+                        y += Addeven(xyplus.y); //ray y value
+                        xadjust += Addeven(xyplus.x)
+                        yadjust += Addeven(xyplus.y)
                     }
-                    rays[i] = "<div style='position:absolute; width: "+100/9+"%; left:" + ((100/9)*i) + "%; border: none; bottom:0px; height: " 
-                    + (Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*50) + 
-                    "px; background-color: brown'></div> " 
-                    rays2[i] = "<div style='position:absolute; width: "+100/9+"%; left:" + ((100/9)*i) + "%; border: none; top:0px; height: " 
-                    + (Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*50) + 
+                    rays += "<div style='position:absolute; width: "+100/29+"%; left:" + ((100/29)*i) + "%; border: none; bottom:0px; height: " 
+                    + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*25)) + 
+                    "px; background-color: brown'></div> ";
+
+                    rays2 += "<div style='position:absolute; width: "+100/29+"%; left:" + ((100/29)*i) + "%; border: none; top:0px; height: " 
+                    + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*25)) + 
                     "px; background-color: brown'></div> ";
                     // console.log(x + ",  " + y)
                 }
@@ -98,6 +112,9 @@
                 else{commentary.innerHTML = ""}
                 setTimeout(loadPage,20)
             }
+            function Addeven(decimalNumber){
+                return Math.floor(decimalNumber*10)/10
+            }
             function Plus(numb){
                 if(numb<0){
                     return -(numb);
@@ -105,81 +122,47 @@
                     return numb;
                 }
             }
-            function Addeven(decimalNumber){
-                return Math.floor(decimalNumber*10)/10
-            }
             function CheckView(viewNumber){
-                if(viewNumber<=0){ //fixed problem
-                    return 20+viewNumber;
-                }else if(viewNumber>20){
-                    return viewNumber-20;
+                if(viewNumber<0){ //fixed problem
+                    return 72+viewNumber;
+                }else if(viewNumber>71){
+                    return viewNumber-72;
                 }else{
                     return viewNumber;
                 }
             }
-            function getSideValues(side){
-                var number;
-                if(side==1){
-                    number = [0, -1]; //x, y 
+            function getSideValues(sideRaw){
+                var number = {x:0, y:0}; //x, y
+                var rayNumbers = [0, 0.105, 0.18, 0.275, 0.38, 0.505, 0.62, 0.715, 0.86, 1, 0.86,0.715, 0.62, 0.505, 0.38, 0.275, 0.18, 0.10];
+                if(sideRaw<=9){
+                    number.x = rayNumbers[sideRaw];
+                    number.y = -1;
+                }else if(sideRaw<=17){
+                    number.x = 1;
+                    number.y = -rayNumbers[sideRaw];
                 }
-                else if(side==2){
-                    number = [0.55, -1];
+                else if(sideRaw<=26){
+                    number.x = 1;
+                    number.y = rayNumbers[sideRaw-18];
+                }else if(sideRaw<=35){
+                    number.x = rayNumbers[sideRaw-18];
+                    number.y = 1;
                 }
-                else if(side==3){
-                    number = [0.8, -1];
+                else if(sideRaw<=44){
+                    number.x = -rayNumbers[sideRaw-36];
+                    number.y = 1;
+                }else if(sideRaw<=53){
+                    number.x = -1;
+                    number.y = rayNumbers[sideRaw-36];
+                }
+                else if(sideRaw<=62){
+                    number.x = -1;
+                    number.y = -rayNumbers[sideRaw-54];
+                }else if(sideRaw<=71){
+                    number.x = -rayNumbers[sideRaw-54];
+                    number.y = -1;
                 }
                 // x: more == right, y: more == down
-                else if(side==4){
-                    number = [1, -0.8];
-                }
-                else if(side==5){
-                    number = [1, -0.55];
-                }
-                else if(side==6){
-                    number = [1, 0];
-                }
-                else if(side==7){
-                    number = [1, 0.55];
-                }
-                else if(side==8){
-                    number = [1, 0.8];
-                }
-                else if(side==9){
-                    number = [0.8, 1];
-                }
-                else if(side==10){
-                    number = [0.55, 1];
-                }
-                else if(side==11){
-                    number = [0, 1];
-                }
-                else if(side==12){
-                    number = [-0.55, 1];
-                }
-                else if(side==13){
-                    number = [-0.8, 1];
-                }
-                else if(side==14){
-                    number = [-1, 0.8];
-                }
-                else if(side==15){
-                    number = [-1, 0.55];
-                }
-                else if(side==16){
-                    number = [-1, 0];
-                }
-                else if(side==17){
-                    number = [-1, -0.55];
-                }
-                else if(side==18){
-                    number = [-1, -0.8];
-                }
-                else if(side==19){
-                    number = [-0.8, -1];
-                }
-                else if(side==20){
-                    number = [-0.55, -1];
-                }
                 return number;
             }
         </script>        
