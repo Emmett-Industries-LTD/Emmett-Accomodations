@@ -20,8 +20,10 @@
         <button style="position: fixed; bottom: 10px;left:290px;" onclick="lookLeft()"><h1>look left</h1></button>
         <button style="position: fixed; bottom: 10px;left:430px;" onclick="lookRight()"><h1>look right</h1></button>
         <script>
-            var n = "nothing";
-            var w = "wool";
+            var n, w, t;
+            n = "nothing";
+            w = "wool";
+            t = "wood"; //t for tree
             var Rawdata = [
                 // 2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9
                 [n,n,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n],
@@ -30,10 +32,10 @@
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
+                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,t,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
                 [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n,n,n,n,n,w,w,w,w,w,n,n,n,n],
-                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
+                [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,t,t,w,w,w,w,w,w,w,w,w,w],
                 [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
                 [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,w,w,w,w,w,w,w,w,w,w,w,w,w],
                 [w,w,w,w,w,w,w,w,w,w,w,w,n,n,n,n,n,n,n,w,w,w,w,w,w,w,w,w,w],
@@ -99,11 +101,11 @@
                     }
                     rays += "<div style='position:absolute; width: "+100/29+"%; left:" + ((100/29)*i) + "%; border: none; bottom:0px; height: " 
                     + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*20)) + 
-                    "px; background-color: brown'></div> ";
+                    "px; background-color: "+ BlockType(data[Math.round(y)][Math.round(x)])+"'></div> ";
 
                     rays2 += "<div style='position:absolute; width: "+100/29+"%; left:" + ((100/29)*i) + "%; border: none; top:0px; height: " 
                     + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*20)) + 
-                    "px; background-color: brown'></div> ";
+                    "px; background-color: " + BlockType(data[Math.round(y)][Math.round(x)]) + "'></div> ";
                     // console.log(x + ",  " + y)
                 }
                 document.getElementById("screen").innerHTML = rays;
@@ -130,6 +132,13 @@
                 }else{
                     return viewNumber;
                 }
+            }
+            function BlockType(block){
+                var blockDictionary = {
+                    wool:"beige",
+                    wood:"brown"
+                }
+                return blockDictionary[block];
             }
             function getSideValues(sideRaw){
                 var number = {x:0, y:0}; //x, y
