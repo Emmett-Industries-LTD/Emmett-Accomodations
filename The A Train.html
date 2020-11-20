@@ -98,11 +98,11 @@
                         yadjust += Addeven(xyplus.y)
                     }
                     rays += "<div style='position:absolute; width: "+100/29+"%; left:" + ((100/29)*i) + "%; border: none; bottom:0px; height: " 
-                    + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*25)) + 
+                    + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*20)) + 
                     "px; background-color: brown'></div> ";
 
                     rays2 += "<div style='position:absolute; width: "+100/29+"%; left:" + ((100/29)*i) + "%; border: none; top:0px; height: " 
-                    + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*25)) + 
+                    + (300-(Math.sqrt(Plus(Addeven(xadjust)**2) + Plus(Addeven(yadjust)**2))*20)) + 
                     "px; background-color: brown'></div> ";
                     // console.log(x + ",  " + y)
                 }
@@ -113,7 +113,7 @@
                 setTimeout(loadPage,20)
             }
             function Addeven(decimalNumber){
-                return Math.floor(decimalNumber*10)/10
+                return decimalNumber//Math.floor(decimalNumber*10)/10
             }
             function Plus(numb){
                 if(numb<0){
